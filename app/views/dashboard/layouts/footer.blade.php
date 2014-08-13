@@ -1,0 +1,1 @@
+<div class="footer">&copy; 2014 92five app | <a href="{{url('dashboard/credits')}}"> Credits </a> | Made with <img src="{{asset('assets/images/heart.png')}}" alt=""> in <a href="http://en.wikipedia.org/wiki/Rajkot">Rajkot</a> , <a href="http://en.wikipedia.org/wiki/Gujarat">Gujarat</a> - <a href="http://en.wikipedia.org/wiki/India">India</a> </div>

@@ -1,0 +1,121 @@
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer {
+	overflow: hidden;
+	position: relative;
+	width:100% !important;
+}
+.jspPane {
+	position: absolute;
+	width:96% !important;
+}
+.jspVerticalBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16px;
+	height: 100%;
+	background: red;
+}
+.jspHorizontalBar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red;
+}
+.jspVerticalBar *, .jspHorizontalBar * {
+	margin: 0;
+	padding: 0;
+}
+.jspCap {
+	display: none;
+}
+.jspHorizontalBar .jspCap {
+	float: left;
+}
+.jspTrack {
+	background: #dcdcdc; /* changed from #dde */
+	position: relative;
+	border:1px solid #cfcfcf;
+}
+.jspDrag {
+	/*background: rgba(0, 0, 0, 0.2); /* changed from #bbd */
+	background:url(../images/scroll.png) no-repeat left top;
+	width:18px;
+	height:56px !important;
+	position: relative;
+	top: 0;
+	left: -2px;
+	cursor: pointer;
+}
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag {
+	float: left;
+	height: 100%;
+}
+.jspArrow {
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+.jspArrow.jspDisabled {
+	cursor: default;
+	background: #80808d;
+}
+.jspVerticalBar .jspArrow {
+	height: 16px;
+}
+.jspHorizontalBar .jspArrow {
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+.jspVerticalBar .jspArrow:focus {
+	outline: none;
+}
+.jspCorner {
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner {
+	margin: 0 -3px 0 0;
+}
+/*********** Scroll Bar ***********/
+	.scroll_container {
+	height:206px;
+	margin:-10px auto 0 auto;
+	overflow-y: scroll; /* showing scrollbars */
+	width:100% !important;
+	overflow-x:hidden; 
+}
+/*	::-webkit-scrollbar {
+ width: 15px;
+} /* this targets the default scrollbar (compulsory) */
+	
+/*	::-webkit-scrollbar-track {
+ background-color: #b46868;
+} /* the new scrollbar will have a flat appearance with the set background color */
+
+/*	::-webkit-scrollbar-thumb {
+ background-color: rgba(0, 0, 0, 0.2);
+} /* this will style the thumb, ignoring the track */
+
+/*	::-webkit-scrollbar-button {
+ background-color: #7c2929;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+/*	::-webkit-scrollbar-corner {
+ background-color: black;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+
+
+.proj_set_detail{ height:191px;}

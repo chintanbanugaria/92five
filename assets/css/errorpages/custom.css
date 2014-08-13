@@ -1,0 +1,24 @@
+/************ Main **************/
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+.setting{ min-height:80px; background:#000000;}
+.container{ width:95%; margin:0 auto; padding:0;}
+body { background-size:auto 100%;}
+}
+/************ Tablet **************/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.setting{ min-height:80px; background:#0000FF;}
+html { -webkit-text-size-adjust:none;}
+.container{ width:95%; margin:0 auto; padding:0;}
+}
+
+/************ iphone **************/
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+.setting{ min-height:80px; background:#FF0000;}
+html { -webkit-text-size-adjust:none;}
+body { background-size:auto 100%;}
+.container{ width:95%; margin:0 auto; padding:0;}
+.error_main{ width:90%; float:left; margin:0 5%;}
+.error_detail_2{ font-size:160px;}
+.error_detail_1{ font-family:30px;}
+.error_detail_3 ul li{ font-size:16px;}
+}

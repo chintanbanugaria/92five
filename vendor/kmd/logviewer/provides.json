@@ -1,0 +1,5 @@
+{
+    "providers": [
+        "Kmd\Logviewer\LogviewerServiceProvider"
+    ]
+}

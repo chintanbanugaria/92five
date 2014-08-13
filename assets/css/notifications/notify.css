@@ -1,0 +1,138 @@
+/*
+ * Notify 0.0.1 - A Jquery Notification Extension
+ * Homepage: redeyeoperation.com/plugins/Notify
+ *
+ * Author: Jacob Lowe (redeyeoperations.com)
+ * Twitter Handle @jacoblowe2dot0
+ *
+ * Copyright (c) 2010 Jacob Lowe (http://redeyeoperations.com)
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ *
+ * 
+ * Built for jQuery library
+ * http://jquery.com
+ *
+ * jQuery.support.transition
+  *to verify that CSS3 transition is supported (or any of its browser-specific implementations)
+ 
+@font-face {
+                font-family: ''Lato-reg'';
+                src: url('../fonts/fontscorecomhhelveticaltstdlightcondensed.eot');
+                src: url('../fonts/fontscorecomhhelveticaltstdlightcondensed.eot?#iefix') format('embedded-opentype'),
+                         url('../fonts/fontscorecomhhelveticaltstdlightcondensed.woff') format('woff'),
+                         url('../fonts/fontscorecomhhelveticaltstdlightcondensed.ttf') format('truetype'),
+                         url('../fonts/fontscorecomhhelveticaltstdlightcondensed.svg#fontscorecomhhelveticaltstdlightcondensed') format('svg');
+                font-weight: normal;
+                font-style: normal;
+        }*/
+
+#notify{
+        font-family: inherit;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 18px;
+        visibility: hidden;
+        z-index: 99999;
+        overflow: hidden;
+        
+}
+
+#notify, #notify-placeholder{
+        -webkit-transition: height 1s ease-in-out;
+	-moz-transition: height 1s ease-in-out;
+	-o-transition: height 1s ease-in-out;
+	-ms-transition: height 1s ease-in-out;
+	transition: height 1s ease-in-out;
+}
+
+
+
+#notify.notify-visible, .notify-visible{
+        /*height: 50px;*/
+        width: 100%;
+       
+        visibility: visible;
+        /*position: relative;*/
+}
+
+#notify.notify-hidden, .notify-hidden{
+        height: 0px;
+        visibility: visible;
+        border: 0;
+}
+
+.notify-error{
+        background: #cc0505; /* Old browsers */
+        
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+.notify-success{
+        background: #2a6d1a; /* Old browsers */
+       
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0,0,0,.7);
+}
+
+.notify-alert{
+        background: #fcf085; /* Old browsers */
+        background: -moz-linear-gradient(top, #fcf085 1%, #edda63 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#fcf085), color-stop(100%,#edda63)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #fcf085 1%,#edda63 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #fcf085 1%,#edda63 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #fcf085 1%,#edda63 100%); /* IE10+ */
+        background: linear-gradient(top, #fcf085 1%,#edda63 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf085', endColorstr='#edda63',GradientType=0 ); /* IE6-9 */
+       
+        color: #222;
+        text-shadow: 0 1px 2px rgba(255,255,255,.7);
+}
+
+.notify-basic{
+        background: rgb(163,163,163); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(163,163,163,1) 0%, rgba(119,119,119,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(163,163,163,1)), color-stop(100%,rgba(119,119,119,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(163,163,163,1) 0%,rgba(119,119,119,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(163,163,163,1) 0%,rgba(119,119,119,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(163,163,163,1) 0%,rgba(119,119,119,1) 100%); /* IE10+ */
+        background: linear-gradient(top, rgba(163,163,163,1) 0%,rgba(119,119,119,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#777777',GradientType=0 ); /* IE6-9 */
+       
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0,0,0,.7);
+}
+
+.notify-alert span{
+        display: block;
+        margin: 0 auto;
+        background-image: url(./images/loading.gif);
+        background-position: 2px 2px;
+        background-repeat: no-repeat;
+        width: 150px;
+}
+
+.notify-close{
+        float: right;
+        margin: 0;
+        height: 20px;
+        width: 20px;
+        background: url(close.png) 0px 0px no-repeat;
+        position: absolute;
+        top: 10px;
+        right:10px;
+}
+
+.notify-hidden .notify-close{
+        display: none;
+}
+
+#notify-placeholder{
+        background: none;
+        border: 0;
+}

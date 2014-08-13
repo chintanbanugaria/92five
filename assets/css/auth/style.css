@@ -1,0 +1,302 @@
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Colab';
+    background: url(../../images/common-bg.jpg) center top no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+a {
+    outline: none !important;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+/***********  Fonts  ************/
+
+@font-face {
+    font-family: 'Colab';
+    src: url('../fonts/Lato-Lig-webfont.eot');
+    src: url('../fonts/Lato-Lig-webfont.woff') format('woff'), url('../fonts/Lato-Lig-webfont.ttf') format('truetype'), url('../fonts/Lato-Lig-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato_reg';
+    src: url('../fonts/Lato-Reg-webfont.eot');
+    src: url('../fonts/Lato-Reg-webfont.woff') format('woff'), url('../fonts/Lato-Reg-webfont.ttf') format('truetype'), url('../fonts/Lato-Reg-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+section {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+.content_detail {
+    width: 950px;
+    margin: 0 auto;
+    padding: 0;
+}
+.reset_pass {
+    padding: 10px 0;
+    margin: 110px 0 0 0;
+}
+.welcome_text {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 70px;
+    color: #fffefe;
+}
+.welcome_text2 {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 52px 0 22px 0;
+    text-align: center;
+    font-size: 32px;
+    color: #fffefe;
+    line-height: 33px;
+}
+.syscheckhead{
+    margin-top: 30px;
+}
+.reset_title {
+    width: 100%;
+    min-height: 60px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    background: #2e3641;
+    font-size: 30px;
+    color: #1bdcff;
+    line-height: 60px;
+    text-align: center;
+}
+.syscheckmain {
+ width: 400px;
+ margin: 0 auto;
+}
+.reset_form {
+    width: 100%;
+    min-height: 420px;
+    float: left;
+    padding: 0;
+    margin: 0 0 124px 0;
+    background: #ffffff;
+
+}
+.installdb{
+    padding-bottom: 30px;
+}
+.installdb .submit_button_main{
+    margin-top: 0px;
+}
+.reset_form ul{
+}
+.reset_form ul li {
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+    font-size: 18px !important;
+    margin-top: 10px;
+    width: 100%;
+    display: none;
+}
+.reset_form ul li img {
+    height: auto;
+    width: auto;
+    margin-right: 10px;
+}
+.reset_pass .logo {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 0px;
+}
+.reset_pass .logo img {
+    width: 275px;
+    height: 57px;
+}
+.field_main {
+    width: 95%;
+    float: left;
+    padding: 0 0 0 44px;
+    margin: 43px 0 0 0;
+}
+.field_data {
+    margin-bottom: 12px;
+    position: relative;
+}
+.field_name {
+    font-size: 26px;
+    color: #2e3641;
+    line-height: 46px;
+}
+.progress_data {
+    width: 259px;
+    height: 33px;
+    float: left;
+    margin: 7px 0 0 0;
+}
+.progress_data img {
+    width: 259px;
+    height: 33px;
+}
+.progress_data2 {
+    float: left;
+    margin: 13px 0 0 15px !important;
+}
+.progress_data2 img {
+    width: 20px;
+    height: 16px;
+}
+.submit_button_main {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 31px 0 0 0;
+    text-align: center;
+}
+.submit_button_main a {
+    height: 45px;
+    padding: 10px 24px 15px 24px;
+    margin: 0;
+    background: #2e3641;
+    font-size: 24px;
+    line-height: 45px;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+}
+.submit_button_main a:hover{
+    background: #1BDCFF;
+    color: #2E3641;
+    text-decoration: none;
+}
+.installtz{
+    width: 100%;
+    float:left !important;
+    margin: 0;
+    padding: 10px;
+    height: 50px;
+}
+.installtzform{
+    min-height: 300px;
+}
+.footer {
+    width: 100%;
+    float: right;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+    font-family: 'Lato_reg';
+    position: relative;
+}
+.submit {
+    height: 45px;
+    padding: 0 24px;
+    margin: 0;
+    background: #2e3641;
+    font-size: 24px;
+    line-height: 45px;
+    text-align: center;
+    border: none;
+    color: #ffffff;
+}
+.submit:hover {
+    background: #1BDCFF;
+    color: #2E3641;
+}
+.password_update {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 34px 0 54px 0;
+    font-size: 44px;
+    color: #bebaba;
+    text-align: center;
+    line-height: 48px;
+}
+#progressbar {
+    width: 259px;
+    height: 33px;
+    display: block;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+}
+#progress {
+    display: block;
+    height: 100px;
+    width: 0%;
+}
+.progressbarValid {
+    background-color: green;
+    background-image: -o-linear-gradient(-90deg, #8AD702 0%, #389100 100%);
+    background-image: -moz-linear-gradient(-90deg, #8AD702 0%, #389100 100%);
+    background-image: -webkit-linear-gradient(-90deg, #8AD702 0%, #389100 100%);
+    background-image: -ms-linear-gradient(-90deg, #8AD702 0%, #389100 100%);
+    background-image: linear-gradient(-90deg, #8AD702 0%, #389100 100%);
+}
+.progressbarInvalid {
+    background-color: red;
+    background-image: -o-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+    background-image: -moz-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+    background-image: -webkit-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+    background-image: -ms-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+    background-image: linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+}
+.footer {
+    width: 100%;
+    float: right;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+    font-family: 'Lato_reg';
+    position: relative;
+}
+.pass1 {
+    width: 20px;
+    height: 16px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    background: url(../../images/forgotpassword/right.png) no-repeat left top;
+}
+.fail1 {
+    width: 20px;
+    height: 16px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    background: url(../../images/forgotpassword/wrong.png) no-repeat left top;
+}
+.reset_text {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin: 35px 0 0 0;
+    text-align: center;
+    font-size: 20px;
+    color: #2E3641;
+}
+.donetext{
+    line-height: 41px;
+    font-size: 28px;
+}

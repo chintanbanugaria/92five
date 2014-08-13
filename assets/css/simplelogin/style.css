@@ -1,0 +1,145 @@
+body {
+	padding:0;
+	margin:0;
+	font-family:'Lato_lig';
+	background-color: #0e7ac3;
+	background-size:100% 100%;
+	background-attachment:fixed;
+}
+a {
+	outline:none !important;
+}
+* {
+	padding:0;
+	margin:0;
+}
+/***********  Fonts  ************/
+@font-face {
+	font-family:'Lato_lig';
+	src:url('../fonts/Lato-Lig-webfont.eot');
+	src:url('../fonts/Lato-Lig-webfont.woff') format('woff'), url('../fonts/Lato-Lig-webfont.ttf') format('truetype'), url('../fonts/Lato-Lig-webfont.svg') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+/***********  Login Part  ************/
+
+input, button, select, textarea {font-family:'Lato_lig' !important;}
+.login_detail {width:305px;padding:0;margin:150px auto 0 auto;}
+.error_detail_1{ width:100%; float:left; padding:0; margin:0px 0 40px 0px; font-size:52px; color:#fff;}
+.login_detail h2 {
+	width:100%;
+	float:left;
+	padding:0;
+	margin:0;
+	font-size:38px;
+	color:#ffffff;
+	text-align:center;
+	font-weight:normal;
+}
+.login_form {
+	width:100%;
+	float:left;
+	padding:0;
+	margin:30px 0 0 0;
+}
+.sign_button_main {
+	width:100%;
+	float:left;
+	padding:0;
+	margin:14px 0 0 0;
+	text-align:center;
+}
+.sign_in_button {
+	min-height:48px;
+	padding:0 37px;
+	margin:0;
+	text-align:center;
+	border:none;
+	font-size:21px;
+	background: #2e3641;
+	color:#ffffff;
+}
+.sign_in_button:hover {
+	background: #fff;
+	color:#000;
+}
+.forgot_link {
+	width:100%;
+	float:left;
+	padding:0;
+	margin:15px 0 0 0;
+	font-size:17px;
+	color:#fff;
+	text-align:center;
+}
+.forgot_link a {
+	padding:0;
+	margin:0;
+	font-size:17px;
+	color:#000;
+}
+.forgot_link a:hover {
+	color:#fff;
+	text-decoration:none;
+}
+.sign_title {
+	color:#ffffff !important;
+}
+.forgot {
+	margin-top:2px !important;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+	height:41px;
+	font-size:16px;
+}
+.parsley-error-list {
+	color:#FF0000;
+}
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	width:100%;
+  display: inline-block;
+  height: 46px;
+  padding: 4px 0;
+  text-indent:10px;
+  margin:0 0 10px 0;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  vertical-align: middle;
+  -webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+    font-family:'Lato_lig';
+}
+.footer{
+	width: 100%;
+	float: right;
+	padding: 10px 0;
+	text-align: center;
+	font-size: 13px;
+	color: white;
+	font-family: 'Lato_lig';
+	position: absolute;
+	bottom: 0;
+}
+.footer a{
+	color: white;
+	text-decoration: none;
+}
+.footer img {
+	width: auto !important;
+}

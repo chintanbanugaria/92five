@@ -1,0 +1,31 @@
+/************ Main **************/
+@media only screen and (min-width: 768px) and (max-width: 949px) {
+.setting {min-height:80px;background:#000000;}
+.content_detail {width:100%;float:left;margin:0;padding:0;}
+.reset_pass {padding:10px 0;margin:30px 0 0 0;}
+.field_main {width:84%;float:left;padding:0 0 0 44px;margin:30px 0 0 0;}
+.submit_button_main {width:100%;float:left;padding:0;margin:0 0 25px 0;text-align:center;}
+.step_my_select{ width:200px !important; height:43px !important;}
+}
+
+/************ Tablet **************/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+ .setting {min-height:80px;background:#0000FF;}
+.content_detail {width:100%;float:left;margin:0;padding:0;}
+.field_main {width:84%;float:left;padding:0 0 0 44px;margin:30px 0 0 0;}
+.reset_pass {padding:10px 0;margin:25px 0 0 0;}
+.submit_button_main {width:100%;float:left;padding:0;margin:0 0 25px 0;text-align:center;}
+.progress_data2 {float:left;margin:13px 0 0 15px !important;position:absolute;right:-30px;top:43px;}
+.step_my_select{ width:250px !important; height:43px !important;}
+}
+/************ iphone **************/
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+.setting {min-height:80px;background:#FF0000;}
+.footer_main h5 {font-size:12px;color:#fbfbfb;font-weight:normal;}
+.content_detail {width:100%;float:left;margin:0;padding:0;}
+.field_main {width:78%;float:left;padding:0 0 0 44px;margin:30px 0 0 0;}
+.reset_pass {padding:10px 0;margin:25px 0 0 0;}
+.submit_button_main {width:100%;float:left;padding:0;margin:0 0 25px 0;text-align:center;}
+.progress_data2 {float:left;margin:13px 0 0 15px !important;position:absolute;right:-23px;top:43px;}
+.step_my_select{ width:180px !important; height:43px !important;}
+}

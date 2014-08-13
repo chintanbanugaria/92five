@@ -1,0 +1,48 @@
+/************ Main **************/
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+.setting{ min-height:80px; background:#000000;}
+}
+/************ Tablet **************/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.setting{ min-height:80px; background:#0000FF;}
+.setting{ min-height:80px; background:#FF0000;}
+body {
+	padding:0;
+	margin:0;
+	font-family:'Lato_lig';
+	background-color: #0e7ac3;
+	background-size:100% 100%;
+	background-attachment:fixed;
+}
+.login_detail{ width:305px; padding:0; margin:95px auto 0 auto;}
+.footer{position: relative;}
+}
+/************ iphone **************/
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+.setting{ min-height:80px; background:#FF0000;}
+body {
+	padding:0;
+	margin:0;
+	font-family:'Lato_lig';
+	background-color: #0e7ac3;
+	background-size:100% 100%;
+	background-attachment:fixed;
+}
+.login_detail{ width:305px; padding:0; margin:95px auto 0 auto;}
+#notify{
+        font-family: 'Lato_lig';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 32px !important;
+        text-align: center;
+        font-size: 20px;
+        visibility: hidden;
+        z-index: 99999;
+        overflow: hidden;
+}
+.footer{
+	position: relative;
+}
+}

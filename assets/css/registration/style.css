@@ -1,0 +1,159 @@
+/***********  16-4-2013  ************/
+
+body {
+	padding:0;
+	margin:0;
+	font-family:'Lato_lig';
+	background:url(../../images/common-bg.jpg) center top no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
+}
+a {
+	outline:none !important;
+}
+* {
+	padding:0;
+	margin:0;
+}
+/***********  Fonts  ************/
+
+@font-face {
+ font-family:'Lato_lig';
+ src:url('../fonts/Lato-Lig-webfont.eot');
+ src:url('../fonts/Lato-Lig-webfont.woff') format('woff'), url('../fonts/Lato-Lig-webfont.ttf') format('truetype'), url('../fonts/Lato-Lig-webfont.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+@font-face {
+	font-family:'Lato_reg';
+	src:url('../fonts/Lato-Reg-webfont.eot');
+	src:url('../fonts/Lato-Reg-webfont.woff') format('woff'), url('../fonts/Lato-Reg-webfont.ttf') format('truetype'), url('../fonts/Lato-Reg-webfont.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/***********  Section Part  ************/
+.syscheckhead{
+    margin-top: 30px !important;
+}
+section {width:100%;float:left;margin:0px;padding:0px;}
+.content_detail {	width:950px;margin:0 auto;padding:0;}
+.reset_pass {padding:10px 0;margin:50px 0 0 0;}
+.reset_pass .logo{width: 100%;text-align:center;padding-bottom: 0px;}
+.reset_pass .logo img{width: 275px;height: 57px;}
+.welcome_text {width:100%;float:left;padding:30px 0 0 0;margin:0;text-align:center;font-size:70px;color:#fffefe;}
+.welcome_text2 {width:100%;float:left;padding:0;margin:52px 0 22px 0;text-align:center;font-size:27px;color:#fffefe;line-height:33px;}
+.reset_title {width:100%;min-height:60px;float:left;padding:0;margin:0;background:#2e3641;font-size:30px;color:#1bdcff;line-height:60px;text-align:center;}
+.reset_form {width:100%;min-height:344px;float:left;padding:0;margin:0 0 40px 0;background:#ffffff;}
+.field_main {width:95%;float:left;padding:0 0 0 44px;margin:43px 0 0 0;}
+.field_data {margin-bottom:12px;position:relative;}
+.field_name {font-size:24px;color:#2e3641;line-height:46px;}
+.progress_data {width:259px;height:33px;float:left;margin:7px 0 0 0;}
+.progress_data img {width:259px;height:33px;}
+.progress_data2 {float:left;margin:13px 0 0 15px !important;}
+.progress_data2 img {width:20px;height:16px;}
+.submit_button_main {width:100%;float:left;padding:0;margin:12px 0 0 0;text-align:center;}
+.submit {height:45px;padding:0 24px;margin:0;background:#2e3641;font-size:24px;line-height:45px;text-align:center;border:none;color:#ffffff;font-family:'Lato_lig';}
+.submit:hover {background:#1BDCFF;color:#2E3641;}
+.password_update {width:100%;float:left;padding:0;margin:34px 0 54px 0;font-size:44px;color:#bebaba;text-align:center;line-height:48px;}
+#progressbar {width:259px;height:33px;display:block;border-left:1px solid #ccc;border-right:1px solid #ccc;border-top:1px solid #ccc;border-bottom:1px solid #ccc;border-top-right-radius: 8px;border-top-left-radius: 8px;border-bottom-right-radius: 8px;border-bottom-left-radius: 8px;overflow:hidden;background-color: white;}
+#progress {display:block;height:100px;width:0%;}
+.progressbarValid { background-color:green; background-image: -o-linear-gradient(-90deg, #8AD702 0%, #389100 100%);background-image: -moz-linear-gradient(-90deg, #8AD702 0%, #389100 100%);background-image: -webkit-linear-gradient(-90deg, #8AD702 0%, #389100 100%);background-image: -ms-linear-gradient(-90deg, #8AD702 0%, #389100 100%);background-image: linear-gradient(-90deg, #8AD702 0%, #389100 100%);}
+.progressbarInvalid {
+        background-color:red;
+        background-image: -o-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+      background-image: -moz-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+      background-image: -webkit-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+      background-image: -ms-linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+      background-image: linear-gradient(-90deg, #F94046 0%, #92080B 100%);
+}
+.pass1{ width:20px; height:16px; float:left; padding:0; margin:0; background:url(../../images/forgotpassword/right.png) no-repeat left top;}
+.fail1{ width:20px; height:16px; float:left; padding:0; margin:0; background:url(../../images/forgotpassword/wrong.png) no-repeat left top;}
+.reset_text{ width:100%; float:left; padding:0; margin:35px 0 0 0; text-align:center; font-size:28px; color:#2E3641;}
+#steps, .widgard-top{ background:#2e3641; padding:14px 12px 6px; margin:0;}
+#steps li, .widgard-top span{ background:url(../images/widgard-arrow.png) left 8px no-repeat; padding:0 19px 0 27px; color:#fffefe; font-size:26px; line-height:30px; font-size:0px; display:inline-block;}
+#steps li.current, .widgard-top span.current{ color:#1bdcff;}
+.widgard-top span.first, #steps li#stepDesc0{ background:none; padding-left:0;}
+#steps li span{ font-size:22px;}
+fieldset legend{ display:none;}
+#step1commands, #step0commands, #step2commands, #step3commands, #step4commands{ text-align:right; width:100%; float:left;}
+a.next{ background:#2e3641; color:#fffefe; text-transform:uppercase; font-size:24px; padding:12px 28px; margin:0 30px 0 13px; display:inline-block;}
+a.next:hover{ background:#1BDCFF; color:#2E3641; text-decoration:none;}
+a.prev{ background:#939393; color:#fffefe; text-transform:uppercase; font-size:24px; padding:12px 28px; display:inline-block;}
+a.prev:hover{ text-decoration:none;}
+.radio-label{ color:#c0bebe; padding-right:20px; float:left; line-height:36px; font-size:24px;}
+.calender_icon{ width:30px; height:23px; float:left; margin:13px 0 0 15px !important; background:url(../images/calender2.png) no-repeat left top;}
+.calender_inner_icon{ background:url(../images/calender2.png) no-repeat right 11px;}
+.step_s_icon{ width:100%; text-align:center;}
+.step_s_icon img{ width:54px; height:57px;}
+#step4Prev{ display:none;}
+.step_my_select{ width:306px !important; height:43px !important;}
+.footer{
+	width: 100%;
+	float: right;
+	padding: 10px 0;
+	text-align: center;
+	font-size: 13px;
+	color: white;
+	font-family: 'Lato_reg';
+	position: relative;
+}
+.field_main textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #ffffff;
+  border: 1px solid #dae4eb;
+  border-left-color:#e2e9ef;
+  border-bottom-color:#ebf1f4;
+  -webkit-box-shadow:0 0px 4px rgba(0, 0, 0, 0.075) inset;
+     -moz-box-shadow:0 0px 4px rgba(0, 0, 0, 0.075) inset;
+          box-shadow:0 0px 4px rgba(0, 0, 0, 0.075) inset;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+.field_main select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  display: inline-block;
+  height: 46px;
+  padding: 4px 6px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 46px;
+  color: #000000;
+  vertical-align: middle;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  font-family:'Lato_lig';
+}
+.field_text_area{ height:auto !important;}
+.step_inner{ min-height:auto;}

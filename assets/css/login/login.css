@@ -1,0 +1,346 @@
+html {overflow-y: scroll}
+html{height:100%}
+body{
+ }
+
+@font-face {
+				font-family: 'HelveticaLTStd-LightCond';
+				src: url('../fonts/fontscorecomhhelveticaltstdlightcondensed.eot');
+				src: url('../fonts/fontscorecomhhelveticaltstdlightcondensed.eot?#iefix') format('embedded-opentype'),
+						 url('../fonts/fontscorecomhhelveticaltstdlightcondensed.woff') format('woff'),
+						 url('../fonts/fontscorecomhhelveticaltstdlightcondensed.ttf') format('truetype'),
+						 url('../fonts/fontscorecomhhelveticaltstdlightcondensed.svg#fontscorecomhhelveticaltstdlightcondensed') format('svg');
+				font-weight: normal;
+				font-style: normal;
+		}
+		
+.fl{ float:left;}
+.fr{ float:right;}
+
+/* fix for inputs inline shadow */
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+	behavior: url(PIE.htc);
+	border-radius: 10px;
+	font-family:questrialregular;
+}
+/* no borders for buttons (ie7) */
+button {*border: none !important;*border-color: transparent !important}
+
+a,button,input {outline:none !important}
+form.jqtransformdone label{
+	margin-top:4px;
+	margin-right: 8px;
+	display: block;
+	float:left;
+}
+.logo{ text-align:center;}
+/* webkit extra margin fix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	button {margin: 0px}
+}
+
+/* hide all elements & show preloader */
+/*.js, .js body {overflow:hidden}
+.js body > * {visibility:hidden}
+.js #loading_layer {visibility:visible;display:block !important;position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;z-index:10000}
+.js #loading_layer img {position:fixed;top:50%;left:50%;width:64px;height:10px;margin:-5px 0 0 -32px}
+.js .tab-pane {display:block !important}
+.js .hide {display: inherit}*/
+
+#formContainer{
+	width:320px;
+	height:321px;
+	margin:0 auto;
+	position:relative;
+	z-index:1;
+	
+	-moz-perspective: 800px;
+	-webkit-perspective: 800px;
+	perspective: 800px;
+}
+
+#formContainer form{
+	width:85%;
+	position:absolute;
+	top:0;
+	left:0;
+	padding-top:90px;
+	
+	/* Enabling 3d space for the transforms */
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	
+	/* When the forms are flipped, they will be hidden */
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	/* Enabling a smooth animated transition */
+	-moz-transition:0.8s;
+	-webkit-transition:0.8s;
+	transition:0.8s;
+	
+	/* Configure a keyframe animation for Firefox */
+	-moz-animation: pulse 2s infinite;
+	
+	/* Configure it for Chrome and Safari */
+	-webkit-animation: pulse 2s infinite;
+}
+input#recoverEmail, input#loginEmail{ background-image:url(../../images/login.png); background-position:11px 11px; background-repeat:no-repeat; text-indent:0; padding-left:33px; line-height:25px;}
+input#loginPass{ background-image:url(../../images/password.png); background-position:11px 11px; background-repeat:no-repeat; text-indent:0; padding-left:33px; line-height:25px;}
+/* Firefox Keyframe Animation 
+@-moz-keyframes pulse{
+	0%{		box-shadow:0 0 1px #dc3069;}
+	50%{	box-shadow:0 0 8px #dc3069;}
+	100%{	box-shadow:0 0 1px #dc3069;}
+}
+*/
+/* Webkit keyframe animation 
+@-webkit-keyframes pulse{
+	0%{		box-shadow:0 0 1px #dc3069;}
+	50%{	box-shadow:0 0 10px #dc3069;}
+	100%{	box-shadow:0 0 1px #dc3069;}
+}
+*/
+#background-image{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-10;
+	overflow: hidden;
+    width: 100%;
+	display:none;
+	}
+#formContainer form h2{ color:#fff; font-family:HelveticaLTStd-LightCond; font-size:30px; padding:0 0 14px 0; margin:0; text-align:center;}
+#formContainer form p{ text-align:center; font-family:Arial, Helvetica, sans-serif; color:#fff; font-size:12px; font-weight:bold;}
+#login{
+	background:url('../../images/form-bg.png') repeat;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	z-index:100; margin-top:200px; padding:25px;
+}
+#login a.forgot{ background:url(../../images/forgot.png) left top no-repeat;}
+
+#recover{
+	background:url('../../images/form-bg.png') repeat;
+	z-index:1; padding:25px; height:225px;
+	opacity:0; margin-top:200px;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	/* Rotating the recover password form by default */
+	-moz-transform:rotateY(180deg);
+	-webkit-transform:rotateY(180deg);
+	transform:rotateY(180deg);
+}
+#formContainer form#recover h2{ font-size:26px;}
+#formContainer.flipped #login{
+	
+	opacity:0;
+	
+	/**
+	 * Rotating the login form when the
+	 * flipped class is added to the container
+	 */
+	
+	-moz-transform:rotateY(-180deg);
+	-webkit-transform:rotateY(-180deg);
+	transform:rotateY(-180deg);
+}
+
+#formContainer.flipped #recover{
+	
+	opacity:1;
+	
+	/* Rotating the recover div into view */
+	-moz-transform:rotateY(0deg);
+	-webkit-transform:rotateY(0deg);
+	transform:rotateY(0deg);
+}
+
+
+/*----------------------------
+	Inputs, Buttons & Links
+-----------------------------*/
+
+
+#login .flipLink,
+#recover .flipLink{
+	
+	/* The blue ribbon links */
+	
+	height: 66px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-indent: -9999px;
+    top: 0;
+    width: 77px; z-index:9999;
+}
+
+#recover .flipLink{
+	right:auto;
+	left:0;
+	background:url(../../images/back.png) left top no-repeat; width:70px; height:78px;
+}
+#formContainer form#recover h2.password{ padding-bottom:50px;}
+#login:after{
+	/* The "Click here" tooltip */
+	width:98px;
+	height:16px;
+	content:'';
+	position:absolute;
+	top:22px;
+}
+
+input[type=text],input[type=password]{
+	/* The text fields */
+	font: 15px 'Segoe UI',Arial,sans-serif;
+	border: none;
+	background:#8c8b8b;
+	height: 28px;
+	position: relative;
+	width: 82% !important;
+	text-indent:27px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	color:#eee; margin-bottom:2px;
+	outline:none;
+	
+}
+
+
+input[type=submit]{
+	
+	/* Submit button */
+	
+	opacity:0.9;
+	left:0;
+	width: 97%; padding:0;
+	height:36px;
+	cursor:pointer;
+	border-radius:6px;
+	box-shadow:0 1px 1px #dc3069;
+	border:none;
+	color:#fff;
+	font-family:'HelveticaLTStd-LightCond';
+   	font:18px/36px;
+	margin-top:15px;
+	
+	/* CSS3 Gradients */
+	
+	
+	background-image: linear-gradient(bottom, rgb(220,48,105) 50%, rgb(227,55,114) 50%, rgb(246,75,133) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(220,48,105) 50%, rgb(227,55,114) 50%, rgb(246,75,133) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(220,48,105) 50%, rgb(227,55,114) 50%, rgb(246,75,133) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(220,48,105) 50%, rgb(227,55,114) 50%, rgb(246,75,133) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(220,48,105) 50%, rgb(227,55,114) 50%, rgb(246,75,133) 100%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.5, rgb(220,48,105)),
+		color-stop(0.5, rgb(227,55,114)),
+		color-stop(1, rgb(246,75,133))
+	);
+}
+
+input[type=submit]:hover{
+	opacity:1;
+}
+
+input::-webkit-input-placeholder {
+    color:#eee;
+}
+
+
+/*----------------------------
+	The Footer
+-----------------------------*/
+
+
+footer{
+	background-color: #111111;
+	bottom: 0;
+	box-shadow: 0 -1px 2px #111111;
+	height: 45px;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 100000;
+}
+
+footer h2{
+	color: #EEEEEE;
+	font-size: 14px;
+	font-weight: normal;
+	left: 50%;
+	margin-left: -400px;
+	padding: 13px 0 0;
+	position: absolute;
+	width: 540px;
+}
+
+footer h2 i{
+	font-style:normal;
+	color:#888;
+}
+
+footer a.tzine,a.tzine:visited{
+	color: #999999;
+	font-size: 12px;
+	left: 50%;
+	margin: 16px 0 0 110px;
+	position: absolute;
+	text-decoration: none;
+	top: 0;
+}
+
+footer a i{
+	color:#ccc;
+	font-style: normal;
+}
+
+footer a i b{
+	color:#c92020;
+	font-weight: normal;
+}
+
+
+@media (max-width: 767px) {
+.sm_icon a{
+	width: 90px;
+	height: 90px;
+	}
+.main_content{ width:700px;}
+.submit{ right:147px;}
+.search-box{ width:250px;}
+ 
+}
+
+@media (max-width: 480px) {
+form{ padding:0;}
+.sm_icon a{
+	width: 40px;
+	height: 40px;
+	}
+.video_frame, .main_content{ width:320px;}
+.video_frame video{ width:320px;}
+ .submit{ right:10px;}
+ .navbar .brand{ margin:0; float:none; display:inline;}
+ .navbar-fixed-top{ text-align:center;}
+ .search-box{ width:100%;}
+ .search-area h2 span{ width:100%;}
+ }
+
+@media (max-width: 320px) {
+#formContainer{ width:280px;}
+#formContainer form{ width:80%; margin-top:100px;}
+#formContainer form#recover h2.password, #formContainer form h2{ font-size:22px;}
+input[type="submit"]{ width:74%;}
+ }
+ 
+ 
+ 

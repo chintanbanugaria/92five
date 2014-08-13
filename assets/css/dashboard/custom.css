@@ -1,0 +1,279 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) { 
+.navbar .nav > li > a{ padding:10px 5px;}
+}
+@media only screen and (min-width: 959px) and (max-width: 1000px) {
+.top_menu_1{ margin-left:0 !important;}
+}
+@media only screen and (min-width: 960px) and (max-width: 1200px) {
+.add_task a { float:left; padding:0; margin:0 0 0 12px; font-size:11px; color:#0f75cb; font-family:Helvetica, "Lucida Grande", Arial, sans-serif; display:none !important;}
+.add_task_icon { float:left; padding:0; margin:0 0 0 12px; display:none; display:block !important;}
+.add_task2_icon { float:right; padding:0; margin:0 12px 0 0; display:block !important;}
+.add_task2 a { float:right; padding:0; margin:0 12px 0 0; font-size:11px; color:#d22509; font-family:Helvetica, "Lucida Grande", Arial, sans-serif; display:none !important;}
+.roles_detail_2 ul li{ font-size:14px;}
+.roles_name{ font-size:15px; padding:13px 0;}
+}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+.setting {min-height:80px;background:#000000;}
+.welcome_text {margin:0;padding:8px 0 33px 17px;font-size:14px;color:#ffffff;font-weight:bold;}
+.search_box_t {margin:0;padding-bottom:3px;}
+.navbar-inverse .navbar-inner {background:#202020;}
+.nav-collapse .nav > li {margin-top:2px;border-bottom:1px solid #121212;}
+.nav-collapse .navbar-form, .nav-collapse .navbar-search {margin:0;}
+.icon-search {top:14px !important;left:26px;}
+.check1 {margin:7px 0 0 45% !important;}
+.todo_data {font-size:16px;color:#535252;margin:3px 0 0 0;text-align:center;}
+section {margin:0;}
+.top_menu_1 {float:none !important;margin-left:auto !important;}
+.calendar_data {height:100%;}
+ .navbar-inverse .navbar-search .search-query {color: #8c8c8c;font-size:14px;text-shadow:none;
+ background-color:rgba(19, 19, 19, 0.8);
+ -webkit-transition:0 !important;
+ -moz-transition:0 !important;
+ -o-transition:0 !important;
+ transition:0 !important;
+}
+.navbar-inverse .navbar-search .search-query:focus, .navbar-inverse .navbar-search .search-query.focused {
+ color: #8c8c8c;
+ font-size:14px;
+ text-shadow:none;
+ background-color:rgba(19, 19, 19, 0.8);
+ border-color: #111111;
+ -webkit-box-shadow:0 !important;
+ -moz-box-shadow:0 !important;
+ box-shadow:0 !important;
+}
+.add_task a { float:left; padding:0; margin:0 0 0 12px; font-size:11px; color:#0f75cb; display:none !important;}
+.add_task_icon { float:left; padding:0; margin:0 0 0 12px; display:none; display:block !important;}
+.add_task2_icon { float:right; padding:0; margin:0 12px 0 0; display:block !important;}
+.add_task2 a { float:right; padding:0; margin:0 12px 0 0; font-size:11px; color:#d22509; font-family:'Conv_ColabReg'; display:none !important;}
+.wrapper-dropdown-5 {
+    /* Size & position */
+    position: absolute !important;
+    width: 250px;
+    margin: 0 0 0 0 !important;
+    padding: 9px 10px 0 5px!important;
+    height: 36px !important;
+    /* Styles */
+    background: #fff url(../../images/dashboard/select_right.gif) no-repeat right top;
+    list-style: none;
+    display: block;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.listtaktitle{display: none;}
+.cal_detail{ min-height:inherit;}
+.cal_left{ min-height:470px !important; margin-bottom:0;}
+.cal_date{ font-size:70px;}
+.cal_date sup{ font-size:30px;}
+.cal_month{ margin-top:0; font-size:25px;}
+.time_listing_1{ font-size:13px;}
+.cal_right{ width:98%; float:left !important; padding:20px 2% 10px 0;}
+.calender-viewevent .viewevent-detail-1{ font-size:13px;}
+.calender-viewevent .viewevent-asignee label{ font-size:13px;}
+.calender-viewevent .viewevent-detail-3{ font-size:13px;}
+.add-time-select{ width:155px !important;}
+#contentwrapper{ width:98% !important; margin:0 1%;}
+.todo-detail-main{ width:70% !important; margin:0 15% !important;}
+.work-report-title{ font-size:20px;}
+.summary-detail-2 p{ font-size:17px;}
+ul.task-worked-list li{ font-size:19px;}
+.summary-detail-6 span{ font-size:50px;}
+.monthly_title{ font-size:20px; line-height:27px;}
+.monthly_detail_1 .cal_detail_3 tr td{ font-size:14px; padding:10px 4px;}
+.monthly_detail_2 h4{ font-size:18px;}
+.navbar .brand{ margin-left:30px;}
+ul.collaborators li a{ font-size:15px;}
+.user_collaborators .span2{ width:23% !important; margin:0 1% 20px 1% !important;}
+.collaborators_list{ width:23%; margin:0 1% 20px 1%;}
+.roles_detail_2 ul li{ font-size:14px;}
+.roles_name{ font-size:15px; padding:13px 0;}
+.viewuser{ width:48% !important; margin:0 1% 20px 1% !important; float:left;}
+.timesheet-box{ width:31%; margin:0 1% 20px 1%;}    
+.view_proj_inner{ padding:10px;}
+.view_proj_btn{ float:right; padding:0; margin:0;}
+.restore_btn2{ padding:0 9px; margin:0 0 0 5px; font-size:12px;}
+.restore_del_btn2{ padding:0 9px; margin:0 0 0 5px; font-size:12px;}
+}
+.proj_active h3 span{ width:76%; float:left; margin:0 0 0 10px;}
+.p-icon-main{ width:16%; float:right; padding:0; margin:0;}
+
+/************ Tablet **************/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.welcome_text {margin:0;padding:8px 0 33px 17px;font-size:14px;color:#ffffff;font-weight:bold;}
+.top_search {padding-top:0;margin:0;}
+.search_box_t {margin:0;padding-bottom:3px;}
+.nav-collapse .navbar-form, .nav-collapse .navbar-search {margin:0;}
+.navbar-inverse .navbar-inner {background:#202020;}
+.nav-collapse .nav > li {margin-top:2px;border-bottom:1px solid #121212;}
+.icon-search {top:14px !important;left:26px;}
+.check1 {margin:7px 0 0 48% !important;}
+.todo_data {font-size:16px;color:#535252;margin:3px 0 0 0;text-align:center;}
+.quick_note_l {border-top:1px solid #ba7373; border-left:none;padding:3px 0 0 0;text-align:center;}
+.quick_note_2 {text-align:center;padding:3px 0 0 0;}
+.quick_note_3 {border:none;padding:16px 0 30px 0;text-align:center;font-size:21px;color:#535252;}
+section {margin:0;}
+.todo_data2 {text-align:center;}
+.quicknote h2 {line-height:0;padding:0;margin:-12px 0 0 0;position:relative;top:-3px;}
+.notetext {border:none;}
+.top_menu_1 {float:none !important;margin-left:auto !important;}
+ .navbar-inverse .navbar-search .search-query {
+ color: #8c8c8c;
+ font-size:14px;
+ text-shadow:none;
+ border-color: #111111;
+ -webkit-transition:0 !important;
+ -moz-transition:0 !important;
+ -o-transition:0 !important;
+ transition:0 !important;
+}
+ .navbar-inverse .navbar-search .search-query:focus, .navbar-inverse .navbar-search .search-query.focused {
+ color: #8c8c8c;
+ font-size:14px;
+ text-shadow:none;
+ background-color:rgba(19, 19, 19, 0.8);
+ border-color: #111111;
+ -webkit-box-shadow:0 !important;
+ -moz-box-shadow:0 !important;
+ box-shadow:0 !important;
+}
+.calendar_data {height:100%;}
+.milestone_4 {margin-top:135px;}
+.proj_active h3 span{ width:76%; float:left; margin:0 0 0 10px;}
+.p-icon-main{ width:16%; float:right; padding:0; margin:0;}
+.wrapper-demo{width: 100%;float: left;margin-bottom: 25px;}
+.wrapper-dropdown-5{margin: 0 0 20px 0 !important;width:200px;}
+.listtaktitle{display: none;}
+.cal_detail{ min-height:inherit;}
+.cal_left{ min-height:inherit !important;}
+.cal_detail_2{ width:100%; float:left; padding:0; margin:30px 0 20px 0;}
+.cal_right{ width:96%; float:left; padding:20px 2% 10px 2%; margin:0 0 15px 0;}
+.time_listing .row-fluid{ margin-bottom:20px;}
+.viewevent-detail{ width:100%;}
+.viewevent-detail .p-icon-main{ width:27%;}
+.viewevent-left{ width:100%; float:left; padding:0; margin:0 0 20px 0; border-bottom:1px solid #dae4eb;}
+.viewevent-right{ width:100%; float:left; padding:0; margin:0;}
+.viewevent-detail-2{ margin-bottom:15px;}
+.viewevent-detail-right{ text-align:left;}
+.viewevent-asignee label{ width:100%; margin-bottom:15px;}
+.calender-viewevent .viewevent-asignee-right{ margin-top:0;}
+.timesheet-form [type="text"]{ max-width:212px; height:40px; font-family:'Lato_reg';}
+.jcarousel-control-prev,.jcarousel-control-next{display:block !important;}
+.todo-detail-2{ margin:10px 0 0 0;}
+.todo-detail-2 .span10{ width:75% !important;}
+.work-report-title{ font-size:20px;}
+.summary-detail-2 p{ font-size:17px;}
+ul.task-worked-list li{ font-size:19px;}
+.summary-detail-6{ margin:0 0 10px 0;}
+.summary-detail-6 span{ font-size:50px;}
+.monthly_title{ font-size:20px; line-height:27px;}
+.navbar .brand{ margin-left:30px;}
+ul.test_sub_task{ margin-bottom:20px;}
+.proj_start{ margin-bottom:20px;}
+.collaborators_list{ width:48%; margin:0 1% 20px 1%;}
+.email_detail_1{ width:100%; margin:0; padding:0;}
+.email_detail_2 .span5, .email_detail_2 .span7{ margin-bottom:0;}
+.email_detail_1 p{ margin-top:15px;}
+.adduser_sec{ padding:30px 20px;}
+.viewuser_left{ float:left !important; border-right:none; border-bottom:1px solid #362f2d; padding-bottom:15px; margin-bottom:15px;}
+.timesheet-box{ width:48%; margin:0 1% 20px 1%;}
+.view_proj_box{ width:100%; margin:0 0 20px 0;}
+.no_project_main{ width: 100%; float: left;}
+}
+
+/************ iphone **************/
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+.welcome_text {margin:0;padding:8px 0 33px 17px;font-size:14px;color:#ffffff;font-weight:bold;}
+.search_box_t {margin:0;padding-bottom:3px;}
+.nav-collapse .navbar-form, .nav-collapse .navbar-search {margin:0;}
+.navbar-inverse .navbar-inner {background:#202020;}
+.nav-collapse .nav > li {margin-top:2px;border-bottom:1px solid #121212;}
+.icon-search {top:14px !important;left:26px;}
+.check1 {margin:7px 0 0 45% !important;}
+.todo_data {font-size:16px;color:#535252;margin:3px 0 0 0;text-align:center;}
+.d_icon img {max-width:5%;}
+.quick_note_l {border-top:1px solid #ba7373;border-left:none;padding:3px 0 0 0;text-align:center;}
+.quick_note_2 {text-align:center;padding:3px 0 0 0;}
+.quick_note_3 {border:none;padding:16px 0 30px 0;text-align:center;font-size:21px;color:#535252;}
+section {margin:0;}
+.tasks {  background-size: atuo; width:100%;float:left !important;padding:0;margin:25px 0 40px 0 !important;text-align:center; }
+.todo_data2 {text-align:center;}
+.quicknote h2 {line-height:0;padding:0;margin:-12px 0 0 0;position:relative;top:-3px;}
+.notetext {border:none;}
+.top_menu_1 {float:none !important;margin-left:auto !important;}
+.navbar-inverse .navbar-search .search-query {color: #8c8c8c;font-size:14px;text-shadow:none;border-color: #111111;
+ -webkit-transition:0 !important;
+ -moz-transition:0 !important;
+ -o-transition:0 !important;
+ transition:0 !important;
+}
+.navbar-inverse .navbar-search .search-query:focus, .navbar-inverse .navbar-search .search-query.focused {
+ color: #8c8c8c;
+ font-size:14px;
+ text-shadow:none;
+ border-color: #111111;
+ -webkit-box-shadow:0 !important;
+ -moz-box-shadow:0 !important;
+ box-shadow:0 !important;
+}
+.calendar_data {height:100%;}
+.milestone_4 {margin-top:135px;}
+.proj_active h3 span{ width:70%; float:left; margin:0 0 0 10px;}
+.p-icon-main{ width:25%; float:right; padding:0; margin:0;}
+.wrapper-demo{width: 100%;float: left;margin-bottom: 25px;}
+.wrapper-dropdown-5{margin: 0 0 20px 0 !important;width:200px;}
+.listtaktitle{display: none;}
+.cal_detail{ min-height:inherit;}
+.cal_left{ min-height:inherit !important;}
+.cal_detail_2{ width:100%; float:left; padding:0; margin:30px 0 20px 0;}
+.cal_right{ width:96%; float:left; padding:20px 2% 10px 2%; margin:0 0 15px 0;}
+.cal_detail_3 tr td{ font-size:15px;}
+.time_listing .row-fluid{ margin-bottom:20px;}
+.cal_date{ width:50%; float:left; padding:0; margin:0; font-size:60px; color:#ffffff; line-height:normal; font-weight:normal;}
+.cal_date sup{ padding:0; margin:0; font-size:20px; color:#ffffff; vertical-align:super; line-height:normal; font-weight:normal;}
+.cal_month{ width:48%; float:right; padding:0; margin:0; font-size:23px; color:#ffffff; line-height:normal;}
+.cal_month span{ clear:both; float:left; padding:0; margin:5px 0 0 0; line-height:normal;}
+.modal-body{ font-family:'Lato_lig'; max-height: 315px !important;}
+.viewevent-detail{ width:100%;}
+.viewevent-detail .p-icon-main{ width:27%;}
+.viewevent-left{ width:100%; float:left; padding:0; margin:0 0 20px 0; border-bottom:1px solid #dae4eb;}
+.viewevent-right{ width:100%; float:left; padding:0; margin:0;}
+.viewevent-detail-2{ margin-bottom:15px;}
+.viewevent-detail-right{ text-align:left;}
+.viewevent-asignee label{ width:100%; margin-bottom:15px;}
+.calender-viewevent .viewevent-asignee-right{ margin-top:0;}
+.timesheet-form [type="text"]{ max-width:212px; height:40px; font-family:'Lato_reg';}
+.jcarousel-control-prev,.jcarousel-control-next{display:block !important;}
+.todo-detail-2{ margin:10px 0 0 0;}
+.todo-detail-2 .span10{ width:75% !important;}
+.work-report-title{ font-size:20px;}
+.summary-detail-2 p{ font-size:17px;}
+ul.task-worked-list li{ font-size:19px;}
+.summary-detail-6{ margin:0 0 10px 0;}
+.summary-detail-6 span{ font-size:50px;}
+.monthly_title{ font-size:20px; line-height:27px;}
+.monthly_detail_1 .cal_detail_3 tr td{ font-size:14px; padding:10px 4px;}
+.navbar .brand{ width:70%; margin-left:30px;}
+.navbar .brand img{ width:100%;}
+ul.test_sub_task{ margin-bottom:20px;}
+.proj_start{ margin-bottom:20px;}
+.collaborators_list{ width:100%; margin:0 0 20px 0;}
+.email_detail_1{ width:100%; margin:0; padding:0;}
+.email_detail_2 .span5, .email_detail_2 .span7{ margin-bottom:0;}
+.email_detail_1 p{ margin-top:15px;}
+.user_profile_main{ width:100%; float:left; margin:0; padding:0;}
+.user_detail_left h3{ font-size:22px;}
+.adduser_sec{ padding:30px 20px;}
+.viewuser_left{ float:left !important; border-right:none; border-bottom:1px solid #362f2d; padding-bottom:15px; margin-bottom:15px;}
+.timesheet-box{ width:100%; margin:0 0 20px 0;}
+.view_proj_box{ width:100%; margin:0 0 20px 0;}
+.no_project_main{ width: 100%; float: left;}
+.user_edit‏, .user_delete{ margin: 0 0 0 5px; }
+}
+
+
+

@@ -1,0 +1,20 @@
+{
+    "name": "jasonlewis/expressive-date",
+    "description": "A fluent extension to PHPs DateTime class.",
+    "keywords": ["date", "time"],
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Jason Lewis",
+            "email": "jason.lewis1991@gmail.com",
+            "homepage": "http://jasonlewis.me"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0"
+    },
+    "autoload": {
+        "classmap": ["src"]
+    },
+    "minimum-stability": "stable"
+}
