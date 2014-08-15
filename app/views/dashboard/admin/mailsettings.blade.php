@@ -53,7 +53,7 @@
                       <label class="control-label" for="passwordinput">Password:
                       </label>
                       <div class="controls">
-                        <input id="password" name="password" type="text" value="{{$data['password']}}" placeholder="Password" data-required="true" data-show-errors="true">
+                        <input id="password" name="password" type="password" value="{{$data['password']}}" placeholder="Password" data-required="true" data-show-errors="true">
                       </div>
                     </div>
                     <div class="control-group">
