@@ -16,7 +16,7 @@
 <script src="js/registration.js"></script>
 <!-- CSS -->
 {{ HTML::style('assets/css/bootstrap/bootstrap.css') }}
-{{ HTML::style('assets/css/bootstrap /bootstrap-responsive.css') }}
+{{ HTML::style('assets/css/bootstrap/bootstrap-responsive.css') }}
 {{ HTML::style('assets/css/registration/style.css') }}
 {{ HTML::style('assets/css/registration/custom.css') }}
 {{ HTML::style('assets/css/dashboard/tooltipster.css') }}
