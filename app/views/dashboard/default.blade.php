@@ -43,7 +43,7 @@
 </section>
 <!-- Section -->
 @yield('endjs')
-{{ HTML::script('js/dashboard/retina.min.js') }}
+{{ HTML::script('assets/js/dashboard/retina.min.js') }}
 
 </body>
 </html>
