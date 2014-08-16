@@ -36,7 +36,7 @@ class InstallController extends BaseController{
               'connections.mysql.host' =>$data['host'],
               'connections.mysql.database' =>$data['database'],
               'connections.mysql.username' =>$data['username'],
-              'connections.mysql.password' =>$data['password'],
+              'connections.mysql.password' =>$data['password']
             ]);
 		
 		DB::unprepared(file_get_contents(public_path().'/92fiveapp.sql'));
