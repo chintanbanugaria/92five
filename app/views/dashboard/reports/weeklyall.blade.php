@@ -61,7 +61,7 @@
               </div>
             </div>
             <!-- Right -->
-            <div class="span4 summary-right"><img src="assets/images/reports-image-1.jpg" alt=""></div>
+            <div class="span4 summary-right"></div>
           </div>
         </div>
         @for( $i=0; $i < 7; $i++)
