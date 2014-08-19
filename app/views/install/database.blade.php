@@ -54,7 +54,7 @@
                <div class="row-fluid field_data">
                 <div class="span3 field_name">Password</div>
                 <div class="span5">
-                  <input type="text" id="password" name="password" class="span12 field_input" placeholder="password" data-required="true"  data-show-errors="true">
+                  <input type="text" id="password" name="password" class="span12 field_input" placeholder="password" data-show-errors="true">
                 </div>
               </div>
               
