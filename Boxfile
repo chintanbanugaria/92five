@@ -11,10 +11,7 @@ web1:
     - app/storage/meta
     - app/storage/sessions
     - app/storage/views
-    - app/config/app.php
-    - app/config/database.php
-    - app/config/92five.php
-    - app/config/mail.php
+    - app/config
     - assets/uploads
     - assets/images/profilepics
   
