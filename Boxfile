@@ -1,0 +1,20 @@
+web1:
+  php_version: 5.4.14
+  php_extensions:
+    - mbstring
+    - mcrypt
+    - pdo_mysql
+    - gd
+  shared_writable_dirs:
+    - app/storage/cache
+    - app/storage/logs
+    - app/storage/meta
+    - app/storage/sessions
+    - app/storage/views
+    - app/config/app.php
+    - app/config/database.php
+    - app/config/92five.php
+    - app/config/mail.php
+    - assets/uploads
+    - assets/images/profilepics
+  
