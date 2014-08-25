@@ -127,7 +127,7 @@ class TaskRepository implements TaskInterface{
 						$today = new ExpressiveDate();
 						$enddate = new ExpressiveDate($task['end_date']);
 						$task['num_status'] =(int) $today->getDifferenceInDays($enddate);
-						if((int)$task['num_status'] <= 0)
+						if((int)$task['num_status'] < 0)
 						{
 							$tempTask = \Task::find($task['id']);
 							$tempTask->status = 'delayed';
