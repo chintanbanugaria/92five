@@ -170,8 +170,8 @@ class ProjectRepository implements ProjectInterface{
 			$project->note = $data['note'];
             $tempStartDate =\DateTime::createFromFormat('j F, Y',$data['startdate']);
             $tempEndDate = \DateTime::createFromFormat('j F, Y',$data['enddate']);
-			$project->start_date = $tempStartDate->format('Y-m-d');
-			$project->end_date = $tempEndDate->format('Y-m-d');
+                        $project->start_date = (false !== $tempStartDate) ? $tempStartDate->format('Y-m-d') : null;
+                        $project->end_date = (false !== $tempEndDate) ? $tempEndDate->format('Y-m-d') : null;
 			$project->status = 'active';
 			$project->project_client = $data['project_client'];
 			$project->folder = str_random(8);
