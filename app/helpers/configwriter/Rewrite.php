@@ -64,6 +64,12 @@ class Rewrite
         foreach ($newValues as $path => $value) {
             $items = explode('.', $path);
             $key = array_pop($items);
+            /**
+             * If there is a $ in any of the values the preg_replace later
+             * in this functions removes them. Here we escape it so that
+             * preg_replace ignores it.
+             */
+            $value = str_replace('$', '\$', $value);
 
             if (is_string($value) && strpos($value, "'") === false) {
                 $replaceValue = "'".$value."'";
