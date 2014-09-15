@@ -136,6 +136,5 @@ function fade_in_next() {
 }
 
 </script>
-</script>
 </body>
 </html>
