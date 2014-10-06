@@ -1,6 +1,6 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Events Created By Me</title>
+<title>92five app - {{trans('92five.eventsCreatedByMe')}}</title>
 @stop
 @section('content')
 
@@ -8,7 +8,7 @@
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / <a href="{{url('/dashboard/calendar')}}">Calendar</a> / Events Created by Me</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / <a href="{{url('/dashboard/calendar')}}">{{trans('92five.Calendar')}}</a> / {{trans('92five.eventsCreatedByMe')}}</h2>
         @if($events != null)
         <div class="view_proj_sec">
           @foreach($events as $event)
@@ -20,22 +20,22 @@
                 </div>
               </div>
               <h3>{{$event['title']}}</h3>
-              <span class="eventdate">Category: {{$event['category']}}</span>
+              <span class="eventdate">{{trans('92five.category')}}: {{$event['category']}}</span>
               <div class="projectview_list_sec">
                 <div class="projectview_list">
-                  <div class="projectview_left">Date:</div>
+                  <div class="projectview_left">{{trans('92five.date')}}:</div>
                   <div class="projectview_right">
                     <p>{{new ExpressiveDate($event['date'])}}</p>
                   </div>
                 </div>
                 <div class="projectview_list">
-                  <div class="projectview_left">Start Time:</div>
+                  <div class="projectview_left">{{trans('92five.from')}}:</div>
                   <div class="projectview_right">
                     <p>{{date('g:iA', strtotime($event['start_time']))}}</p>
                   </div>
                 </div>
                 <div class="projectview_list">
-                  <div class="projectview_left">End Time:</div>
+                  <div class="projectview_left">{{trans('92five.till')}}:</div>
                   <div class="projectview_right">
                     <p>{{date('g:iA', strtotime($event['end_time']))}}</p>
                   </div>
@@ -48,7 +48,7 @@
         @else
         <div class="nodatadisplay_main">
           <div class="nodatadisplay">
-            <h2> Sorry. Couldn't find any event.</h2>
+            <h2> {{trans('92five.noEventFound')}}</h2>
             <div class="nodata_inner">
               <div class="nodata_left"></div>
               <div class="nodata_right"></div>
@@ -95,13 +95,13 @@ var tempurl = url.split('dashboard')[0];
 <div id="myModal-item-delete" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Really ?</h3>
+    <h3 id="myModalLabel">{{trans('92five.really')}} ?</h3>
   </div>
   <div class="modal-body">
-    <div class="confirm-delete">Confirm delete the event?</div>
+    <div class="confirm-delete">{{trans('92five.confirmDeleteEvent')}}?</div>
     <div class="confirm-button">
-      <form method="post" action="{{url('dashboard/calendar/event/delete')}}">  <input type="hidden" name="deleteEventId" id="deleteEventId" value=  > <button class="submit">Yes please.</a></button></form>
-    <button class="submit dontdelete" id="dontdelete" >No Thanks.</a></button></div>
+      <form method="post" action="{{url('dashboard/calendar/event/delete')}}">  <input type="hidden" name="deleteEventId" id="deleteEventId" value=  > <button class="submit">{{trans('92five.yesPlease')}}.</a></button></form>
+    <button class="submit dontdelete" id="dontdelete" >{{trans('92five.noThanks')}}.</a></button></div>
   </div>
 </div>
 <!-- End Delete Event Popup-->

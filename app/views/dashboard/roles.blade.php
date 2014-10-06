@@ -1,6 +1,6 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Roles</title>
+<title>92five app -  {{trans('92five.Roles')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
@@ -10,13 +10,13 @@
         <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Roles</h2>
         <div class="row-fluid roles_detail_main">
           <div class="span3 roles_detail">
-            <h2>User</h2>
+            <h2> {{trans('92five.user')}}</h2>
             <div class="roles_detail_2">
               <ul>
-              <li>-Manage(Create, Edit Delete) Tasks</li>   
-              <li>-Manage Timesheet </li> 
-              <li>- Can manage only those tasks which are assigned to him/her</li> 
-              <li>- Can generate their own weekly / monthly reports</li> 
+              <li>- {{trans('92five.userRole1')}}</li>   
+              <li>- {{trans('92five.userRole2')}} </li> 
+              <li>- {{trans('92five.userRole3')}}</li> 
+              <li>- {{trans('92five.userRole4')}}</li> 
              </ul>
               @if(Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('user')))
               <div class="roles_name">{{Sentry::getUser()->first_name.' '. Sentry::getUser()->last_name}}</div>
@@ -24,16 +24,15 @@
             </div>
           </div>
           <div class="span3 roles_detail">
-            <h2>Leader</h2>
+            <h2>{{trans('92five.leader')}}</h2>
             <div class="roles_detail_2">
-               <ul>
-              <li> - All User's privileges</li>
-                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ </li>
-              <li>- Can manage all the tasks of the project</li> 
-              <li>-Can update projects</li>
-              <li>- Can generate full project report</li> 
-              <li>- Can generate User Project Report</li>
-
+              <ul>
+              <li>- {{trans('92five.leaderRole1')}}</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ </li>
+              <li>- {{trans('92five.leaderRole2')}}</li> 
+              <li>- {{trans('92five.leaderRole3')}}</li>
+              <li>- {{trans('92five.leaderRole4')}}</li> 
+              <li>- {{trans('92five.leaderRole5')}}</li>
              </ul>
               @if(Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('leader')))
               <div class="roles_name">{{Sentry::getUser()->first_name.' '. Sentry::getUser()->last_name}}</div>
@@ -41,12 +40,12 @@
             </div>
           </div>
           <div class="span3 roles_detail">
-            <h2>Manager</h2>
+            <h2>{{trans('92five.manager')}}</h2>
             <div class="roles_detail_2">
              <ul>
-              <li>- All Leader's privileges</li>
+              <li>- {{trans('92five.managerRole1')}}</li>
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ </li>
-              <li>-Can Create Project</li>
+              <li>- {{trans('92five.managerRole2')}}</li>
              </ul>
               @if(Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('manager')))
               <div class="roles_name">{{Sentry::getUser()->first_name.' '. Sentry::getUser()->last_name}}</div>
@@ -54,17 +53,15 @@
             </div>
           </div>
           <div class="span3 roles_detail">
-            <h2>Admin</h2>
+            <h2>{{trans('92five.admin')}}</h2>
             <div class="roles_detail_2">
-                 <ul>
-              <li>- All Manager's privileges</li>
-                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ </li>
-              <li>- Manage Users</li>
-                     <li>- Delete / Restore Projects, Tasks and Calendar Events </li>
-              <li>- Manage Email Settings</li>
-                <li>- View Logs</li>
-                     
-
+              <ul>
+              <li>- {{trans('92five.adminRole1')}}</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ </li>
+              <li>- {{trans('92five.adminRole2')}}</li>
+              <li>- {{trans('92five.adminRole3')}}</li>
+              <li>- {{trans('92five.adminRole4')}}</li>
+              <li>- {{trans('92five.adminRole5')}}</li>
              </ul>
               @if(Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('admin')))
               <div class="roles_name">{{Sentry::getUser()->first_name.' '. Sentry::getUser()->last_name}}</div>

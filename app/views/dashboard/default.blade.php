@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @section('head')
-<title>Dashboard</title>
+<title>{{trans('92five.Dashboard')}}</title>
 @show
 <!-- CSS -->
 {{ HTML::style('assets/css/bootstrap/bootstrap.css') }}

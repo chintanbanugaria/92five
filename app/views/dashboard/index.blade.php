@@ -1,6 +1,6 @@
 @extends('dashboard.default')
 @section('head')
-<title>Dashboard</title>
+<title>{{trans('92five.Dashboard')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
@@ -13,24 +13,24 @@
                 <div class="span8">
                   <div class="row-fluid">
                     <div class="span6 detail_box">
-                      <h3>Tasks</h3>
+                      <h3>{{trans('92five.Tasks')}}</h3>
                       <div class="task_pending">
                         <div class="task_detail">
                           <div class="span3 task_left">{{$tasks['pendingTasks']}}</div>
-                          <div class="span9 task_right">Tasks Pending</div>
+                          <div class="span9 task_right">{{trans('92five.taskPending')}}</div>
                         </div>
                         <div class="task_detail">
                           <div class="span3 task_left2">{{$tasks['completedTasks']}}</div>
-                          <div class="span9 task_right">Tasks Completed</div>
+                          <div class="span9 task_right">{{trans('92five.taskCompleted')}}</div>
                         </div>
                         <div class="task_detail2">
                           <div class="span3 task_left3">{{$tasks['totalTasks']}}</div>
-                          <div class="span9 task_right">Tasks Assigned</div>
+                          <div class="span9 task_right">{{trans('92five.taskAssigned')}}</div>
                         </div>
                       </div>
                     </div>
                     <div class="span6 detail_box">
-                      <h3>Projects</h3>
+                      <h3>{{trans('92five.Projects')}}</h3>
                       <div class="scroll_container proj_set_detail">
                           @if(count($projects) != 0)
                             @foreach($projects as $project)
@@ -39,14 +39,14 @@
                             <h4><a href={{url('/dashboard/projects',array($project['id']))}}>{{$project['project_name']}}</a></h4>
                             <div class="row-fluid"> 
                                @if($project['total_task'] != 0)
-                                <span class="span6 p_detail_3">({{$project['remainingTasks']}} Tasks Remaning)</span>
+                                <span class="span6 p_detail_3">({{$project['remainingTasks']}} {{trans('92five.tasksRemaining')}})</span>
                                 <span class="span6 p_detail_4">
                                    <div class="progress">
                                          <div class="bar " style="width: {{$project['percentage']}}%;"></div>
                                    </div>
                                 </span>
                                 @else
-                                 <span class="span12 p_detail_3">No Tasks for this project</span>
+                                 <span class="span12 p_detail_3">{{trans('92five.noTaskProjectText')}}</span>
                                 @endif
                              </div>
                           </div>
@@ -55,10 +55,10 @@
                          @else
                          <div class="row-fluid ">
                           <div class="span12 noproj_scroll_detail">
-                          No Projects for you !
+                          {{trans('92five.noProjectFoundText')}} !
                           <br/>
                           @if(Sentry::getUser()->hasAccess('project.create'))
-                <a href="{{url('/dashboard/projects/add')}}"> Create One</a>
+                <a href="{{url('/dashboard/projects/add')}}"> {{trans('92five.createOne')}}</a>
                           @endif
                           </div>
                          </div>
@@ -76,21 +76,16 @@
                       </div>
                     </div>
                     <div class="span6 detail_box">
-                      
-                      
                       <h3>
-                    
                         <span class="add_task_icon"></span>
-                       My To-do List 
-                       
-                       
-					</h3>
+                          {{trans('92five.todoList')}}                       
+					             </h3>
                     <div class="scroll_container">
                       <div class="my-list">
                         <div class="content_3" id="todoslist" name="todos">
                           <ul id='todos' name="todos">
                           <li class="no_todolist_item">
-                          There are no To-dos for you !
+                        {{trans('92five.noToDoText')}} !                       
                           </li>  
                           </ul>
                         </div>
@@ -100,7 +95,7 @@
                   </div>
                 </div>
                 <div class="span4 detail_box">
-                  <h3>Today’s Agenda</h3>
+                  <h3>  {{trans('92five.todaysAgenda')}} </h3>
                   <div class="agenda">
                     <div class="today-agenda">
                         @if($events != null)
@@ -184,7 +179,7 @@
                     <div class="span1"></div>
                     <div class="notetext span11">
                       <div class="heading">
-                        <h2>Quick Note</h2> 
+                        <h2> {{trans('92five.quickNote')}}</h2> 
                       </div>
                       <div class="span11" id='notediv' name='notediv'>
                         <textarea id="note" name="note" ></textarea>

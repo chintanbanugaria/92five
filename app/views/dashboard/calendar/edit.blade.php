@@ -7,7 +7,7 @@
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard<a> / <a href="{{url('/dashboard/calendar')}}">Calendar</a> / Edit Event</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}<a> / <a href="{{url('/dashboard/calendar')}}">{{trans('92five.Calendar')}}</a> /{{trans('92five.editEvent')}}</h2>
         <div class="row-fluid proj_create">
           <form class="" action='' method='post' id="editevent" data-validate="parsley">
             <h3><input type="text" name="title" id="title" class="proj_create_in" value="{{$event[0]['title']}}" placeholder="Event Name (required)" data-required="true" data-show-errors="false"></h3>

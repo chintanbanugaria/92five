@@ -1,29 +1,29 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Admin</title>
+<title>92five app - {{trans('92five.Admin')}}</title>
 @stop
 @section('content')
  <div id="contentwrapper">
     <div class="main_content">
       <div class="row-fluid">
         <div class="span12 project_detail">
-          <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Admin</h2>
+          <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.Admin')}}</h2>
             <!-- Reports Section -->
             <div class="row-fluid reports-sec">
               <div class="span3 report-box">
-                <h3>Users</h3>
+                <h3>{{trans('92five.user')}}</h3>
                 <div class="report-image"><a href="{{url('dashboard/admin/users')}}"><img src="{{asset('assets/images/dashboard/adminuser.png')}}" alt=""></a></div>
               </div>
               <div class="span3 report-box">
-                <h3>Email Settings</h3>
+                <h3>{{trans('92five.emailSettings')}}</h3>
                 <div class="report-image"><a href="{{url('dashboard/admin/settings')}}"><img src="{{asset('assets/images/dashboard/emailsettingsicon.png')}}" alt=""/></a></div>
               </div>
               <div class="span3 report-box">
-                <h3>Delete / Restore Data </h3>
+                <h3>{{trans('92five.deleteRestoreData')}}</h3>
                 <div class="report-image"><a  data-toggle="modal" href="#myModal-deleterestore"><img src="{{asset('assets/images/dashboard/deleterestoreicon.png')}}" alt=""/></a></div>
               </div>
               <div class="span3 report-box">
-                <h3>Logs</h3>
+                <h3>{{trans('92five.logs')}}</h3>
                 <div class="report-image"><a   href="{{url('dashboard/admin/logs')}}"><img src="{{asset('assets/images/dashboard/logs.png')}}" alt=""/></a></div>
               </div>
             </div>
@@ -35,7 +35,7 @@
 <div id="myModal-deleterestore" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Delete / Restore</h3>
+    <h3 id="myModalLabel">{{trans('92five.deleteRestoreData')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -48,13 +48,13 @@
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">What do you want to delete / restore :</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.deleteRestoreTitle')}} :</label>
                           <div class="controls">
                             <div class="task_select">
                               <select name="entity" id="entity" tabindex="1" style="width:270px;">
-                                  <option  name="" value="projects" title="">Projects</option>
-                                  <option  name="" value="tasks" title="">Tasks</option>
-                                  <option  name="" value="events" title="">Calendar Events</option>                      
+                                  <option  name="" value="projects" title="">{{trans('92five.Projects')}}</option>
+                                  <option  name="" value="tasks" title="">{{trans('92five.Tasks')}}</option>
+                                  <option  name="" value="events" title="">{{trans('92five.calendarEvents')}}</option>                      
                               </select>      
                             </div>
                           </div>
@@ -66,7 +66,7 @@
             </div>            
           </div> 
         </div>
-        <button class="submit">Submit</button>
+        <button class="submit">{{trans('92five.submit')}}</button>
       </form>
     </div>
   </div>

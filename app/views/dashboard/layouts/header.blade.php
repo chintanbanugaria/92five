@@ -16,8 +16,8 @@
            @if(Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('admin')))
           <li><a href="{{url('/dashboard/admin/settings')}}"><img src="{{asset('images/dashboard/settings.png')}}" alt="" class="top_menu_icon" />Settings</a></li> 
           @endif-->
-          <li class="welcome_text"><span>Logged in as :</span> <a href="{{url('/dashboard/me')}}">{{Sentry::getUser()->first_name}} {{Sentry::getUser()->last_name}}</a></li>
-          <li><a href="{{URL::to('/logout')}}" style="font-size:15px;"><img src="{{asset('assets/images/dashboard/logout.png')}}" alt="" class="top_menu_icon" />Logout</a></li>
+          <li class="welcome_text"><span>{{trans('92five.header.menu')}}:</span> <a href="{{url('/dashboard/me')}}">{{Sentry::getUser()->first_name}} {{Sentry::getUser()->last_name}}</a></li>
+          <li><a href="{{URL::to('/logout')}}" style="font-size:15px;"><img src="{{asset('assets/images/dashboard/logout.png')}}" alt="" class="top_menu_icon" />{{trans('92five.logout')}}</a></li>
         </ul>
       </div>
     </div>
