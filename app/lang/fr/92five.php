@@ -185,7 +185,7 @@ return array(
     'nullWeeklyEntry' => 'Aucune entrée enregistrée',
     'monthlyReportTitle' => 'Rapport mensuel de',
     /******* Admin *******/
-    'delRestoBreadCrumb' => 'Supprimer / Restaurer pour ',
+    'delRestoreBreadCrumb' => 'Supprimer / Restaurer pour ',
     'emailSettings' => 'Configuration Email',
     'deleteResotreData' => 'Supprimer / Restaurer les données',
     'logs' => 'Logs',
