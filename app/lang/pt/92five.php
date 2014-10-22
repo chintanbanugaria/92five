@@ -3,11 +3,11 @@
 return array(
 
 /* Forgot Password */
-  'fp.title' => 'Forgot Password',
-  'fp.button' => 'Recover',
-  'fp.text1' => 'I am just kidding. Take me',
-  'fp.loginlink' => 'login',
-  'fp.text2' => 'page',   
+  'fp.title' => 'Esqueceu-se da palavra-passe',
+  'fp.button' => 'Recuperar',
+  'fp.text1' => 'Estou só a brincar. Leva-me ',
+  'fp.loginlink' => 'Autenticar',
+  'fp.text2' => 'página',   
 /* Recover Password */  
    'rp.header' => 'Looks like someone had a hard time remembering password !',
    'rp.boxtitle' => 'Reset Password',
