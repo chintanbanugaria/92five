@@ -20,4 +20,4 @@ If your webserver is running Apache then mod_rewrite should be installed
 
 # For any help / queries / errors please visit [forums.92fiveapp.com](http://forums.92fiveapp.com) #
 
-# Run on Terminal  [<img alt="Run on Terminal" src="https://www.terminal.com/run-on-terminal-2x.png" />](https://www.terminal.com/tiny/UUfZvWota2)
+# Run on Terminal ![alt tag](https://www.terminal.com/run-on-terminal-2x.png)
