@@ -89,7 +89,7 @@ class InstallController extends BaseController{
         catch(Exception $e)
         {
             Log::error('Something Went Wrong in Install Controller Repository - addUserWithDetails():'. $e->getMessage());
-            return false;
+            throw new Exception ('Something Went Wrong in Install Controller Repository - addUserWithDetails()');
         }  
 	}
 }
