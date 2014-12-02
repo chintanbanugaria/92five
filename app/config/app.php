@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => '92fiveappisgreat!!!',
+	'key' => '92fiveappisveryawesomeandgreat!!',
 
 	/*
 	|--------------------------------------------------------------------------
