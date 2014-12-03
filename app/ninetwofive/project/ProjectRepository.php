@@ -185,6 +185,7 @@ class ProjectRepository implements ProjectInterface{
 			{
 				$projectcollabs = new ProjectUsers;
 				$projectcollabs->user_id = $userId;
+                $projectcollabs->updated_by = $userId;
 				$projectcollabs->project_id = $projectId;
 				$projectcollabs->save();	
 								
