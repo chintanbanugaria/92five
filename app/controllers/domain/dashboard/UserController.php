@@ -74,7 +74,7 @@ class UserController extends \BaseController{
 		}
        if($result == 'error')
 		{
-			return \Redirect::to('dashboard/me')->with('status','eroor')->with('message','Something Went Wrong !');
+			return \Redirect::to('dashboard/me')->with('status','error')->with('message','Something Went Wrong !');
 		}
         
     }
