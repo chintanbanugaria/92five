@@ -72,6 +72,9 @@ header {
 	color:#ffffff;
 	font-family:'Lato_reg';
 }
+.navbar-inner > .container {
+	width:100%;
+}
 
 .top_menu_1 .navbar-search .search-query{ font-family:'Lato_reg';}
 .top_menu_1 .navbar-inverse .brand, .navbar-inverse .nav > li > a{ font-size:14px;}
