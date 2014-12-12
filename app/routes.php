@@ -13,7 +13,10 @@
 
 Route::get('/', function()
 {
-	
+	if(!Config::get('92five.install'))
+	{
+		return Redirect::to('install');
+	}
 	if(!Sentry::check())
 	{
 		return View::make('login.index');
