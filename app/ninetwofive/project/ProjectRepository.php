@@ -206,30 +206,18 @@ class ProjectRepository implements ProjectInterface{
 		if($checkUser != null || $user->inGroup(Sentry::findGroupByName('admin')))
 		{
 			if($action == 'view')
-			{
-				//Authorized
 				return true;
-			}
+
 			elseif($action == 'edit')
 			{
 				$user = Sentry::getUserProvider()->findById($userId);
 				if($user->hasAccess('project.update'))
-				{
-					//Authorized
 					return true;
-				}
-				else
-				{
-					//Not authorized
-					return false;
-				}
+
+				return false;
 			}
 		}
-		else
-		{
-			//Not Authorized
-			return false;
-		}
+		return false;
 	}
 	/**
 	*	Get Project
