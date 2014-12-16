@@ -18,13 +18,21 @@ class ProjectRepository implements ProjectInterface{
 	/**
 	* Get projects in which user is collaborated
 	*/
-	public function getProjects($userId)
+	public function getProjects($user)
 	{
-			//Get the list of ProjectIds
-			$projectsList = ProjectUsers::where('user_id', $userId)->lists('project_id');
-   		 	if($projectsList == null)
+			$userId = $user->id;
+
+			if ($user->inGroup(Sentry::findGroupByName('admin'))) {
+				// All projects are shown for administrators
+				$projectsList = ProjectUsers::lists('project_id');
+			}
+			else {
+				// Only retrieve for specific user
+				$projectsList = ProjectUsers::where('user_id', $userId)->lists('project_id');
+			}
+
+   		 	if ($projectsList == null)
    		 	{
-   		 		//Return what you got !
    		 		return null;
    		 	}
    		 	else

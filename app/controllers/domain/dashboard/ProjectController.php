@@ -25,8 +25,8 @@ class ProjectController extends \BaseController{
 	*/
 	public function getIndex()
 	{
-			$userId =  Sentry::getUser()->id;
-			$data = $this->project->getProjects($userId);
+			$user = Sentry::getUser();
+			$data = $this->project->getProjects($user);
    		 	return \View::make('dashboard.projects.index')
 							->with('data',$data);
 	}
