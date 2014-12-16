@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
 /* Forgot Password */
   'fp.title' => 'Esqueceu-se da palavra-passe',
@@ -231,4 +231,4 @@ Keep typing till the bar turns green !',
     'currentEmail' => 'Current Email',
     'newEmail' => 'New Email',
     'changeEmailNote' => 'Please note that a link will be sent to verify your new email address. Only after verifying the new email, your account will be activated again.',
-);
+];
