@@ -201,8 +201,9 @@ class ProjectRepository implements ProjectInterface{
 	*/
 	public function checkPermission($projectId,$userId,$action)
 	{
-		$checkUser = ProjectUsers::where('project_id','=',$projectId)->where('user_id','=',$userId)->get();
-		if(sizeof($checkUser) != 0)
+		$user = Sentry::findUserById($userId);
+		$checkUser = ProjectUsers::where('project_id','=',$projectId)->where('user_id','=',$userId)->first();
+		if($checkUser != null || $user->inGroup(Sentry::findGroupByName('admin')))
 		{
 			if($action == 'view')
 			{
