@@ -94,8 +94,8 @@ class AuthController extends BaseController{
 	public function authRecoverPassword()
 	{
 		
-		$token = $_GET['password_reset_token'];
-		$email = $_GET['email'];
+		$token = Input::get('password_reset_token');
+		$email = Input::get('email');
 		try
 		{
 			$user = Sentry::getUserProvider()->findByLogin($email);
@@ -175,8 +175,8 @@ class AuthController extends BaseController{
 	{
 		try
 		{
-			$token = $_GET['activation_token'];
-			$email = $_GET['email'];
+			$token = Input::get('activation_token');
+			$email = Input::get('email');
 			$user = Sentry::getUserProvider()->findByActivationCode($token);
 			if($user->email == $email)
 			{
@@ -203,8 +203,8 @@ class AuthController extends BaseController{
 	*/
 	public function authVerifyEmail()
 	{
-		$token = $_GET['token'];
-		$email = $_GET['email'];
+		$token = Input::get('token');
+		$email = Input::get('email');
 		try
 		{
 			//Check if user exists
