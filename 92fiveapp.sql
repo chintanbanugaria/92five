@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `project_user` (
   `updated_at` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  `updated_by` int(11) NOT NULL,
+  `updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `project_id_idx` (`project_id`),
   KEY `user_id_idx` (`user_id`),
