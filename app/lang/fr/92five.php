@@ -9,9 +9,9 @@ return array(
   'fp.loginlink' => 'Connexion',
   'fp.text2' => 'page',   
 /* Recover Password */  
-   'rp.header' => 'Looks like someone had a hard time remembering password !',
+   'rp.header' => 'Il semblerait que quelqu\'un à eu du mal à se souvenir de son mot de passe',
    'rp.boxtitle' => 'Mot de passe oublié',
-   'rp.boxtext'  => 'Veuillez entrée votre nouveau mot de passe. Minimum de 9 lettres avec une combinaison de chiffre et de lettre',
+   'rp.boxtext'  => 'Veuillez entrer votre nouveau mot de passe. Minimum de 9 lettres avec une combinaison de chiffres et de lettres',
    'rp.newPasswordLabel' => 'New Password',
    'rp.confirmPasswordLabel' => 'Confirm Password',
    'rp.emailLabel' => 'E-mail',
