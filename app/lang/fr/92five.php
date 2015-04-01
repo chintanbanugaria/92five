@@ -4,8 +4,8 @@ return array(
 
 /* Forgot Password */
   'fp.title' => 'Mot de passe oublié ?',
-  'fp.button' => 'Recover',
-  'fp.text1' => 'I am just kidding. Take me',
+  'fp.button' => 'Retrouver',
+  'fp.text1' => 'Je plaisante. Cliques moi !',
   'fp.loginlink' => 'Connexion',
   'fp.text2' => 'page',   
 /* Recover Password */  
