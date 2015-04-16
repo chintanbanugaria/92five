@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>92five App - Login</title>
+<title>92five App - {{trans('92five.fp.loginTitle')}}</title>
 {{ HTML::style('assets/css/bootstrap/bootstrap.css') }}
 {{ HTML::style('assets/css/bootstrap/bootstrap-responsive.css') }}
 {{ HTML::style('assets/css/simplelogin/style.css') }}
@@ -27,16 +27,16 @@
 <body>
 <div class="login_detail">
      <div class="error_detail_1"><img src="{{asset('assets/images/errorpages/logo12.png')}}" alt=""/></div>
-	<h2 class="sign_title">Sign In, please!</h2>
+	<h2 class="sign_title">{{trans('92five.signIn')}}, {{trans('92five.please')}}!</h2>
     <div class="login_form">
         <div class="row-fluid">
             <form method="post" id="newpassform" name="newpassform" action="auth/login" data-validate="parsley">
                 <input type="text" name="loginEmail" id="loginEmail" class="span12" placeholder="Email" data-trigger="change" data-required="true" data-type="email">
                 <input type="password" name="loginPass" id="loginPass" class="span12" placeholder="Password" data-trigger="change" data-required="true"  data-minlength="9" >
                 <div class="sign_button_main">
-                	<button class="sign_in_button">Sign In</button>
+                	<button class="sign_in_button">{{trans('92five.signIn')}}</button>
                 </div>
-                <div class="forgot_link">Forgot password? <a href="forgotpassword">Click here to restore</a></div>
+                <div class="forgot_link">{{trans('92five.fp.title')}}? <a href="forgotpassword">{{trans('92five.clickHereToRestore')}}</a></div>
             </form>              
         </div>
     </div>

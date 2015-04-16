@@ -1,18 +1,18 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Todos</title>
+<title>92five app - {{trans('92five.toDoTitle')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid project_detail">
-      <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Todo</h2>
+      <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.toDo')}}</h2>
       <div class="span1"> </div>
       <div class="span10">
         <section id="todo">
-          <a data-toggle="modal" href="{{url('/dashboard/mytodos/markallcompleted')}}" class="add_project">Mark all completed</a>
-          <a data-toggle="modal" href="{{url('/dashboard/mytodos/deletecompleted')}}" class="add_project">Delete Completed</a>
-          <a data-toggle="modal" href="{{url('/dashboard/mytodos/deleteall')}}" class="add_project">Delete All</a>
+          <a data-toggle="modal" href="{{url('/dashboard/mytodos/markallcompleted')}}" class="add_project">{{trans('92five.markAllCompleted')}}</a>
+          <a data-toggle="modal" href="{{url('/dashboard/mytodos/deletecompleted')}}" class="add_project">{{trans('92five.deleteCompleted')}}</a>
+          <a data-toggle="modal" href="{{url('/dashboard/mytodos/deleteall')}}" class="add_project">{{trans('92five.deleteAll')}}</a>
           <div class="row-fluid">
             <div class="span12 todo-detail-1"><input type="text" id="new-todo"   class="proj_create_in2 new-todo" name=""placeholder="What has to be done ?"></div>
           </div>

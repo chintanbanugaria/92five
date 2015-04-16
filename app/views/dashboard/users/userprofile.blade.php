@@ -1,20 +1,20 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - User</title>
+<title>92five app - {{trans('92five.user')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / User - {{$data['mainData']['first_name'].' '.$data['mainData']['last_name']}}</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.user')}} - {{$data['mainData']['first_name'].' '.$data['mainData']['last_name']}}</h2>
         <div class="row-fluid roles_detail_main">
           <div class="add_project_main">
             <div class="user_btn_sec">
               @if(Sentry::getUser()->id == $data['mainData']['id'])
-              <a class="add_project" href="{{url('dashboard/me/editmydetails')}}">Edit Details</a>
-              <a class="add_project" href="{{url('dashboard/me/changemyemail')}}">Change Email</a>
-              <a class="add_project" href="{{url('dashboard/me/changemypassword')}}">Change Password</a>
+              <a class="add_project" href="{{url('dashboard/me/editmydetails')}}">{{trans('92five.editDetails')}}</a>
+              <a class="add_project" href="{{url('dashboard/me/changemyemail')}}">{{trans('92five.changeEmail')}}</a>
+              <a class="add_project" href="{{url('dashboard/me/changemypassword')}}">{{trans('92five.changePassword')}}</a>
               @endif
             </div>
           </div>
@@ -41,12 +41,12 @@
                   @if($data['profile'] != null and $data['profile']['website'] != null)
                   <p><a href="http://{{$data['profile']['website']}}">{{$data['profile']['website']}}</a> </p>
                   @else
-                  <p> [No Website yet]</p>
+                  <p> [{{trans('92five.noWebsiteYet')}}]</p>
                   @endif
                   @if($data['profile'] != null and $data['profile']['phone'] != null)
                   <p><a href="tel:{{$data['profile']['phone']}}">{{$data['profile']['phone']}}</a></p>
                   @else
-                  <p> [No Phone yet]</p>
+                  <p> [{{trans('92five.noPhoneYet')}}]</p>
                   @endif
                 </div>
                 @if($data['profile'] != null)

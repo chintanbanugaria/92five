@@ -7,7 +7,7 @@
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Roles</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.Roles')}}</h2>
         <div class="row-fluid roles_detail_main">
           <div class="span3 roles_detail">
             <h2> {{trans('92five.user')}}</h2>

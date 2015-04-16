@@ -1,6 +1,6 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - My Weekly Project Report</title>
+<title>92five app - {{trans('92five.myWeeklyProjectReportTitle')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
@@ -8,7 +8,7 @@
     <div class="row-fluid">
       <div class="span12 project_detail">
         <!-- Time Sheet Detail -->
-        <div class="work-report-title">Weekly Report for {{Sentry::getUser()->first_name}} {{Sentry::getUser()->last_name}} generated on {{App::make('date')}} for project {{$data['projectName']}}</div>
+        <div class="work-report-title">{{trans('92five.weeklyReportTitle')}} {{Sentry::getUser()->first_name}} {{Sentry::getUser()->last_name}} {{trans('92five.reportTitle2')}} {{App::make('date')}} {{trans('92five.monthlyReportTitle3')}} {{$data['projectName']}}</div>
         <div class="timesheet-detail-main">
           <!-- Calender Slider -->
           <div class="jcarousel-wrapper">
@@ -31,17 +31,17 @@
         </div>
         <!-- Summery -->
         <div class="report-summay">
-          <h3>Summary</h3>
+          <h3>{{trans('92five.summary')}}</h3>
           <div class="row-fluid report-summay-inner">
             <!-- Left -->
             <div class="span6 summary-left">
-              <div class="summary-detail-1">Total Working Hours : <strong>{{$data['totalTime']['hours']}}</strong> hours<strong>{{$data['totalTime']['mins']}}</strong> minutes</div>
+              <div class="summary-detail-1">{{trans('92five.totalWorkingHours')}} : <strong>{{$data['totalTime']['hours']}}</strong> {{trans('92five.hours')}}<strong>{{$data['totalTime']['mins']}}</strong> {{trans('92five.minutes')}}</div>
               <div class="task-worked">
-                <h4>Task Worked On:</h4>
+                <h4>{{trans('92five.taskWorkedOn')}}:</h4>
                 <ul class="task-worked-list">
                   @if(sizeof($data['tasks'] !== 0))
                   @foreach($data['tasks'] as $task)
-                  <li> {{$task['name']}} - <span>{{$task['hours']}}</span> hours <span> {{$task['mins']}}</span> minutes</li>
+                  <li> {{$task['name']}} - <span>{{$task['hours']}}</span> {{trans('92five.hours')}} <span> {{$task['mins']}}</span> {{trans('92five.minutes')}}</li>
                   @endforeach
                   @endif
                 </ul>
@@ -56,7 +56,7 @@
           <h3>{{ new ExpressiveDate($dates[$i])}}</h3>
           @if(sizeof($data['entries'][$i]) == 0)
           <div class="row-fluid report-summay-inner">
-            <div class="summary-detail-4">No Entries on this date has been recorded</div>
+            <div class="summary-detail-4">{{trans('92five.nullWeeklyEntry')}}</div>
           </div>
           @endif
         </div>
@@ -66,37 +66,37 @@
           <div class="">
             <div class="timesheet-box">
               <div class="row-fluid timesheet-detail-2">
-                <div class="span5">Worked on : </div>
+                <div class="span5">{{trans('92five.workedOn')}} : </div>
                 <div class="span7">{{$entry['title']}}</div>
               </div>
               <div class="timesheet-detail-3"></div>
-              <div class="workingtime">{{$entry['total_hours']}} hours {{$entry['total_minutes']}} minutes</div>
-              <div class="timesheet-time">from {{date('g:ia', strtotime($entry['start_time']))}} till {{date('g:ia', strtotime($entry['end_time']))}}</div>
+              <div class="workingtime">{{$entry['total_hours']}} {{trans('92five.hours')}} {{$entry['total_minutes']}} {{trans('92five.minutes')}}</div>
+              <div class="timesheet-time">{{trans('92five.from')}} {{date('g:ia', strtotime($entry['start_time']))}} {{trans('92five.till')}} {{date('g:ia', strtotime($entry['end_time']))}}</div>
               <div class="row-fluid timesheet-remark">
-                <div class="span5">Details:</div>
+                <div class="span5">{{trans('92five.details')}}:</div>
                 @if($entry['details'] == null)
-                <div class="span7">[No details]</div>
+                <div class="span7">[{{trans('92five.noDetails')}}]</div>
                 @else
                 <div class="span7">{{$entry['details']}}</div>
                 @endif
               </div>
               <div class="row-fluid timesheet-remark">
-                <div class="span5">Task:</div>
+                <div class="span5">{{trans('92five.task')}}:</div>
                 @if($entry['task_id'] == null)
-                <div class="span7">[No task]</div>
+                <div class="span7">[{{trans('92five.noTask')}}]</div>
                 @else
                 <div class="span7">{{$entry['task']['name']}}</div>
                 @endif
               </div>
               <div class="row-fluid timesheet-remark">
-                <div class="span5">Remark:</div>
+                <div class="span5">{{trans('92five.remarks')}}:</div>
                 @if($entry['details'] == null)
-                <div class="span7">[No remarks]</div>
+                <div class="span7">[{{trans('92five.noRemarks')}}]</div>
                 @else
                 <div class="span7">{{$entry['remarks']}}</div>
                 @endif
               </div>
-              <div class="timesheet-create">updated on {{$entry['updated_at']}}</div>
+              <div class="timesheet-create">{{trans('92five.updatedOn')}} {{$entry['updated_at']}}</div>
             </div>
           </div>
           @endforeach

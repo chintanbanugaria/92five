@@ -1,13 +1,13 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Edit Profile</title>
+<title>92five app - {{trans('92five.editProfile')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / <a href="{{url('/dashboard/me')}}">Me</a> / Edit My Details</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / <a href="{{url('/dashboard/me')}}">{{trans('92five.me')}}</a> / {{trans('92five.editMyDetails')}}</h2>
         <form class="form-horizontal" method="post"  data-validate="parsley" >
           <div class="row-fluid change_email edit_user_sec">
             <h3>
@@ -80,7 +80,7 @@
                       </div>
                     </div>
                     <div class="submit_button_main editevent-button">
-                      <button class="submit">Update</button>
+                      <button class="submit">{{trans('92five.update')}}</button>
                     </div>
                   </fieldset>
                 </form>

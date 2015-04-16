@@ -1,21 +1,21 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Tasks</title>
+<title>92five app - {{trans('92five.Tasks')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content" id = "Grid">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Tasks</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.Tasks')}}</h2>
         @if($tasks == null)
         <div class="add_project_main">
           <div class="wrapper-demo">
-            <label class="task_proj_listlabel">Project Filter: </label>
+            <label class="task_proj_listlabel">{{trans('92five.projectFilter')}}: </label>
             <div class="task_filter">
               <div id="dd" class="wrapper-dropdown-5" tabindex="1">{{$projectName}}
                 <ul class="dropdown">
-                  <li><a href="{{url('/dashboard/tasks')}}">All</a></li>
+                  <li><a href="{{url('/dashboard/tasks')}}">{{trans('92five.all')}}</a></li>
                   @if($projects != null)
                   @foreach($projects as $project => $key)
                   <li><a href={{url('/dashboard/tasks/project',array($key['id']))}}>{{$key['project_name']}}</a></li>
@@ -25,13 +25,13 @@
               </div>
             </div>
           </div>
-          <a href="{{url('/dashboard/tasks/add')}}" class="add_project add-last"> + Add Task</a></div>
+          <a href="{{url('/dashboard/tasks/add')}}" class="add_project add-last"> + {{trans('92five.addTask')}}</a></div>
           <div class="no_project_main">
             <div class="span12">
               <div class="span12 compeleted proj-main-box">
                 <div class="nodatadisplay_main">
                   <div class="nodatadisplay">
-                    <h2>Sorry. Couldn't find any task for you.</h2>
+                    <h2>{{trans('92five.noTaskFoundText')}}</h2>
                     <div class="nodata_inner">
                       <div class="nodata_left"></div>
                       <div class="nodata_right"></div>
@@ -44,16 +44,16 @@
           </div>
           @else
           <div class="add_project_main">
-            <a href="#"  data-filter="all" class="add_project filter active pull-left" >All</a>
-            <a href="#" data-filter="act" class="add_project filter activeproject pull-left" >Active</a>
-            <a href="#" data-filter="comp" class="add_project filter complproject pull-left" >Completed</a>
-            <a href="#" data-filter="dely" class="add_project filter delayedproject pull-left" >Delayed</a>
+            <a href="#"  data-filter="all" class="add_project filter active pull-left" >{{trans('92five.all')}}</a>
+            <a href="#" data-filter="act" class="add_project filter activeproject pull-left" >{{trans('92five.active')}}</a>
+            <a href="#" data-filter="comp" class="add_project filter complproject pull-left" >{{trans('92five.completed')}}</a>
+            <a href="#" data-filter="dely" class="add_project filter delayedproject pull-left" >{{trans('92five.delayed')}}</a>
             <div class="wrapper-demo">
-              <label class="task_proj_listlabel">Project Filter: </label>
+              <label class="task_proj_listlabel">{{trans('92five.projectFilter')}}: </label>
               <div class="task_filter">
                 <div id="dd" class="wrapper-dropdown-5" tabindex="1">{{$projectName}}
                   <ul class="dropdown">
-                    <li><a href="{{url('/dashboard/tasks')}}">All</a></li>
+                    <li><a href="{{url('/dashboard/tasks')}}">{{trans('92five.all')}}</a></li>
                     @if($projects != null)
                     @foreach($projects as $project => $key)
                     <li><a href={{url('/dashboard/tasks/project',array($key['id']))}}>{{$key['project_name']}}</a></li>
@@ -62,7 +62,7 @@
                   </ul>
                 </div></div>
               </div>
-              <a href="{{url('/dashboard/tasks/add')}}" class="add_project add-last"> + Add Task</a>
+              <a href="{{url('/dashboard/tasks/add')}}" class="add_project add-last"> + {{trans('92five.addTask')}}</a>
             </div>
             <!-- Task Listing -->
             <div class="row-fluid task_section">
@@ -78,31 +78,31 @@
                   @if($task['num_status'] == 0)
                   <div class="row-fluid task_no_main">
                     <div class="task_no_inner" id ="task_no_inner">{{sprintf("%02s", $task['num_status'])}}</div>
-                    <p><a href="#">days remaining</a></p>
+                    <p><a href="#">{{trans('92five.daysRemaining')}}</a></p>
                   </div>
                   @else
                   <div class="row-fluid task_no_main">
                     <div class="task_no_inner" id ="task_no_inner">{{sprintf("%02s", $task['num_status'])}}</div>
-                    <p><a href="#">days remaining</a></p>
+                    <p><a href="#">{{trans('92five.daysRemaining')}}</a></p>
                   </div>
                   @endif
                   <div class="row-fluid sub_task">
-                    <p>Sub-tasks</p>
+                    <p>{{trans('92five.subTasks')}}</p>
                     <div class="task_prog"> <div class="progress">
                       <div class="bar " style="width: {{$task['subTaskPercentage']}}%;"></div>
                     </div></div>
-                    <p><a href="#">{{$task ['rem_subtasks']}} / {{$task ['totalsubtasks'] }} remaining</a></p>
+                    <p><a href="#">{{$task ['rem_subtasks']}} / {{$task ['totalsubtasks'] }} {{trans('92five.remaining')}}</a></p>
                   </div>
                   <div class="span12 t_proj_detail">
                     @if($task['project_id'] == null)
-                    <p>Project: <a href="#">[No Project specified]</a></p>
+                    <p>Project: <a href="#">[{{trans('92five.noProjectSpecified')}}]</a></p>
                     @else
                     <p>Project: <a href="{{url('dashboard/projects',array($task['project_id']))}}">{{$task['project_name']}}</a></p>
                     @endif
                     <ul class="task_list">
-                      <li><a href="{{url('/dashboard/tasks',array($task['id']))}}">{{$task['files']}} Files Attached</a></li>
+                      <li><a href="{{url('/dashboard/tasks',array($task['id']))}}">{{$task['files']}} {{trans('92five.filesAttached')}}</a></li>
                     </ul>
-                    <div class="create_date"> updated on {{$task['updated_at']}}</div>
+                    <div class="create_date"> {{trans('92five.updatedOn')}} {{$task['updated_at']}}</div>
                   </div>
                 </div>
                 @endif
@@ -113,26 +113,26 @@
                     <div class="span10 task_title_link"><a href="{{url('/dashboard/tasks',array($task['id']))}}" id="taskname" class="task_link_select">{{$task['name']}} </a></div>
                   </div>
                   <div class="row-fluid task_no_main">
-                    <div class="task_compete" id="task_compete">Completed on {{new ExpressiveDate($task['completed_on'])}}</div>
+                    <div class="task_compete" id="task_compete">{{trans('92five.completedOn')}} {{new ExpressiveDate($task['completed_on'])}}</div>
                     <p></p>
                   </div>
                   <div class="row-fluid sub_task">
-                    <p>Sub-tasks</p>
+                    <p>{{trans('92five.subTasks')}}</p>
                     <div class="task_prog"><div class="progress">
                       <div class="bar " style="width: {{$task['subTaskPercentage']}}%;"></div>
                     </div></div>
-                    <p><a href="#" class="task_link_select">{{$task ['rem_subtasks']}} / {{$task ['totalsubtasks'] }} remaining</a></p>
+                    <p><a href="#" class="task_link_select">{{$task ['rem_subtasks']}} / {{$task ['totalsubtasks'] }} {{trans('92five.remaining')}}</a></p>
                   </div>
                   <div class="span12 t_proj_detail">
                     @if($task['project_id'] == null)
-                    <p>Project: <a href="#">[No Project specified]</a></p>
+                    <p>{{trans('92five.project')}}: <a href="#">[{{trans('92five.noProjectSpecified')}}]</a></p>
                     @else
-                    <p>Project: <a href="{{url('dashboard/projects',array($task['project_id']))}}">{{$task['project_name']}}</a></p>
+                    <p>{{trans('92five.project')}}: <a href="{{url('dashboard/projects',array($task['project_id']))}}">{{$task['project_name']}}</a></p>
                     @endif
                     <ul class="task_list">
-                      <li><a href="{{url('/dashboard/tasks',array($task['id']))}}">{{$task['files']}} Files Attached</a></li>
+                      <li><a href="{{url('/dashboard/tasks',array($task['id']))}}">{{$task['files']}} {{trans('92five.filesAttached')}}</a></li>
                     </ul>
-                    <div class="create_date">updated on {{$task['updated_at']}}</div>
+                    <div class="create_date">{{trans('92five.updatedOn')}} {{$task['updated_at']}}</div>
                   </div>
                 </div>
                 @endif
@@ -143,25 +143,25 @@
                     <div class="span10 task_title_link"><a href="{{url('/dashboard/tasks',array($task['id']))}}" id="taskname">{{$task['name']}} </a></div>
                   </div>
                   <div class="row-fluid task_no_main">
-                    <div class="task_delayed" id="task_delayed">Delayed</div>
+                    <div class="task_delayed" id="task_delayed">{{trans('92five.delayed')}}</div>
                   </div>
                   <div class="row-fluid sub_task">
-                    <p>Sub-tasks</p>
+                    <p>{{trans('92five.subTasks')}}</p>
                     <div class="task_prog"><div class="progress">
                       <div class="bar " style="width: {{$task['subTaskPercentage']}}%;"></div>
                     </div></div>
-                    <p><a href="#">{{$task ['rem_subtasks']}} / {{$task ['totalsubtasks'] }} remaining</a></p>
+                    <p><a href="#">{{$task ['rem_subtasks']}} / {{$task ['totalsubtasks'] }} {{trans('92five.remaining')}}</a></p>
                   </div>
                   <div class="span12 t_proj_detail">
                     @if($task['project_id'] == null)
-                    <p>Project: <span class="no_proj_tasks"> [No Project specified]</span></p>
+                    <p>{{trans('92five.project')}}: <span class="no_proj_tasks"> [{{trans('92five.noProjectSpecified')}}]</span></p>
                     @else
-                    <p>Project: <a href="{{url('dashboard/projects',array($task['project_id']))}}">{{$task['project_name']}}</a></p>
+                    <p>{{trans('92five.project')}}: <a href="{{url('dashboard/projects',array($task['project_id']))}}">{{$task['project_name']}}</a></p>
                     @endif
                     <ul class="task_list">
-                      <li><a href="{{url('/dashboard/tasks',array($task['id']))}}">{{$task['files']}} Files Attached</a></li>
+                      <li><a href="{{url('/dashboard/tasks',array($task['id']))}}">{{$task['files']}} {{trans('92five.filesAttached')}}</a></li>
                     </ul>
-                    <div class="create_date">updated on {{$task['updated_at']}}</div>
+                    <div class="create_date">{{trans('92five.updatedOn')}} {{$task['updated_at']}}</div>
                   </div>
                 </div>
                 @endif

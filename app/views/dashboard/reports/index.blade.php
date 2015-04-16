@@ -1,40 +1,40 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Reports</title>
+<title>92five app - {{trans('92five.Reports')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Reports</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.Reports')}}</h2>
         <!-- Reports Section -->
         <div class="row-fluid reports-sec">
           <div class="span3 report-box">
-            <h3>My Weekly Report</h3>
+            <h3>{{trans('92five.myWeeklyReport')}}</h3>
             <div class="report-image"><a href="#" ><img id="weeklytoggle" src="{{asset('assets/images/reports/weekly_icon.png')}}" alt=""></a></div>
             <ul  id="weeklytoggledata" class="admin_listing hide">
-              <li><a  data-toggle="modal" href="#myModal-weeklyall">Complete Weekly Report</a></li>
-              <li><a data-toggle="modal" href="#myModal-weeklytask">Task Weekly Report</a></li>
-              <li><a data-toggle="modal" href="#myModal-weeklyproject">Project Weekly Report</a></li>
+              <li><a  data-toggle="modal" href="#myModal-weeklyall">{{trans('92five.completeWeeklyReport')}}</a></li>
+              <li><a data-toggle="modal" href="#myModal-weeklytask">{{trans('92five.taskWeeklyReport')}}</a></li>
+              <li><a data-toggle="modal" href="#myModal-weeklyproject">{{trans('92five.projectWeeklyReport')}}</a></li>
             </ul>
           </div>
           <div class="span3 report-box">
-            <h3>My Monthly Report</h3>
+            <h3>{{trans('92five.myMonthlyReport')}}</h3>
             <div class="report-image"><a href="#"><img id="monthlytoggle" src="{{asset('assets/images/reports/monthly_icon.png')}}" alt=""/></a></div>
             <ul id="monthlytoggledata" class="admin_listing hide">
-              <li><a  data-toggle="modal" href="#myModal-monthlyall">Complete Monthly Report</a></li>
-              <li><a data-toggle="modal" href="#myModal-monthlytask">Task Monthly Report</a></li>
-              <li><a data-toggle="modal" href="#myModal-monthlyproject">Project Monthly Report</a></li>
+              <li><a  data-toggle="modal" href="#myModal-monthlyall">{{trans('92five.completeMonthlyReport')}}</a></li>
+              <li><a data-toggle="modal" href="#myModal-monthlytask">{{trans('92five.taskMonthlyReport')}}</a></li>
+              <li><a data-toggle="modal" href="#myModal-monthlyproject">{{trans('92five.projectMonthlyReport')}}</a></li>
             </ul>
           </div>
           <div class="span3 report-box">
-            <h3>Project Report</h3>
+            <h3>{{trans('92five.projectReport')}}</h3>
             <div class="report-image"><a  data-toggle="modal" href="#myModal-projectreport"><img src="{{asset('assets/images/reports/project_report_icon.png')}}" alt=""></a></div>
           </div>
           @if(Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('admin')) or Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('manager')) or Sentry::getUser()->inGroup(Sentry::getGroupProvider()->findByName('leader')) )
           <div class="span3 report-box">
-            <h3>User Report</h3>
+            <h3>{{trans('92five.userReport')}}</h3>
             <div class="report-image"><a  data-toggle="modal" href="#myModal-monthlyuserproject"><img src="{{asset('assets/images/reports/userreport.png')}}" alt=""></a></div>
           </div>
           @endif
@@ -47,7 +47,7 @@
 <div id="myModal-weeklyall" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Complete Weekly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.completeWeeklyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -59,7 +59,7 @@
                 <div class="row-fluid">
                   <div class="control-group">
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required week:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.daySelect')}}:</label>
                       <input id="date" name="date" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                   </div>
@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-        <button class="submit">Submit</a></button>
+        <button class="submit">{{trans('92five.submit')}}</a></button>
       </form>
     </div>
   </div>
@@ -77,7 +77,7 @@
 <div id="myModal-weeklytask" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Task Weekly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.taskWeeklyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -90,12 +90,12 @@
                   <div class="control-group">
                     @if($tasks != null)
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required week:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.daySelect')}}</label>
                       <input id="weektaskdate" name="weektaskdate" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @else
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required week:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.daySelect')}}</label>
                       <input id="weektaskdate" name="weektaskdate" disabled type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @endif
@@ -103,7 +103,7 @@
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select Task:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectTask')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             @if($tasks != null)
@@ -114,7 +114,7 @@
                             </select>
                             @else
                             <select name="task" id="task" disabled tabindex="1" style="width:270px;">
-                              <option  name="" value="others" title="">No Tasks</option>
+                              <option  name="" value="others" title="">{{trans('92five.noTask')}}</option>
                             </select>
                             @endif
                           </div>
@@ -126,9 +126,9 @@
               </div>
             </div>
             @if($tasks !=null)
-            <button class="submit">Submit</button>
+            <button class="submit">{{trans('92five.submit')}}</button>
             @else
-            <button class="submit" disabled>Submit</button>
+            <button class="submit" disabled>{{trans('92five.submit')}}</button>
             @endif
           </form>
         </div>
@@ -139,7 +139,7 @@
 <div id="myModal-weeklyproject" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Project Weekly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.projectWeeklyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -152,12 +152,12 @@
                   <div class="control-group">
                     @if($projects != null)
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required week:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.daySelect')}}:</label>
                       <input id="weekprojectdate" name="weekprojectdate" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @else
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required week:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.daySelect')}}:</label>
                       <input id="weekprojectdate" name="weekprojectdate" disabled type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @endif
@@ -165,7 +165,7 @@
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select Project:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectProject')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             @if($projects != null)
@@ -176,7 +176,7 @@
                             </select>
                             @else
                             <select name="project" id="project" disabled tabindex="1" style="width:270px;">
-                              <option  name="" value="others" title="">No Projects</option>
+                              <option  name="" value="others" title="">{{trans('92five.noProject')}}</option>
                             </select>
                             @endif
                           </div>
@@ -188,9 +188,9 @@
               </div>
             </div>
             @if($projects != null)
-          <button class="submit">Submit</a></button>
+          <button class="submit">{{trans('92five.submit')}}</a></button>
           @else
-          <button class="submit" disabled>Submit</button>
+          <button class="submit" disabled>{{trans('92five.submit')}}</button>
           @endif
         </form>
       </div>
@@ -201,7 +201,7 @@
 <div id="myModal-monthlyall" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Complete Monthly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.completeMonthlyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -213,7 +213,7 @@
                 <div class="row-fluid">
                   <div class="control-group">
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select month:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.selectMonth')}}:</label>
                       <input id="monthall" name="monthall" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                   </div>
@@ -221,7 +221,7 @@
               </div>
             </div>
           </div>
-        <button class="submit">Submit</a></button>
+        <button class="submit">{{trans('92five.submit')}}</a></button>
       </form>
     </div>
   </div>
@@ -231,7 +231,7 @@
 <div id="myModal-monthlytask" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Task Monthly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.taskMonthlyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -244,12 +244,12 @@
                   <div class="control-group">
                     @if($tasks != null)
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required month:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.monthSelect')}}:</label>
                       <input id="monthtaskdate" name="monthtaskdate" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @else
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the required month:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.monthSelect')}}:</label>
                       <input id="monthtaskdate" name="monthtaskdate" disabled type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @endif
@@ -257,7 +257,7 @@
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select Task:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectTask')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             @if($tasks != null)
@@ -268,7 +268,7 @@
                             </select>
                             @else
                             <select name="monthtask" id="monthtask" disabled tabindex="1" style="width:270px;">
-                              <option  name="" value="others" title="">No Projects</option>
+                              <option  name="" value="others" title="">{{trans('92five.noProject')}}</option>
                             </select>
                             @endif
                           </div>
@@ -280,9 +280,9 @@
               </div>
             </div>
             @if($tasks != null)
-            <button class="submit">Submit</button>
+            <button class="submit">{{trans('92five.submit')}}</button>
             @else
-            <button class="submit" disabled>Submit</button>
+            <button class="submit" disabled>{{trans('92five.submit')}}</button>
             @endif
           </form>
         </div>
@@ -293,7 +293,7 @@
 <div id="myModal-monthlyproject" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Project Monthly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.projectMonthlyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -306,12 +306,12 @@
                   <div class="control-group">
                     @if($projects != null)
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the month:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.monthSelect')}}:</label>
                       <input id="monthprojectdate" name="monthprojectdate" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @else
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the month:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.monthSelect')}}:</label>
                       <input id="monthprojectdate"  disabled name="monthprojectdate" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                     @endif
@@ -319,7 +319,7 @@
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select Project:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectProject')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             @if($projects != null)
@@ -330,7 +330,7 @@
                             </select>
                             @else
                             <select name="monthproject" id="monthproject" disabled tabindex="1" style="width:270px;">
-                              <option  name="" value="others" title="">No Projects</option>
+                              <option  name="" value="others" title="">{{trans('92five.noProject')}}</option>
                             </select>
                             @endif
                           </div>
@@ -342,9 +342,9 @@
               </div>
             </div>
             @if($projects != null)
-          <button class="submit">Submit</a></button>
+          <button class="submit">{{trans('92five.submit')}}</a></button>
           @else
-        <button class="submit" disabled>Submit</a></button>
+        <button class="submit" disabled>{{trans('92five.submit')}}</a></button>
         @endif
       </form>
     </div>
@@ -355,7 +355,7 @@
 <div id="myModal-projectreport" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Project Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.projectReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -368,7 +368,7 @@
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select Project:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectProject')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             @if($projects != null)
@@ -379,7 +379,7 @@
                             </select>
                             @else
                             <select name="projectid" disabled id="projectid" tabindex="1" style="width:270px;">
-                              <option  name="" value="others" title="">No Projects</option>
+                              <option  name="" value="others" title="">{{trans('92five.noProject')}}</option>
                             </select>
                             @endif
                           </div>
@@ -391,9 +391,9 @@
               </div>
             </div>
             @if($projects != null)
-            <button class="submit">Submit</button>
+            <button class="submit">{{trans('92five.submit')}}</button>
             @else
-            <button class="submit" disabled>Submit</button>
+            <button class="submit" disabled>{{trans('92five.submit')}}</button>
             @endif
           </form>
         </div>
@@ -404,7 +404,7 @@
 <div id="myModal-monthlyuserproject" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Project User Monthly Report</h3>
+    <h3 id="myModalLabel">{{trans('92five.projectUserMonthlyReport')}}</h3>
   </div>
   <div class="modal-body">
     <div class="confirm-button">
@@ -416,14 +416,14 @@
                 <div class="row-fluid">
                   <div class="control-group">
                     <div class="row-fluid">
-                      <label class="control-label" for="passwordinput">Select any day of the month:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.monthSelect')}}:</label>
                       <input id="userprojectdate" name="userprojectdate" type="text" class="span6 pull-left" placeholder="Date" data-required="true" data-trigger="change">
                     </div>
                   </div>
                   <div class="row-fluid">
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select Project:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectProject')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             @if($projects != null)
@@ -435,7 +435,7 @@
                             </select>
                             @else
                             <select name="projectmonth" disabled id="projectmonth" tabindex="1" style="width:270px;" data-required="true" data-trigger="change">
-                              <option  name="" value="others" title="">No Projects</option>
+                              <option  name="" value="others" title="">{{trans('92five.noProject')}}</option>
                             </select>
                             @endif
                           </div>
@@ -444,7 +444,7 @@
                     </div>
                     <div class="control-group">
                       <div class="row-fluid">
-                        <label class="control-label" for="passwordinput">Select User:</label>
+                        <label class="control-label" for="passwordinput">{{trans('92five.selectUser')}}:</label>
                         <div class="controls">
                           <div class="task_select">
                             <select name="userprojectreportid" id="userprojectreportid" tabindex="1" data-required="true" data-trigger="change" disabled style="width:270px;">
@@ -458,9 +458,9 @@
               </div>
             </div>
             @if($projects != null)
-          <button class="submit">Submit</a></button>
+          <button class="submit">{{trans('92five.submit')}}</a></button>
           @else
-        <button class="submit" disabled>Submit</a></button>
+        <button class="submit" disabled>{{trans('92five.submit')}}</a></button>
         @endif
       </form>
     </div>

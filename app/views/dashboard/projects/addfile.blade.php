@@ -1,13 +1,13 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Add File</title>
+<title>92five app - {{trans('92five.add')}} {{trans('92five.files')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / <a href="{{url('/dashboard',array($parentType.'s'))}}">{{$parentType}}</a> / Add Files</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / <a href="{{url('/dashboard',array($parentType.'s'))}}">{{$parentType}}</a> / {{trans('92five.add')}} {{trans('92five.files')}}</h2>
         <div class="row-fluid proj_create">
           <h3> {{$parentName}}  <div class="p-icon-main">
           </div></h3>
@@ -17,8 +17,8 @@
               <div class="span12 add-proj-form">
                 <fieldset>
                   <div class="control-group">
-                    <label>Add Files:
-                      <p class="help-block">(optional)</p>
+                    <label>{{trans('92five.add')}} {{trans('92five.files')}}:
+                      <p class="help-block">({{trans('92five.optional')}})</p>
                     </label>
                     @if($parentType == 'Task')
                     <form id='dropzone' action='#'class="dropzone" method=post>
@@ -34,9 +34,9 @@
                   </fieldset>
                   <div class="submit_button_main">
                     @if($parentType == 'Task')
-                    <a href="{{url('/dashboard/task/added')}}" class="submit">Done</a>
+                    <a href="{{url('/dashboard/task/added')}}" class="submit">{{trans('92five.done')}}</a>
                     @elseif($parentType == 'Project')
-                    <a href="{{url('/dashboard/projects/add/done')}}" class="submit">Done</a>
+                    <a href="{{url('/dashboard/projects/add/done')}}" class="submit">{{trans('92five.done')}}</a>
                     @endif
                   </div>
                 </div>

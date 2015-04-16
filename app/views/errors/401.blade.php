@@ -13,24 +13,24 @@
 
 <div class="error_main">
     <div class="error_detail_1"><img src="{{asset('assets/images/errorpages/logo12.png')}}" alt=""/></div>
-	<div class="error_detail_1">Oops !</div>
+	<div class="error_detail_1">{{trans('92five.oops')}}</div>
     <div class="error_detail_2">401</div>
    
     	 <div class="error_detail_3_main">
         <div class="error_detail_3">
         <div class="error_detail_3_inner">
-            <p> We dont like trespassing. <br/>How about you ?</p>
+            <p> {{trans('92five.errorText1')}}. <br/>{{trans('92five.errorText2')}}</p>
         </div>
     </div>
     </div>
    <div class="error_detail_3_main">
         <div class="error_detail_3">
         <div class="error_detail_3_inner">
-            <p>Dont Worry. It will remain between you and us</p>
+            <p>{{trans('92five.errorText3')}}</p>
         </div>
     </div>
     </div>
-    <div class="error_detail_4"><a href="{{url('/dashboard')}}">Go back to Dashboard ?</a></div>
+    <div class="error_detail_4"><a href="{{url('/dashboard')}}">{{trans('92five.errorText4')}}</a></div>
 </div>
 
 </section>

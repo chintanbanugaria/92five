@@ -1,13 +1,13 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Edit Task</title>
+<title>92five app - {{trans('92five.editTask')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard<a> / <a href="{{url('/dashboard/tasks')}}">Tasks</a> / Edit</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}<a> / <a href="{{url('/dashboard/tasks')}}">{{trans('92five.Tasks')}}</a> / {{trans('92five.edit')}}</h2>
         <!-- Add New Task -->
         <div class="row-fluid add_new_task">
           <div class="span7 add_new_task_left" id="add_new_task_left">
@@ -18,20 +18,20 @@
               <div class="add-proj-form add_task_form">
                 <fieldset>
                   <div class="control-group">
-                    <label>Kick off dates:
+                    <label>{{trans('92five.kickOffDates')}}:
                     </label>
                     <input id="startdate" name="startdate" type="text" class="span6 pull-left" value="{{new ExpressiveDate($task['start_date'])}}" placeholder="Start date" data-required="true" data-trigger="change">
                     <input id="enddate" name="enddate" type="text" class="span6 pull-right" value="{{new ExpressiveDate($task['end_date'])}}" class="span6 pull-right" placeholder="End date" data-required="true" data-trigger="change">
                   </div>
                   <div class="control-group">
-                    <label>Project:
-                      <p class="help-block">(optional)</p>
+                    <label>{{trans('92five.project')}}:
+                      <p class="help-block">({{trans('92five.optional')}})</p>
                     </label>
                     <select name="projectlist" id="projectlist" class="projectlist" tabindex="1">
                       @if($task['project_id'] == null)
-                      <option name="" value="null" selected="selected" title="">None</option>
+                      <option name="" value="null" selected="selected" title="">{{trans('92five.none')}}</option>
                       @else
-                      <option name="" value="null"  title="">None</option>
+                      <option name="" value="null"  title="">{{trans('92five.none')}}</option>
                       @endif
                       @if($projects != null)
                       @foreach($projects as $project)
@@ -46,12 +46,12 @@
                   </div>
                   <div class="control-group">
                     <label>Note:
-                      <p class="help-block">(optional)</p>
+                      <p class="help-block">({{trans('92five.optional')}})</p>
                     </label>
                     <textarea id="note" class="add-proj-form-t" placeholder="Note">{{$task['note']}}</textarea>
                   </div>
                   <div class="control-group">
-                    <label for="passwordinput">Asignee:<span class="tooltipster-icon" title="To add the asignee start typing the name and select the appropriate user from the list. Please note that only those name will appear in list who are registered in the app. Please add your name as well if you are one of them.">(?)</span></label>
+                    <label for="passwordinput">{{trans('92five.assignee')}}:<span class="tooltipster-icon" title="To add the asignee start typing the name and select the appropriate user from the list. Please note that only those name will appear in list who are registered in the app. Please add your name as well if you are one of them.">(?)</span></label>
                     <div class="controls" style="margin:0;">
                       <div class="span12 flatui-detail" style="position:relative;">
                         <input id="plugin" name="passwordinput" type="text" placeholder="Add Name">
@@ -67,13 +67,13 @@
                       </div>
                     </div>
                   </div>
-                  <div class="add_task_button_main"><button class="add_task_submit">Update</a></button></div>
+                  <div class="add_task_button_main"><button class="add_task_submit">{{trans('92five.update')}}</a></button></div>
                 </fieldset>
               </form>
             </div>
           </div>
           <div class="span5 add_new_task_right" id="add_new_task_right" >
-            <h3>Add Sub-tasks</h3>
+            <h3>{{trans('92five.addSubTask')}}</h3>
             <div class="add-proj-form add_task_form" >
               <form class="form-horizontal" id="newsubtaskform">
                 <input id="subtasks"  name="" type="text" placeholder="Subtasks (optional)">
@@ -99,8 +99,8 @@
                   </div>
                 </div>
                 <div class="add_task_button_main">
-                  <a  href={{url('/dashboard/tasks/edit/add/files',array($task['id']))}} class="add_project" id="taskfiles">Add / Remove files</a>
-                  <a  href="{{url('/dashboard/task/edited',array($task['id']))}}" class="add_project">I am Done</a>
+                  <a  href={{url('/dashboard/tasks/edit/add/files',array($task['id']))}} class="add_project" id="taskfiles">{{trans('92five.addRemoveFiles')}}</a>
+                  <a  href="{{url('/dashboard/task/edited',array($task['id']))}}" class="add_project">{{trans('92five.iAmDoneHere')}}</a>
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="HandheldFriendly" content="True" />
-<title>92fiveapp - Forgot Assistance</title>                                                                                                                                                                                                                                                                                                                                                                                                        
+<title>92fiveapp - {{trans('92five.forgotAssitance')}}</title>                                                                                                                                                                                                                                                                                                                                                                                                        
 <style type="text/css">
 	.ReadMsgBody {width: 100%; background-color: #ffffff;}
 	.ExternalClass {width: 100%; background-color: #ffffff;}
@@ -55,19 +55,19 @@
 				</tr>
                 <tr>
                     <td style="font-size: 13px; color: #959595; font-weight: normal; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top; padding:25px 0">
-                        <a href="#" style="text-decoration: none; color: #272727; font-size: 18px; color: #272727; font-weight: bold; ">Invitation to Join 92five app</a><br><br/>
-                        Hi there (Sorry we don't know your name yet!) , <br/>
-						You have been invited to join 92five app. Please <b style="color: #5b5b5b;"><a href={{$link}} style="text-decoration:none; color:black;">click here</a></b> to get started. <br/>
+                        <a href="#" style="text-decoration: none; color: #272727; font-size: 18px; color: #272727; font-weight: bold; ">{{trans('92five.invitationEmailText1')}}</a><br><br/>
+                        {{trans('92five.hiThereEmailText2')}} , <br/>
+						{{trans('92five.invitedToJoinEmailText3')}} <b style="color: #5b5b5b;"><a href={{$link}} style="text-decoration:none; color:black;">{{trans('92five.clickHere')}}</a></b> {{trans('92five.toGetStartedEmailText4')}} <br/>
 						
-						Alternatively, you can paste the following link into your browser to get started. <br/>
-						Link: {{$link}}
+						{{trans('92five.alternativelyEmailText5')}} <br/>
+						{{trans('92five.link')}}: {{$link}}
 
 						<br/>
 						<br/>
 						
-						Thanks,
+						{{trans('92five.thanks')}},
 						<br/>
-						-92five App Team
+						{{trans('92five.NineTwoFiveAppTeam')}}
 						<br/>
 						
 						 							

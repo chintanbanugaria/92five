@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>92fiveapp - Authenticating</title>
+<title>92fiveapp - {{trans('92five.authenticatingTitle')}}</title>
 <!-- Loading -->
 {{ HTML::style('assets/css/authenticate/style.css') }}
 </head>
@@ -10,7 +10,7 @@
 
 <div class="loading_main">
     <div id="loading">
-    	<div class="loading_detail">Authenticating....</div>
+    	<div class="loading_detail">{{trans('92five.authenticatingTitle')}}....</div>
     	<div id="loading_inner">
         	<div id="loadbar">&nbsp;</div>
         </div>

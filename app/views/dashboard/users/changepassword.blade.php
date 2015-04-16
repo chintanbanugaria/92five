@@ -1,6 +1,6 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Change Password</title>
+<title>92five app - {{trans('92five.changePassword')}}</title>
 @stop
 @section('content')
 	 <!-- main content -->
@@ -8,22 +8,22 @@
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / {{$breadCrumb}}</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{$breadCrumb}}</h2>
         <div class="row-fluid change_email">
-          <h3>Change Password</h3>
+          <h3>{{trans('92five.changePassword')}}</h3>
           <div class="change_email_inner">
             <div class="row-fluid">
               <form method="post" id="newpassform" name="newpassform" action="">
                 <div class="field_main">
                   <div class="row-fluid field_data">
-                    <div class="span3 field_name">New Password</div>
+                    <div class="span3 field_name">{{trans('92five.rp.newPasswordLabel')}}</div>
                     <div class="span5">
                       <input type="password" id="password" name="password" class="span12 field_input" placeholder="password">
                     </div>
                     <div class="span4 progress_data" id="progressbar"><div id="progress"></div></div>
                   </div>
                   <div class="row-fluid field_data">
-                    <div class="span3 field_name">Confirm Password</div>
+                    <div class="span3 field_name">{{trans('92five.rp.confirmPasswordLabel')}}</div>
                     <div class="span5">
                       <input type="password" id="confirmpass" name="confirmpass" class="span12 field_input" placeholder="confirm password">
                     </div>
@@ -34,7 +34,7 @@
                 </div>
                 <input type="hidden" name="userId" id="userId" value="{{$userId}}"/>
                 <div class="submit_button_main editevent-button">
-                  <button class="submit">Update</button>
+                  <button class="submit">{{trans('92five.update')}}</button>
                 </div>
               </form>
             </div>

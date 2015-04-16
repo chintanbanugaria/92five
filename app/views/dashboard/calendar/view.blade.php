@@ -7,10 +7,10 @@
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Calendar</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.Calendar')}}</h2>
         <div class="add_project_main">
-          <a data-toggle="modal" href="{{url('/dashboard/calendar/event/createdbyme')}}" class="add_project pull-right"> Events Created by Me</a>
-          <a data-toggle="modal" href="#myModal" class="add_project add-last"> + Add Event</a>
+          <a data-toggle="modal" href="{{url('/dashboard/calendar/event/createdbyme')}}" class="add_project pull-right"> {{trans('92five.eventsCreatedByMe')}}</a>
+          <a data-toggle="modal" href="#myModal" class="add_project add-last"> + {{trans('92five.addEvent')}}</a>
         </div>
         <!-- Calendar Detail -->
         <div class="row-fluid cal_detail">
@@ -35,14 +35,14 @@
                 <div class="viewevent-detail-inner">
                   <!-- Left -->
                   <div class="viewevent-left">
-                    <div class="viewevent-detail-1">Category:<span class="viewevent-note"> {{$event['category']}}</span></div>
-                    <div class="viewevent-detail-1">Note: <span class="viewevent-note"> {{$event['notes']}}</span></div>
-                    <div class="viewevent-detail-1">Location: <span class="viewevent-note"> {{$event['location']}}</span></div>
+                    <div class="viewevent-detail-1">{{trans('92five.category')}}:<span class="viewevent-note"> {{$event['category']}}</span></div>
+                    <div class="viewevent-detail-1">{{trans('92five.note')}}: <span class="viewevent-note"> {{$event['notes']}}</span></div>
+                    <div class="viewevent-detail-1">{{trans('92five.location')}}: <span class="viewevent-note"> {{$event['location']}}</span></div>
                   </div>
                   <!-- Right -->
                   <div class="viewevent-right">
                     <div class="viewevent-asignee">
-                      <label>People:</label>
+                      <label>{{trans('92five.people')}}:</label>
                       <div class="viewevent-asignee-right">
                         @foreach($event['users'] as $user)
                         <div class="viewevent-detail-3">{{$user['first_name']}} {{$user['last_name']}}</div>
@@ -55,7 +55,7 @@
               @endforeach
               @else
               <div class="row-fluid">
-                <div class="span12 time_listing_1"> [ Nothing Scheduled !]</div>
+                <div class="span12 time_listing_1"> [ {{trans('92five.nothingScheduled')}} !]</div>
               </div>
               @endif
             </div>
@@ -118,29 +118,29 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="passwordinput">Category:</label>
+                <label class="control-label" for="passwordinput">{{trans('92five.category')}}:</label>
                 <div class="controls">
                   <div class="task_select">
                     <select name="category" id="category" tabindex="1" style="width:270px;" data-required="true"  data-show-errors="false">
-                      <option name="" value="" selected="selected" title="">Select Category</option>
-                      <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                      <option  name="" value="Meeting - Project" title="">Meeting - Project</option>
-                      <option  name="" value="Meeting - Task" title="">Meeting - Task</option>
-                      <option  name="" value="Deliverer" title="">Deliverer</option>
-                      <option  name="" value="Client" title="">Client</option>
-                      <option  name="" value="Others" title="">Others</option>
+                      <option name="" value="" selected="selected" title="">{{trans('92five.selectCategory')}}</option>
+                      <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                      <option  name="" value="Meeting - Project" title="">{{trans('92five.eventsCategory2')}}</option>
+                      <option  name="" value="Meeting - Task" title="">{{trans('92five.eventsCategory3')}}</option>
+                      <option  name="" value="Deliverer" title="">{{trans('92five.eventsCategory4')}}</option>
+                      <option  name="" value="Client" title="">{{trans('92five.client')}}</option>
+                      <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                     </select>
                   </div>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="passwordinput">Note:</label>
+                <label class="control-label" for="passwordinput">{{trans('92five.note')}}:</label>
                 <div class="controls">
                   <textarea  name="note" id="note" class="add-proj-form-t" placeholder="Note"></textarea>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="passwordinput">People:<span class="tooltipster-icon" title="To add the people start typing the name and select the appropriate user from the list. Please note that only those name will appear in list who are registered in the app. Please add your name as well if you are one of them.">(?)</span></label>
+                <label class="control-label" for="passwordinput">{{trans('92five.people')}}:<span class="tooltipster-icon" title="To add the people start typing the name and select the appropriate user from the list. Please note that only those name will appear in list who are registered in the app. Please add your name as well if you are one of them.">(?)</span></label>
                 <div class="controls">
                   <input id="plugin" name="passwordinput" type="text" placeholder="Add Name">
                 </div>
@@ -151,19 +151,19 @@
                   <p></p>
                 </div>
               </div>
-              <div class="advanced_link"><a href="#" id="adv">Advanced</a></div>
+              <div class="advanced_link"><a href="#" id="adv">{{trans('92five.advanced')}}</a></div>
             </div>
             <div id="advanced-inputs">
               <div class="row-fluid event_form_data">
                 <div class="control-group">
-                  <label class="control-label" for="passwordinput">Location:</label>
+                  <label class="control-label" for="passwordinput">{{trans('92five.location')}}:</label>
                   <div class="controls">
                     <input id="location" name="location" type="text" placeholder="Location">
                   </div>
                 </div>
               </div>
             </div>
-          <button class="submit pull-right">Submit</a></button>
+          <button class="submit pull-right">{{trans('92five.submit')}}</a></button>
         </fieldset>
       </div>
     </div>
@@ -175,13 +175,13 @@
 <div id="myModal-item-delete" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Really ?</h3>
+    <h3 id="myModalLabel">{{trans('92five.really')}} ?</h3>
   </div>
   <div class="modal-body">
-    <div class="confirm-delete">Confirm delete the event?</div>
+    <div class="confirm-delete">{{trans('92five.confirmDeleteEvent')}}?</div>
     <div class="confirm-button">
-      <form method="post" action="calendar/event/delete">  <input type="hidden" name="deleteEventId" id="deleteEventId" value=  > <button class="submit">Yes please.</a></button></form>
-    <button class="submit dontdelete" id="dontdelete" >No Thanks.</a></button></div>
+      <form method="post" action="calendar/event/delete">  <input type="hidden" name="deleteEventId" id="deleteEventId" value=  > <button class="submit">{{trans('92five.yesPlease')}}.</a></button></form>
+    <button class="submit dontdelete" id="dontdelete" >{{trans('92five.noThanks')}}.</a></button></div>
   </div>
 </div>
 <!-- End Delete Event Popup-->

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="HandheldFriendly" content="True" />
-<title>92fiveapp - Email Verification</title>                                                                                                                                                                                                                                                                                                                                                                                                        
+<title>92fiveapp - {{trans('92five.emailVerification')}}</title>                                                                                                                                                                                                                                                                                                                                                                                                        
 <style type="text/css">
 	.ReadMsgBody {width: 100%; background-color: #ffffff;}
 	.ExternalClass {width: 100%; background-color: #ffffff;}
@@ -56,20 +56,20 @@
                 <tr>
                     <td style="font-size: 13px; color: #959595; font-weight: normal; text-align: left; font-family: Helvetica, Arial, sans-serif; line-height: 24px; vertical-align: top; padding:25px 0">
                         <a href="#" style="text-decoration: none; color: #272727; font-size: 18px; color: #272727; font-weight: bold; ">Email Verification.</a><br><br/>
-                        Hi {{ $name }}, <br/>
-						You have change your email address on 92five App. We need to make sure that you haven't made any typo errors.  Please <b style="color: #5b5b5b;"><a href={{$link}} style="text-decoration:none; color:black;">click here</a></b> to verify your new email. <br/>
+                        {{trans('92five.hey')}} {{ $name }}, <br/>
+						{{trans('92five.changeEmailAddressEmailText6')}}.  {{trans('92five.please')}} <b style="color: #5b5b5b;"><a href={{$link}} style="text-decoration:none; color:black;">{{trans('92five.clickHere')}}</a></b> {{trans('92five.verifyNewEmailText7')}}. <br/>
 						
-						Alternatively, you can paste the following link into the browser. <br/>
-						Link: {{$link}}
+						{{trans('92five.alternativelyEmailText5')}} <br/>
+						{{trans('92five.link')}}: {{$link}}
 
 						<br/>
 						<br/>
 						
-						Thanks,
+						{{trans('92five.thanks')}},
 						<br/>
-						-92five App Team
+						{{trans('92five.NineTwoFiveAppTeam')}}
 						<br/>
-						P.S. If you have not cahnged your email, please contact administrator.
+						{{trans('92five.contactAdminEmailText8')}}
 						 							
                     </td>
                 </tr>              

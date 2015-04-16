@@ -1,6 +1,6 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - View Project</title>
+<title>92five app - {{trans('92five.viewProject')}}</title>
 @stop
 @section('content')
 
@@ -8,7 +8,7 @@
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / <a href="{{url('/dashboard/projects')}}">Projects</a> / {{$project['project_name']}}</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / <a href="{{url('/dashboard/projects')}}">{{trans('92five.Projects')}}</a> / {{$project['project_name']}}</h2>
         @if($project['status'] == 'active')
         <div class="row-fluid proj_active">
           @elseif($project['status'] == 'completed')
@@ -44,47 +44,47 @@
                     </div>
                     <div class="row-fluid span12 start-d-main">
                       @if($project['status'] == 'active')
-                      <div class="status_a">Status: Active</div>
+                      <div class="status_a">{{trans('92five.status')}}: {{trans('92five.active')}}</div>
                       @elseif($project['status'] == 'delayed')
-                      <div class="status_d">Status: Delayed</div>
+                      <div class="status_d">{{trans('92five.status')}}: {{trans('92five.delayed')}}</div>
                       @elseif($project['status'] == 'completed')
-                      <div class="status_c">Status: Completed</div>
+                      <div class="status_c">{{trans('92five.status')}}: {{trans('92five.delayed')}}</div>
                       @endif
                       <div class="row-fluid">
-                        <div class="span4 start-d-1">Start date: </div>
+                        <div class="span4 start-d-1">{{trans('92five.startDate')}}: </div>
                         <div class="span8 start-d-2">{{new ExpressiveDate($project['start_date'])}}</div>
                       </div>
                       <div class="row-fluid">
-                        <div class="span4 start-d-1">End date: </div>
+                        <div class="span4 start-d-1">{{trans('92five.endDate')}}: </div>
                         @if($project['status'] == 'delayed')
                         @if($project['end_date'] != null)
                         <div class="span8 start-d-2 delayed_end_date">{{new ExpressiveDate($project['end_date'])}}</div>
                         @else
-                        <div class="span8 start-d-2">[ No End Date has been Specified ]</div>
+                        <div class="span8 start-d-2">[ {{trans('92five.noEndDateSpecifiedText')}} ]</div>
                         @endif
                         @else
                         @if($project['end_date'] != null)
                         <div class="span8 start-d-2">{{new ExpressiveDate($project['end_date'])}}</div>
                         @else
-                        <div class="span8 start-d-2">[ No End Date has been Specified ]</div>
+                        <div class="span8 start-d-2">[ {{trans('92five.noEndDateSpecifiedText')}} ]</div>
                         @endif
                         @endif
                       </div>
                     </div>
                     <div class="row-fluid span12 proj_act_descr">
-                      <h4>Description:</h4>
+                      <h4>{{trans('92five.description')}}:</h4>
                       @if($project['description'] != null)
                       <p>{{$project['description']}} </p>
                       @else
-                      <div class="no_file" > [No Description for this Project ]</div>
+                      <div class="no_file" > [ {{trans('92five.noDescriptionProject')}} ]</div>
                       @endif
                     </div>
                     <div class="row-fluid span12 proj_act_descr">
-                      <h4>Note:</h4>
+                      <h4>{{trans('92five.note')}}:</h4>
                       <p>@if($project['note'] != null)
                       {{$project['note']}}
                       @else
-                      [ No Note for this project ]
+                      [ {{trans('92five.noNoteProjectText')}} ]
                       @endif
                       </p>
                     </div>
@@ -92,18 +92,18 @@
                   <!-- Right Part -->
                   <div class="span6 proj_active_right">
                     <div class="row-fluid span12 a_reamining">
-                      <h4>Tasks:</h4>
+                      <h4>{{trans('92five.Tasks')}}:</h4>
                       @if($project['total_tasks'] != 0)
                       <h4><img src="{{asset('assets/images/dashboard/p_arrow.png')}}" alt=""><a class="projecttaskrem" href="{{url('/dashboard/tasks/project',array($project['id']))}}">{{$project['uncompl_tasks']}} out of {{$project['total_tasks']}} remaining</a></h4>
                       @else
-                      <div class="no_file"> [ No Tasks for this Project ]</div>
+                      <div class="no_file"> [ {{trans('92five.noTaskProjectText')}} ]</div>
                       @endif
                     </div>
                     <div class="row-fluid span12 a_reamining">
-                      <h4>Files:</h4>
+                      <h4>{{trans('92five.files')}}:</h4>
                       @if($files == null)
                       <div class ="no_file" >
-                        [ No files are attached with this project ]
+                        [ {{trans('92five.noFilesProjectText')}} ]
                       </div>
                       @else
                       <ul class="files_1">
@@ -116,14 +116,14 @@
                             {{$file['file_name']}}
                             @endif
                           </a>
-                          <span class="view_proj_filedesc">{{$file['size']}} Uploaded on {{new ExpressiveDate($file['uploaded_date'])}} by {{User::where('id',$file['uploaded_by'])->pluck('first_name')}} {{User::where('id',$file['uploaded_by'])->pluck('last_name')}}</span>
+                          <span class="view_proj_filedesc">{{$file['size']}} {{trans('92five.uploadedOn')}} {{new ExpressiveDate($file['uploaded_date'])}} {{trans('92five.by')}} {{User::where('id',$file['uploaded_by'])->pluck('first_name')}} {{User::where('id',$file['uploaded_by'])->pluck('last_name')}}</span>
                         </li>
                         @endforeach
                       </ul>
                       @endif
                     </div>
                     <div class="row-fluid span12 a_reamining">
-                      <h4>Collaborators:</h4>
+                      <h4>{{trans('92five.collaborators')}}:</h4>
                       @if($project['status'] == 'active')
                       <ul class="collaborators">
                         @elseif($project['status'] == 'completed')
@@ -137,10 +137,10 @@
                           </ul>
                         </div>
                         <div class="row-fluid span12 a_reamining">
-                          <h4>Client:</h4>
+                          <h4>{{trans('92five.client')}}:</h4>
                           <ul class="reamining_1">
                             @if($project['project_client'] == null or $project['project_client'] == '')
-                            <li>[ No Client has been specified ]</li>
+                            <li>[ {{trans('92five.noClientProjectText')}} ]</li>
                             @else
                             <li>{{$project['project_client']}}</li>
                             @endif
@@ -160,13 +160,13 @@
 <div id="myModal-item-delete" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Really ?</h3>
+    <h3 id="myModalLabel">{{trans('92five.really')}} ?</h3>
   </div>
   <div class="modal-body">
-    <div class="confirm-delete">Confirm delete the Proect?</div>
+    <div class="confirm-delete">{{trans('92five.confirmDeleteText')}} ?</div>
     <div class="confirm-button">
-      <form method="post" action="{{url('/dashboard/projects/delete')}}">  <input type="hidden" name="projectId" id="projectId" value="{{$project['id']}}"  > <button class="submit">Yes please.</a></button></form>
-    <button class="submit dontdelete" id="dontdelete" >No Thanks.</a></button></div>
+      <form method="post" action="{{url('/dashboard/projects/delete')}}">  <input type="hidden" name="projectId" id="projectId" value="{{$project['id']}}"  > <button class="submit">{{trans('92five.yesPlease')}}.</a></button></form>
+    <button class="submit dontdelete" id="dontdelete" >{{trans('92five.noThanks')}}.</a></button></div>
   </div>
 </div>
 <!-- End Delete Popup -->

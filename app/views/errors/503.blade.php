@@ -13,15 +13,13 @@
 
 <div class="error_main">
      <div class="error_detail_1"><img src="{{asset('assets/images/errorpages/logo12.png')}}" alt=""/></div>
-	<div class="error_detail_1">Oops !</div>
+	<div class="error_detail_1">{{trans('92five.oops')}}</div>
     <div class="error_detail_2">503</div>
     <div class="error_detail_3">
     	<div class="error_detail_3_inner">
-        	<p>Oops! That’s us. </p>
-            <p>Go get a cup of coffee or tea and<br>come back and reload</p>
-            <p>If you have finished your tea / coffee and <br>still this page comes up, please contact administrator.</p>
-
-            
+        	<p>{{trans('92five.errorText11')}} </p>
+            <p>{{trans('92five.errorText12')}}<br>{{trans('92five.errorText13')}}</p>
+            <p>{{trans('92five.errorText14')}} <br>{{trans('92five.errorText15')}}</p>
         </div>
     </div>
 </div>

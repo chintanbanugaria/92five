@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>92five App - Reset Password</title>
+<title>92five App - {{trans('92five.rp.boxtitle')}}</title>
 <!-- CSS -->
 {{ HTML::style('assets/css/auth/bootstrap.css') }}
 {{ HTML::style('assets/css/auth/bootstrap-responsive.css') }}
@@ -27,27 +27,27 @@
     </div>
     <div class="row-fluid">
       <div class="span12">
-        <div class="span12 reset_title">Reset Password</div>
+        <div class="span12 reset_title">{{trans('92five.rp.boxtitle')}}</div>
         <div class="reset_form">
           <div class="row-fluid">
-          	<div class="reset_text">Please enter your new password. Minimum 9 letters with combination of numbers and alphabets. <br/>Keep typing till the bar turns green !</div>
+          	<div class="reset_text">{{trans('92five.rp.boxtext')}}</div>
             <div class="field_main">
               <form method="post" id="newpassform" name="newpassform" action="updatepassword">
               <div class="row-fluid field_data">
-                <div class="span3 field_name">E-mail</div>
+                <div class="span3 field_name">{{trans('92five.rp.emailLabel')}}</div>
                 <div class="span5 field_name">
                     {{$email}}
                 </div>
               </div>
               <div class="row-fluid field_data">
-                <div class="span3 field_name">New Password</div>
+                <div class="span3 field_name">{{trans('92five.rp.newPasswordLabel')}}</div>
                 <div class="span5">
                   <input type="password" id="password" name="password" class="span12 field_input" placeholder="password">
                 </div>
                 <div class="span4 progress_data" id="progressbar"><div id="progress"></div></div>
               </div>
               <div class="row-fluid field_data">
-                <div class="span3 field_name">Confirm Password</div>
+                <div class="span3 field_name">{{trans('92five.rp.confirmPasswordLabel')}}</div>
                 <div class="span5">
                   <input type="password" id="confirmpass" name="confirmpass" class="span12 field_input" placeholder="confirm password">
                 </div>

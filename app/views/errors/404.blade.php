@@ -15,22 +15,22 @@
 
 <div class="error_main">
     <div class="error_detail_1"><img src="{{asset('assets/images/errorpages/logo12.png')}}" alt=""/></div>
-	<div class="error_detail_1">Oops !</div>
+	<div class="error_detail_1">{{trans('92five.oops')}}</div>
     <div class="error_detail_2">404</div>
     <div class="error_detail_3">
     	<div class="error_detail_3_inner">
-        	<p>The reason you are seeing this page could be...</p>
+        	<p>{{trans('92five.errorText5')}}</p>
             <ul>
-            	<li>Monday morning</li>
-                <li>Didn’t had coffee in the morning</li>
-                <li>Typo in the URL. Please check the URL</li>
-                <li>Page does not exists</li>
-                <li>Page has been removed</li>
+            	<li>{{trans('92five.errorText6')}}</li>
+                <li>{{trans('92five.errorText7')}}</li>
+                <li>{{trans('92five.errorText8')}}</li>
+                <li>{{trans('92five.errorText9')}}</li>
+                <li>{{trans('92five.errorText10')}}</li>
             </ul>
         </div>
         
     </div>
-    <div class="error_detail_4"><a href="{{url('/dashboard')}}">Go back to Dashboard ?</a></div>
+    <div class="error_detail_4"><a href="{{url('/dashboard')}}">{{trans('92five.errorText4')}}</a></div>
 </div>
 
 </section>

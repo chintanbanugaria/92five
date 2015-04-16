@@ -1,13 +1,13 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Add / Remove File</title>
+<title>92five app - {{trans('92five.addRemoveFiles')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard<a> / <a href="{{url('/dashboard',array($parentType.'s'))}}">{{$parentType}}</a> / Edit Files </h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}<a> / <a href="{{url('/dashboard',array($parentType.'s'))}}">{{$parentType}}</a> / {{trans('92five.editFiles')}}  </h2>
         <div class="row-fluid proj_create">
           <h3> {{$parentName}}  <div class="p-icon-main">
           </div></h3>
@@ -17,8 +17,8 @@
               <div class="span12 add-proj-form">
                 <fieldset>
                   <div class="control-group">
-                    <label>Add Files:
-                      <p class="help-block">(optional)</p>
+                    <label>{{trans('92five.addFiles')}}:
+                      <p class="help-block">({{trans('92five.optional')}})</p>
                     </label>
                     @if($parentType == 'Task')
                     <form id='dropzone' action='#'class="dropzone" method=post>
@@ -32,9 +32,9 @@
                       </form>
                     </div>
                     <div class="control-group">
-                      <label>  Attached Files:</label>
+                      <label>  {{trans('92five.filesAttached')}}:</label>
                       @if($files == null)
-                      <div class='no_file'>   [ No Files are attached with this project ]</div>
+                      <div class='no_file'>   [ {{trans('92five.noFilesAttached ')}} ]</div>
                       @else
                       <div class="row-fluid ">
                         @foreach($files as $file)
@@ -44,7 +44,7 @@
                             <span>{{$file['size']}}. Uploaded on {{new ExpressiveDate($file['uploaded_date'])}} by {{User::where('id',$file['uploaded_by'])->pluck('first_name')}} {{User::where('id',$file['uploaded_by'])->pluck('last_name')}}</span>
                           </div>
                           <div class="span3">
-                            <input type=button class="removefile" fileid={{$file['id']}} value="Remove" id="removefile">
+                            <input type=button class="removefile" fileid={{$file['id']}} value="{{trans('92five.remove ')}}" id="removefile">
                           </div>
                         </div>
                         @endforeach
@@ -54,9 +54,9 @@
                   </fieldset>
                   <div class="submit_button_main">
                     @if($parentType == 'Task')
-                    <a href="{{url('/dashboard/task/edited',array($project_id))}}" class="submit">Done</a>
+                    <a href="{{url('/dashboard/task/edited',array($project_id))}}" class="submit">{{trans('92five.done ')}}</a>
                     @elseif($parentType == 'Project')
-                    <a href="{{url('/dashboard/projects/edit/done',array($project_id))}}" class="submit">Done</a>
+                    <a href="{{url('/dashboard/projects/edit/done',array($project_id))}}" class="submit">{{trans('92five.done ')}}</a>
                     @endif
                   </div>
                 </div>

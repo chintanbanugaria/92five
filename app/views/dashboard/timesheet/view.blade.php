@@ -1,24 +1,24 @@
 @extends('dashboard.default')
 @section('head')
-<title>92five app - Timesheet</title>
+<title>92five app - {{trans('92five.Timesheet')}}</title>
 @stop
 @section('content')
 <div id="contentwrapper">
   <div class="main_content">
     <div class="row-fluid">
       <div class="span12 project_detail">
-        <h2><a href="{{url('/dashboard')}}">Dashboard</a> / Timesheet</h2>
+        <h2><a href="{{url('/dashboard')}}">{{trans('92five.Dashboard')}}</a> / {{trans('92five.Timesheet')}}</h2>
         <div class="add_project_main">
           <div class="timesheet-form">
-            <label>Custom Date View</label>
+            <label>{{trans('92five.customDateView')}}</label>
             <div class="input-append">
               <form class="form-vertical" action="{{url('/dashboard/timesheet/entry')}}" method='post' data-validate="parsley">
                 <input class="span7"  name="eventDate"id="eventDate" type="text" data-required="true" data-trigger="change">
-                <button class="submit timesheetcustom">View</button>
+                <button class="submit timesheetcustom">{{trans('92five.view')}}</button>
               </form>
             </div>
           </div>
-          <a data-toggle="modal" href="#myModal" class="add_project add-last">+ Add new Entry</a>
+          <a data-toggle="modal" href="#myModal" class="add_project add-last">+ {{trans('92five.addNewEntry')}}</a>
         </div>
         <!-- Time Sheet Detail -->
         <div class="timesheet-detail-main cal3">
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="timesheet-detail-title" id="timesheet-detail-title">Entries showing for {{ new ExpressiveDate($selectedDate)}}</div>
+        <div class="timesheet-detail-title" id="timesheet-detail-title">{{trans('92five.entriesShowingFor')}} {{ new ExpressiveDate($selectedDate)}}</div>
         <div class="row-fluid timesheet-detail" id="timesheet-detail">
           <!-- Box 1 -->
           @if($entries != null)
@@ -66,44 +66,44 @@
                 </ul>
               </div>
               <div class="row-fluid timesheet-detail-2">
-                <div class="span5">Worked on : </div>
+                <div class="span5">{{trans('92five.workedOn')}} : </div>
                 <div class="span7">{{$entry['title']}}</div>
               </div>
               <div class="timesheet-detail-3"></div>
-              <div class="workingtime">{{$entry['total_hours']}} hours {{$entry['total_minutes']}} minutes</div>
-              <div class="timesheet-time">from {{date('g:ia', strtotime($entry['start_time']))}} till {{date('g:ia', strtotime($entry['end_time']))}}</div>
+              <div class="workingtime">{{$entry['total_hours']}} {{trans('92five.hours')}} {{$entry['total_minutes']}} {{trans('92five.minutes')}}</div>
+              <div class="timesheet-time">{{trans('92five.from')}} {{date('g:ia', strtotime($entry['start_time']))}} {{trans('92five.till')}} {{date('g:ia', strtotime($entry['end_time']))}}</div>
               <div class="row-fluid timesheet-remark">
-                <div class="span5">Details:</div>
+                <div class="span5">{{trans('92five.details')}}:</div>
                 @if($entry['details'] == null)
-                <div class="span7">[No details]</div>
+                <div class="span7">[{{trans('92five.noDetails')}}]</div>
                 @else
                 <div class="span7">{{$entry['details']}}</div>
                 @endif
               </div>
               <div class="row-fluid timesheet-remark">
-                <div class="span5">Task:</div>
+                <div class="span5">{{trans('92five.task')}}:</div>
                 @if($entry['task'] == null)
-                <div class="span7">[No task]</div>
+                <div class="span7">[{{trans('92five.noTask')}}]</div>
                 @else
                 <div class="span7">{{$entry['task']['name']}}</div>
                 @endif
               </div>
               <div class="row-fluid timesheet-remark">
-                <div class="span5">Remark:</div>
+                <div class="span5">{{trans('92five.remarks')}}:</div>
                 @if($entry['details'] == null)
-                <div class="span7">[No remarks]</div>
+                <div class="span7">[{{trans('92five.noRemarks')}}]</div>
                 @else
                 <div class="span7">{{$entry['remarks']}}</div>
                 @endif
               </div>
-              <div class="timesheet-create">updated on {{$entry['updated_at']}}</div>
+              <div class="timesheet-create">{{trans('92five.updatedOn')}} {{$entry['updated_at']}}</div>
             </div>
           </div>
           @endforeach
           @else
           <div class="nodatadisplay_main">
             <div class="nodatadisplay">
-              <h2>Sorry. Couldn't find any entry for this day.</h2>
+              <h2>{{trans('92five.noEntryForDay')}}</h2>
               <div class="nodata_inner">
                 <div class="nodata_left"></div>
                 <div class="nodata_right"></div>
@@ -140,7 +140,7 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="passwordinput">Task:</label>
+                <label class="control-label" for="passwordinput">{{trans('92five.task')}}:</label>
                 <div class="controls">
                   <div class="task_select">
                     <select name="task" id="task" tabindex="1" style="width:270px;">
@@ -148,27 +148,27 @@
                       @foreach($tasks as $task)
                       <option  name="" value={{$task['id']}} title="">{{$task['name']}}</option>
                       @endforeach
-                      <option  name="" value="others" title="">Others</option>
+                      <option  name="" value="others" title="">{{trans('92five.others')}}</option>
                       @else
-                      <option  name="" value="others" title="">No tasks</option>
+                      <option  name="" value="others" title="">{{trans('92five.noTask')}}</option>
                       @endif
                     </select>
                   </div>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="details">Details:</label>
+                <label class="control-label" for="details">{{trans('92five.details')}}:</label>
                 <div class="controls">
                   <textarea  name="details" id="details" class="add-proj-form-t" placeholder="Details"></textarea>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="remarks">Remarks:</label>
+                <label class="control-label" for="remarks">{{trans('92five.remarks')}}:</label>
                 <div class="controls">
                   <textarea  name="remarks" id="remarks" class="add-proj-form-t" placeholder="Remarks"></textarea>
                 </div>
               </div>
-            <button class="submit pull-right">Submit</a></button>
+            <button class="submit pull-right">{{trans('92five.submit')}}</a></button>
           </fieldset>
         </div>
       </div>
@@ -231,13 +231,13 @@
 <div id="myModal-item-delete" class="modal cal_light_box hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Really ?</h3>
+    <h3 id="myModalLabel">{{trans('92five.really')}} ?</h3>
   </div>
   <div class="modal-body">
-    <div class="confirm-delete">Confirm delete the entry?</div>
+    <div class="confirm-delete">{{trans('92five.deleteEntry')}}?</div>
     <div class="confirm-button">
-      <form method="post" action="{{url('/dashboard/timesheet/entry/delete')}}">  <input type="hidden" name="entryId" id="entryId" value=  > <button class="submit">Yes please.</a></button></form>
-    <button class="submit dontdelete" id="dontdelete" >No Thanks.</a></button></div>
+      <form method="post" action="{{url('/dashboard/timesheet/entry/delete')}}">  <input type="hidden" name="entryId" id="entryId" value=  > <button class="submit">{{trans('92five.yesPlease')}}</a></button></form>
+    <button class="submit dontdelete" id="dontdelete" >{{trans('92five.noThanks')}}</a></button></div>
   </div>
 </div>
 <!-- End Delete Event Popup -->

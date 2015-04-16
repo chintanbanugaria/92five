@@ -22,79 +22,79 @@
                       <input id="endtime" name="endtime" type="text" class="span6 pull-right" value="{{date('g:iA', strtotime($event[0]['end_time']))}}" placeholder="Till" data-required="true" data-show-errors="false">
                     </div>
                     <div class="control-group">
-                      <label class="control-label" for="passwordinput">Category:</label>
+                      <label class="control-label" for="passwordinput">{{trans('92five.category')}}:</label>
                       <div class="controls">
                         <div class="task_select">
                           <select name="category" id="category" tabindex="1" style="width:270px;">
                             @if($event[0]['category'] == null)
-                            <option name="" value="" selected="selected" title="">Select Category</option>
-                            <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project" title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task" title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer" title="">Deliverer</option>
-                            <option  name="" value="Client" title="">Client</option>
-                            <option  name="" value="Others" title="">Others</option>
+                            <option name="" value="" selected="selected" title="">{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project" title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task" title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer" title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client" title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                             @elseif($event[0]['category'] == "Meeting - General")
-                            <option name="" value=""  title="">Select Category</option>
-                            <option  name="" value="Meeting - General" selected="selected" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project" title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task" title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer" title="">Deliverer</option>
-                            <option  name="" value="Client" title="">Client</option>
-                            <option  name="" value="Others" title="">Others</option>
+                            <option name="" value=""  title="">{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" selected="selected" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project" title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task" title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer" title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client" title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                             @elseif($event[0]['category'] == "Meeting - Project")
-                            <option name="" value=""  title="">Select Category</option>
-                            <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project" selected="selected"  title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task" title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer" title="">Deliverer</option>
-                            <option  name="" value="Client" title="">Client</option>
-                            <option  name="" value="Others" title="">Others</option>
+                            <option name="" value=""  title="">{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project" selected="selected"  title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task" title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer" title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client" title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                             @elseif($event[0]['category'] == "Meeting - Task")
-                            <option name="" value=""  title="">Select Category</option>
-                            <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project"   title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task" selected="selected" title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer" title="">Deliverer</option>
-                            <option  name="" value="Client" title="">Client</option>
-                            <option  name="" value="Others" title="">Others</option>
+                            <option name="" value=""  title="">{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project"   title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task" selected="selected" title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer" title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client" title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                             @elseif($event[0]['category'] == "Deliverer")
-                            <option name="" value=""  title="">Select Category</option>
-                            <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project"   title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task"  title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer" selected="selected" title="">Deliverer</option>
-                            <option  name="" value="Client" title="">Client</option>
-                            <option  name="" value="Others" title="">Others</option>
+                            <option name="" value=""  title="">{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project"   title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task"  title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer" selected="selected" title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client" title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                             @elseif($event[0]['category'] == "Client")
-                            <option name="" value=""  title="">Select Category</option>
-                            <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project"   title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task"  title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer"  title="">Deliverer</option>
-                            <option  name="" value="Client" selected="selected" title="">Client</option>
-                            <option  name="" value="Others" title="">Others</option>
+                            <option name="" value=""  title="">{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project"   title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task"  title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer"  title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client" selected="selected" title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" title="">{{trans('92five.others')}}</option>
                             @elseif($event[0]['category'] == "Others")
-                            <option name="" value=""  title="">Select Category</option>
-                            <option  name="" value="Meeting - General" title="">Meeting - General</option>
-                            <option  name="" value="Meeting - Project"   title="">Meeting - Project</option>
-                            <option  name="" value="Meeting - Task"  title="">Meeting - Task</option>
-                            <option  name="" value="Deliverer"  title="">Deliverer</option>
-                            <option  name="" value="Client"  title="">Client</option>
-                            <option  name="" value="Others" selected="selected" title="">Others</option>
+                            <option name="" value=""  title="">S{{trans('92five.selectCategory')}}</option>
+                            <option  name="" value="Meeting - General" title="">{{trans('92five.eventsCategory1')}}</option>
+                            <option  name="" value="Meeting - Project"   title="">{{trans('92five.eventsCategory2')}}</option>
+                            <option  name="" value="Meeting - Task"  title="">{{trans('92five.eventsCategory3')}}</option>
+                            <option  name="" value="Deliverer"  title="">{{trans('92five.eventsCategory4')}}</option>
+                            <option  name="" value="Client"  title="">{{trans('92five.client')}}</option>
+                            <option  name="" value="Others" selected="selected" title="">{{trans('92five.others')}}</option>
                             @endif
                           </select>
                         </div>
                       </div>
                     </div>
                     <div class="control-group">
-                      <label class="control-label" for="note">Note:</label>
+                      <label class="control-label" for="note">{{trans('92five.note')}}:</label>
                       <div class="controls">
                         <textarea  name="note" id="note" class="add-proj-form-t" placeholder="Note">{{$event[0]['notes']}}</textarea>
                       </div>
                     </div>
                     <div class="control-group">
-                      <label class="control-label" for="location">Location:</label>
+                      <label class="control-label" for="location">{{trans('92five.location')}}:</label>
                       <div class="controls">
                         <input type="text" value="{{$event[0]['location']}}" placeholder="Location" name="location" id="location">
                       </div>
@@ -104,7 +104,7 @@
                 <!-- Right Part -->
                 <div class="span5 add_proj_right add-proj-form">
                   <div class="control-group col">
-                    <label class="control-label" for="passwordinput">People:<span class="tooltipster-icon" title="To add the people start typing the name and select the appropriate user from the list. Please note that only those name will appear in list who are registered in the app. Please add your name as well if you are one of them.">(?)</span></label>
+                    <label class="control-label" for="passwordinput">{{trans('92five.people')}}:<span class="tooltipster-icon" title="To add the people start typing the name and select the appropriate user from the list. Please note that only those name will appear in list who are registered in the app. Please add your name as well if you are one of them.">(?)</span></label>
                     <div class="controls">
                       <div class="span12 flatui-detail">
                         <input id="plugin" name="passwordinput" type="text" placeholder="Add Name">
@@ -121,7 +121,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="submit_button_main"><button class="submit">Update</a></button></div>
+                <div class="submit_button_main"><button class="submit">{{trans('92five.update')}}</a></button></div>
               </div>
             </div>
             <input type="hidden" id="eventid" name="eventid" value="{{$event[0]['id']}}" />
