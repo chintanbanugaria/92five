@@ -1160,7 +1160,7 @@ ul.task_list li a:hover{ text-decoration:none; color:#000000;}
    cursor: default;
     /* Hiding */
     max-height: 0;
-    overflow: hidden;
+    overflow: scroll;
 }
 .wrapper-demo{
 	float: left;
