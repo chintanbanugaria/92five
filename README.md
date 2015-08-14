@@ -1,3 +1,6 @@
+## Version 2 is available at [92fiveapp.com](http://92fiveapp.com)
+
+
 Before proceeding to installation please make sure that your server meets the minimum server requirements:
 
 ## Minimum Server Requirements ##
