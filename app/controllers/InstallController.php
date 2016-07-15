@@ -30,18 +30,20 @@ class InstallController extends BaseController{
 	}
 	public function postDatabase()
 	{
-		$data = Input::all();
-		$newDbConfig = new NewConfig;
-		$newDbConfig->toFile(app_path().'/config/database.php', [
-              'connections.mysql.host' =>$data['host'],
-              'connections.mysql.database' =>$data['database'],
-              'connections.mysql.username' =>$data['username'],
-              'connections.mysql.password' =>$data['password']
-            ]);
-		
-		DB::unprepared(file_get_contents(public_path().'/92fiveapp.sql'));
+        $data = Input::all();
+        $dbConfigFilePath = app_path().'/config/database.php';
+        $dbConfigArray = [
+            'connections.mysql.host' => $data['host'],
+            'connections.mysql.database' => $data['database'],
+            'connections.mysql.username' => $data['username'],
+            'connections.mysql.password' => $data['password']
+        ];
+        $newDbConfig = new NewConfig;
+        $newDbConfig->toFile($dbConfigFilePath, $dbConfigArray);
 
-		return View::make('install.timezone');
+        DB::unprepared(file_get_contents(public_path().'/92fiveapp.sql'));
+
+        return View::make('install.timezone');
 	}
 	public function postTimeZone()
 	{
@@ -90,6 +92,6 @@ class InstallController extends BaseController{
         {
             Log::error('Something Went Wrong in Install Controller Repository - addUserWithDetails():'. $e->getMessage());
             throw new Exception ('Something Went Wrong in Install Controller Repository - addUserWithDetails()');
-        }  
+        }
 	}
 }
