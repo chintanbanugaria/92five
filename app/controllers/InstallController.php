@@ -41,7 +41,8 @@ class InstallController extends BaseController{
         $newDbConfig = new NewConfig;
         $newDbConfig->toFile($dbConfigFilePath, $dbConfigArray);
 
-        DB::unprepared(file_get_contents(public_path().'/92fiveapp.sql'));
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
 
         return View::make('install.timezone');
 	}
