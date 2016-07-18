@@ -16,4 +16,9 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     {
         $this->assertTrue(true);
     }
+
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 }
