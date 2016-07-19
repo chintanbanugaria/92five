@@ -43,6 +43,6 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     public function tearDown()
     {
         parent::TearDown();
-        Mockery::close();
+        \Mockery::close();
     }
 }
