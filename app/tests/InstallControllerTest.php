@@ -53,9 +53,8 @@ class InstallControllerTest extends \TestCase
         ];
 
         //Mock it... yeah, mock it..
-        DB::shouldReceive('unprepared')->withAnyArgs()->andReturnNull()->once();
-        Artisan::shouldReceive('migrate')->withAnyArgs()->andReturnNull()->once();
-        Artisan::shouldReceive('db:seed')->withAnyArgs()->andReturnNull()->once();
+        Artisan::shouldReceive('call')->withArgs(['migrate'])->andReturnNull()->once();
+        Artisan::shouldReceive('call')->withArgs(['db:seed'])->andReturnNull()->once();
 
         $externalMock = \Mockery::mock('overload:October\Rain\Config\Rewrite');
         $externalMock->shouldReceive('toFile')->withArgs([$expectedPath, $expectedFeed])->andReturnNull()->once();
