@@ -383,6 +383,167 @@ class UserRepositoryTest extends \TestCase
         $this->assertEquals($bob->last_name, $result['mainData']['last_name']);
     }
 
+    public function testAddUserDetailsWithBothNamesBlankShouldNotWork()
+    {
+        $oldQuickNoteCount = \Quicknote::all()->count();
+        $oldUserProfileCount = \UserProfile::all()->count();
+
+        $repo = new UserRepository();
+        $data = array(
+            'first_name' => '',
+            'last_name' => '',
+            'email' => 'alice@example.com',
+            'password' => 'bruceschneier',
+            'role' => 'manager'
+        );
+
+        $result = $repo->addUserWithDetails($data);
+        $this->assertFalse($result);
+
+        $newQuickNoteCount = \Quicknote::all()->count();
+        $newUserProfileCount = \UserProfile::all()->count();
+        $this->assertEquals($oldQuickNoteCount, $newQuickNoteCount);
+        $this->assertEquals($oldUserProfileCount, $newUserProfileCount);
+    }
+
+    public function testAddUserDetailsWithOnlyFirstNameShouldWork()
+    {
+        $oldQuickNoteCount = \Quicknote::all()->count();
+        $oldUserProfileCount = \UserProfile::all()->count();
+
+        $repo = new UserRepository();
+        $data = array(
+            'first_name' => 'Alice',
+            'last_name' => '',
+            'email' => 'alice@example.com',
+            'password' => 'bruceschneier',
+            'role' => 'manager'
+        );
+
+        $result = $repo->addUserWithDetails($data);
+        $this->assertTrue($result);
+        $user = \User::where('email','=',$data['email'])->first();
+
+        $this->assertEquals($data['first_name'], $user->first_name);
+        $this->assertEquals($data['last_name'], $user->last_name);
+        $this->assertEquals(true, $user->activated);
+
+        $newQuickNoteCount = \Quicknote::all()->count();
+        $newUserProfileCount = \UserProfile::all()->count();
+        $this->assertEquals($oldQuickNoteCount + 1, $newQuickNoteCount);
+        $this->assertEquals($oldUserProfileCount +1, $newUserProfileCount);
+    }
+
+    public function testAddUserDetailsWithOnlyLastNameShouldWork()
+    {
+        $oldQuickNoteCount = \Quicknote::all()->count();
+        $oldUserProfileCount = \UserProfile::all()->count();
+
+        $repo = new UserRepository();
+        $data = array(
+            'first_name' => '',
+            'last_name' => 'Example',
+            'email' => 'example@example.com',
+            'password' => 'bruceschneier',
+            'role' => 'manager'
+        );
+
+        $result = $repo->addUserWithDetails($data);
+        $this->assertTrue($result);
+        $user = \User::where('email','=',$data['email'])->first();
+
+        $this->assertEquals($data['first_name'], $user->first_name);
+        $this->assertEquals($data['last_name'], $user->last_name);
+        $this->assertEquals(true, $user->activated);
+
+        $newQuickNoteCount = \Quicknote::all()->count();
+        $newUserProfileCount = \UserProfile::all()->count();
+        $this->assertEquals($oldQuickNoteCount + 1, $newQuickNoteCount);
+        $this->assertEquals($oldUserProfileCount +1, $newUserProfileCount);
+    }
+
+    public function testUpdateDetailsWithBothNamesBlankShouldNotWork()
+    {
+        $bob = $this->generateManagerUser();
+        $bobId = $bob->id;
+        $bobFirstName = $bob->first_name;
+        $bobLastName = $bob->last_name;
+        unset($bob);
+        $repo = new UserRepository();
+
+        $data = array (
+            'first_name' => '',
+            'last_name' => '',
+            'googleplus' => 'mistadobalina',
+            'facebook' => 'RobertDobalina',
+            'twitter' => 'mistadobalina',
+            'about' => 'about',
+            'phone' => '',
+            'website' => ''
+        );
+
+        $result = $repo->updateMyDetails($bobId, $data);
+        $this->assertEquals('error', $result);
+        $bob = \User::find($bobId);
+        $this->assertEquals($bobFirstName, $bob->first_name);
+        $this->assertEquals($bobLastName, $bob->last_name);
+    }
+
+    public function testUpdateDetailsWithOnlyFirstNameShouldWork()
+    {
+        $bob = $this->generateManagerUser();
+        $bobId = $bob->id;
+        $bobProfile = new \UserProfile;
+        $bobProfile->save();
+        unset($bob);
+        $repo = new UserRepository();
+
+        $data = array (
+            'first_name' => 'Robert',
+            'last_name' => '',
+            'googleplus' => 'mistadobalina',
+            'facebook' => 'RobertDobalina',
+            'twitter' => 'mistadobalina',
+            'about' => 'about',
+            'phone' => '',
+            'website' => ''
+        );
+
+        $result = $repo->updateMyDetails($bobId, $data);
+        $this->assertEquals('success', $result);
+        $bob = \User::find($bobId);
+        $this->assertEquals("Robert", $bob->first_name);
+        $this->assertEquals("", $bob->last_name);
+    }
+
+    public function testUpdateDetailsWithOnlyLastNameShouldWork()
+    {
+        $bob = $this->generateManagerUser();
+        $bobId = $bob->id;
+        $bobProfile = new \UserProfile;
+        $bobProfile->save();
+        unset($bob);
+
+        $repo = new UserRepository();
+
+        $data = array (
+            'first_name' => '',
+            'last_name' => 'Dobalina',
+            'googleplus' => 'mistadobalina',
+            'facebook' => 'RobertDobalina',
+            'twitter' => 'mistadobalina',
+            'about' => 'about',
+            'phone' => '',
+            'website' => ''
+        );
+
+        $result = $repo->updateMyDetails($bobId, $data);
+        $this->assertEquals('success', $result);
+        $bob = \User::find($bobId);
+        $this->assertEquals("", $bob->first_name);
+        $this->assertEquals("Dobalina", $bob->last_name);
+    }
+
     private function generateAdminUser()
     {
         // dig out group to assign
