@@ -81,26 +81,20 @@ class UserRepository implements UserInterface{
 	}
 	public function getAllUsersData()
     {
-        try{
+        try {
             $users = array();
             $tempUsers = \User::all()->toArray();
-            foreach($tempUsers as $user)
-            {
+            foreach($tempUsers as $user) {
                 $banned = false;
                 $suspended  = false;
                 $loginAttempt = 0;
                 $usersThrottle = \Throttle::where('user_id',$user['id'])->get()->toArray();
-                if(sizeof($usersThrottle) != 0)
-                {
-                    foreach($usersThrottle as $userThrottle)
-                    {
-
-                        if($userThrottle['banned'] == true)
-                        {
+                if(sizeof($usersThrottle) != 0) {
+                    foreach($usersThrottle as $userThrottle) {
+                        if($userThrottle['banned'] == true) {
                             $banned = true;
                         }
-                        if($userThrottle['suspended'] == true)
-                        {
+                        if($userThrottle['suspended'] == true) {
                             $suspended = true;
                         }
                         $loginAttempt = $loginAttempt + $userThrottle['attempts'];
@@ -110,21 +104,16 @@ class UserRepository implements UserInterface{
                     $user['suspended'] = $suspended;
                     $user['loginAttempt'] = $loginAttempt;
 
-                }
-                else
-                {
+                } else {
                     $user['banned'] = false;
                     $user['suspended'] = false;
                     $user['loginAttempt'] = 0;
                 }
                 $groupUser = \Sentry::findUserById($user['id']);
                 $groups = $groupUser->getGroups()->toArray();
-                if(sizeof($groups)!=0)
-                {
+                if(sizeof($groups) != 0) {
                     $user['role'] =$groups[0]['name'];
-                }
-                else
-                {
+                } else {
                     $user['role'] = '';
                 }
                 $users [] = $user;
@@ -167,9 +156,7 @@ class UserRepository implements UserInterface{
 
             $imageResult = \App::make('AuthController')->{'createUserImage'}($user->id, $firstLetter, $lastLetter);
             return 'success';
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             \Log::error('Something Went Wrong in User Repository - updateMyDetails():'. $e->getMessage());
             return 'error';
         }
@@ -383,12 +370,10 @@ class UserRepository implements UserInterface{
             return false;
         }
         $checkEmail = \User::where('email',$data['email'])->get()->toArray();
-        if(sizeof($checkEmail) != 0)
-        {
+        if(sizeof($checkEmail) != 0) {
             throw new \Exception('User with Email Already Exists');
         }
-        try
-        {
+        try {
             $firstLen = strlen($data['first_name']);
             $lastLen = strlen($data['last_name']);
             if($firstLen == 0 && $lastLen == 0) {
@@ -415,9 +400,7 @@ class UserRepository implements UserInterface{
 
             $imageResult = \App::make('AuthController')->{'createUserImage'}($user->id, $firstLetter, $lastLetter);
             return true;
-        }
-        catch(\Exception $e)
-        {
+        } catch(\Exception $e) {
             \Log::error('Something Went Wrong in User Repository - addUserWithDetails():'. $e->getMessage());
             return false;
         }
