@@ -325,74 +325,75 @@ class ProjectRepository implements ProjectInterface{
 	/**
 	*  Update the project
 	*/
-	public function updateProject($data,$userId)
-	{
+    public function updateProject($data,$userId)
+    {
+        if(is_integer($userId)) {
+            $userId = strval($userId);
+        }
 
-		//Find the project and update the fileds
-		$project = Project::find($data['projectid']);
-		$project->project_name = $data['project_name'];
-		$project->description = $data['description'];
-		$project->status = $data['status'];
+        //Find the project and update the fileds
+        $project = Project::find($data['projectid']);
+        $project->project_name = $data['project_name'];
+        $project->description = $data['description'];
+        $project->status = $data['status'];
         $tempStartDate =\DateTime::createFromFormat('j F, Y',$data['startdate']);
         $tempEndDate = \DateTime::createFromFormat('j F, Y',$data['enddate']);
         $project->start_date = $tempStartDate->format('Y-m-d');
         $project->end_date = $tempEndDate->format('Y-m-d');
-		$project->project_client = $data['project_client'];
-		$project->note = $data['note'];
-		//If the project is marked completed fill the respective fields of database
-		if($data['status'] == 'completed')
-		{
-			$project->completed_on = date_create();
-			$project->mark_completed_by = $userId;
-			$project->updated_by = $userId;
-			$project->save();
-		}
-		
-		else
-		{
+        $project->project_client = $data['project_client'];
+        $project->note = $data['note'];
+        //If the project is marked completed fill the respective fields of database
+        if($data['status'] == 'completed')
+        {
+            $project->completed_on = date_create();
+            $project->mark_completed_by = $userId;
+            $project->updated_by = $userId;
+            $project->save();
+        }
+        else
+        {
+            $project->updated_by = $userId;
+            $project->save();
+        }
 
-			$project->updated_by = $userId;
-			$project->save();
+        //Remove all the Collaborators of the project
+        $prjtUsrs = ProjectUsers::where('project_id',$data['projectid'])->forceDelete();
+        //New list of emails of collaborators
+        $email  = $data['tagsinput'];
+        $emails =  preg_split("/[\s,]+/", $email);
+        //Get the user Ids of the new collaborators
+        $userIdList = \User::whereIn('email',$emails)->lists('id');
+        //Add  collaborators
+        foreach ($userIdList as $usrId)
+        {
+            $projectcollabs = new \Projectcollabs;
+            $projectcollabs->user_id = $usrId;
+            $projectcollabs->project_id = $data['projectid'];
+            $projectcollabs->updated_by = $userId;
+            $projectcollabs->save();
+        }
 
-		}
-		//Remove all the Collaborators of the project
-		$prjtUsrs = ProjectUsers::where('project_id',$data['projectid'])->forceDelete();
-		//New list of emails of collaborators 
-		$email  = $data['tagsinput'];
-		$emails =  preg_split("/[\s,]+/", $email);
-		//Get the user Ids of the new collaborators
-		$userIdList = \User::whereIn('email',$emails)->lists('id');
-		//Add  collaborators
-		foreach ($userIdList as $usrId) 
-		{
-			$projectcollabs = new \Projectcollabs;
-			$projectcollabs->user_id = $usrId;
-			$projectcollabs->project_id = $data['projectid'];
-			$projectcollabs->save();	
-								
-		}
+        //Get the project name and Id for the next view
+        $projectName = $data['project_name'];
+        $projectId = $data['projectid'];
+        $files;
+        $filesId = FileReference::where('parent_id',$projectId)->where('parent_type','project')->lists('attachment_id');
+        if($filesId == null)
+        {
+            $files = null;
+        }
+        else
+        {
+            $files = Files::whereIn('id',$filesId)->get(array('file_name','id','key','size','uploaded_date','uploaded_by'))->toArray();
 
-		//Get the project name and Id for the next view
-		$projectName = $data['project_name'];
-		$projectId = $data['projectid'];
-		$files;
-		$filesId = FileReference::where('parent_id',$projectId)->where('parent_type','project')->lists('attachment_id');
-		if($filesId == null)
-		{
-			$files = null;
-		}
-		else
-		{	
-			$files = Files::whereIn('id',$filesId)->get(array('file_name','id','key','size','uploaded_date','uploaded_by'))->toArray();
-			
-		}
-		//Wrap up data
-		$returnData['projectName'] = $projectName;
-		$returnData['projectId'] = $projectId;
-		$returnData['files'] = $files;
-		//Shoot back
-		return $returnData;	
-	}
+        }
+        //Wrap up data
+        $returnData['projectName'] = $projectName;
+        $returnData['projectId'] = $projectId;
+        $returnData['files'] = $files;
+        //Shoot back
+        return $returnData;
+    }
 	/**
 	* Delete project
 	*/
