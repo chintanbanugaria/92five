@@ -384,41 +384,32 @@ class ProjectRepository implements ProjectInterface{
 	* Delete project
 	*/
 	public function deleteProject($projectId,$userId)
-	{
-		//Get the task Ids of the project
-		$tasks = \Task::where('project_id',$projectId)->lists('id');
-		if($tasks == null)
-		{
-			//No Tasks. Delete data and users from the database
-			$projectUsers = ProjectUsers::where('project_id',$projectId)->delete();
-			$project = Project::find($projectId);
-			$project->deleted_by = $userId;
-			$project->save();
-			$project->delete();
-			return true;
-		}
-		else
-		{
-			//Delete all users and data for all tasks of the project. Also delete all the users and data for the project
-			$projectUsers = ProjectUsers::where('project_id',$projectId)->delete();
-			$taskUsers = TaskUser::whereIn('task_id',$tasks)->delete();
-			//$tasks = Task::where('project_id',$projectId)->delete();
-			foreach($tasks as $taskId)
-			{
-				$task = \Task::find($taskId);
-				$task->deleted_by = $userId;
-				$task->save();
-				$task->delete();
-			}
-
-			$project = Project::find($projectId);
-			$project->deleted_by = $userId;
-			$project->save();
-			$project->delete();
-			return true;
-		}
-
-	}
+    {
+        $project = Project::find($projectId);
+        if(null == $project) {
+            return false;
+        }
+        //Get the task Ids of the project
+        $tasks = \Task::where('project_id',$projectId)->lists('id');
+        if(null != $tasks) {
+            //Delete all users and data for all tasks of the project. Also delete all the users and data for the project
+            $projectUsers = ProjectUsers::where('project_id', $projectId)->delete();
+            $taskUsers = TaskUser::whereIn('task_id', $tasks)->delete();
+            foreach ($tasks as $taskId) {
+                $task = \Task::find($taskId);
+                $task->deleted_by = $userId;
+                $task->save();
+                $task->delete();
+            }
+        } else {
+            //No Tasks. Delete data and users from the database
+            $projectUsers = ProjectUsers::where('project_id', $projectId)->delete();
+        }
+        $project->deleted_by = $userId;
+        $project->save();
+        $project->delete();
+        return true;
+    }
 
     /*
      * Handle string input for start/end date generation

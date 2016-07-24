@@ -149,6 +149,8 @@ class ProjectRepositoryTest extends \TestCase
 
         $result = $repo->addProject($data, $bob->id);
         $project = \Project::where('project_name',$data['project_name'])->first();
+        $this->assertEquals(null, $project->start_date);
+        $this->assertEquals(null, $project->end_date);
 
         $data = array (
             'projectid' => $project->id,
@@ -234,6 +236,10 @@ class ProjectRepositoryTest extends \TestCase
         $repo = new ProjectRepository();
         $result = $repo->processDateString('20 July, 2016 at 12:00 am');
         $this->assertEquals('2016-07-20', $result);
+        $result = $repo->processDateString('20 July, 2018 at 12:00 am');
+        $this->assertEquals('2018-07-20', $result);
+        $result = $repo->processDateString("20 July, 2018 at 12:00 am");
+        $this->assertEquals('2018-07-20', $result);
     }
 
     public function testProcessDateStringKnownBadData()
@@ -248,5 +254,71 @@ class ProjectRepositoryTest extends \TestCase
         $repo = new ProjectRepository();
         $result = $repo->processDateString(null);
         $this->assertEquals(null, $result);
+    }
+    
+    public function testDeleteNullProject()
+    {
+        // dig out group to assign
+        $group = Sentry::findGroupByName('admin');
+
+        // set up sample users
+        $aliceCredentials = array(
+            'first_name' => 'Alice',
+            'last_name' => 'Example',
+            'email' => 'alice@example.com',
+            'password' => 'bruceschneier',
+            'activated' => true,
+        );
+
+        $alice = Sentry::createUser($aliceCredentials);
+        $alice->addGroup($group);
+
+        $repo = new ProjectRepository();
+        
+        $result = $repo->deleteProject(-1, $alice->id);
+        $this->assertFalse($result);
+    }
+
+    public function testDeleteProjectNoTasks()
+    {
+        // dig out group to assign
+        $group = Sentry::findGroupByName('admin');
+
+        // set up sample users
+        $aliceCredentials = array(
+            'first_name' => 'Alice',
+            'last_name' => 'Example',
+            'email' => 'alice@example.com',
+            'password' => 'bruceschneier',
+            'activated' => true,
+        );
+
+        $alice = Sentry::createUser($aliceCredentials);
+        $alice->addGroup($group);
+
+        $data = array (
+            'project_name' => 'Das Testprojekt',
+            'description' => '',
+            'note' => '',
+            'startdate' => "20 July, 2016",
+            'enddate' => "20 July, 2017",
+            'project_client' => 'Test',
+            'tagsinput' => 'alice@example.com'
+        );
+
+        $repo = new ProjectRepository();
+        $result = $repo->addProject($data, $alice->id);
+
+        $project = \Project::where('project_name',$data['project_name'])->first();
+        $projectId = $project->id;
+
+        $result = $repo->deleteProject($projectId, $alice->id);
+
+        $nuProject = \Project::find($projectId);
+        $this->assertNull($nuProject);
+        unset($nuProject);
+        // now dig up withTrashed and verify deleted_by is correct
+        $nuProject = \Project::withTrashed()->find($projectId);
+        $this->assertEquals($alice->id, $nuProject->deleted_by);
     }
 }
