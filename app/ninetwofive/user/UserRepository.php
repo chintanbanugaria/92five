@@ -366,6 +366,9 @@ class UserRepository implements UserInterface{
     }
     public function addUserWithDetails($data)
     {
+        if(!isset($data) || !isset($data['email'])) {
+            return false;
+        }
         $checkEmail = \User::where('email',$data['email'])->get()->toArray();
         if(sizeof($checkEmail) != 0)
         {
@@ -373,6 +376,7 @@ class UserRepository implements UserInterface{
         }
         try
         {
+
             $user = \Sentry:: createUser(array(
                 'email'=> $data['email'],
                 'password'=>$data['password'],
@@ -380,6 +384,7 @@ class UserRepository implements UserInterface{
                 'first_name'=>$data['first_name'],
                 'last_name'=>$data['last_name'],
                 ));
+
             $group = \Sentry::findGroupByName($data['role']);
             $user->addGroup($group);
             $quicknote = new \Quicknote;
