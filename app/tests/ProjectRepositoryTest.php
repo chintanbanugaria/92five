@@ -221,4 +221,32 @@ class ProjectRepositoryTest extends \TestCase
 
         $result = $repo->updateProject($data, $alice->id);
     }
+
+    public function testProcessDateStringKnownGoodData()
+    {
+        $repo = new ProjectRepository();
+        $result = $repo->processDateString('20 July, 2016');
+        $this->assertEquals('2016-07-20', $result);
+    }
+
+    public function testProcessDateStringShouldBeGoodData()
+    {
+        $repo = new ProjectRepository();
+        $result = $repo->processDateString('20 July, 2016 at 12:00 am');
+        $this->assertEquals('2016-07-20', $result);
+    }
+
+    public function testProcessDateStringKnownBadData()
+    {
+        $repo = new ProjectRepository();
+        $result = $repo->processDateString('2016-07-20');
+        $this->assertEquals(null, $result);
+    }
+
+    public function testProcessDateStringNullData()
+    {
+        $repo = new ProjectRepository();
+        $result = $repo->processDateString(null);
+        $this->assertEquals(null, $result);
+    }
 }

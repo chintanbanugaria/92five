@@ -158,44 +158,40 @@ class ProjectRepository implements ProjectInterface{
 	*/
 	public function addProject($data,$createdUserId)
 	{
-			//Seperate email list of collaborator and get corresponding user Ids
-			$email  = $data['tagsinput'];
-			$emails =  preg_split("/[\s,]+/", $email);
-			$usersIdList = \User::whereIn('email',$emails)->lists('id');
-			
-			//Hit the database with new data
-			$project = new Project;
-			$project->project_name = $data['project_name'];
-			$project->description = $data['description'];
-			$project->note = $data['note'];
-            $tempStartDate =\DateTime::createFromFormat('j F, Y',$data['startdate']);
-            $tempEndDate = \DateTime::createFromFormat('j F, Y',$data['enddate']);
-                        $project->start_date = (false !== $tempStartDate) ? $tempStartDate->format('Y-m-d') : null;
-                        $project->end_date = (false !== $tempEndDate) ? $tempEndDate->format('Y-m-d') : null;
-			$project->status = 'active';
-			$project->project_client = $data['project_client'];
-			$project->folder = str_random(8);
-			$project->updated_by = $createdUserId;
-			$project->save();
-			//Get the newly generated ProjectId
-			$projectId = $project->id;
+        //Seperate email list of collaborator and get corresponding user Ids
+        $email  = $data['tagsinput'];
+        $emails =  preg_split("/[\s,]+/", $email);
+        $usersIdList = \User::whereIn('email',$emails)->lists('id');
 
-			//Add the collaborators
-			foreach ($usersIdList as $userId) 
-			{
-				$projectcollabs = new ProjectUsers;
-				$projectcollabs->user_id = $userId;
-                $projectcollabs->updated_by = $userId;
-				$projectcollabs->project_id = $projectId;
-				$projectcollabs->save();	
-								
-			}
-			//Prepare the data for the Add file view
-			$returnData['project_name'] = $data['project_name'];
-			$returnData['projectId'] = $projectId;
-			//Send it back
-			return $returnData;	
-	}
+        //Hit the database with new data
+        $project = new Project;
+        $project->project_name = $data['project_name'];
+        $project->description = $data['description'];
+        $project->note = $data['note'];
+        $project->start_date = $this->processDateString($data['startdate']);
+        $project->end_date = $this->processDateString($data['enddate']);
+        $project->status = 'active';
+        $project->project_client = $data['project_client'];
+        $project->folder = str_random(8);
+        $project->updated_by = $createdUserId;
+        $project->save();
+        //Get the newly generated ProjectId
+        $projectId = $project->id;
+
+        //Add the collaborators
+        foreach ($usersIdList as $userId) {
+            $projectcollabs = new ProjectUsers;
+            $projectcollabs->user_id = $userId;
+            $projectcollabs->updated_by = $userId;
+            $projectcollabs->project_id = $projectId;
+            $projectcollabs->save();
+        }
+        //Prepare the data for the Add file view
+        $returnData['project_name'] = $data['project_name'];
+        $returnData['projectId'] = $projectId;
+        //Send it back
+        return $returnData;
+    }
 	/**
 	* Check permission
 	*/
@@ -336,22 +332,17 @@ class ProjectRepository implements ProjectInterface{
         $project->project_name = $data['project_name'];
         $project->description = $data['description'];
         $project->status = $data['status'];
-        $tempStartDate =\DateTime::createFromFormat('j F, Y',$data['startdate']);
-        $tempEndDate = \DateTime::createFromFormat('j F, Y',$data['enddate']);
-        $project->start_date = $tempStartDate->format('Y-m-d');
-        $project->end_date = $tempEndDate->format('Y-m-d');
+        $project->start_date = $this->processDateString($data['startdate']);
+        $project->end_date = $this->processDateString($data['enddate']);
         $project->project_client = $data['project_client'];
         $project->note = $data['note'];
         //If the project is marked completed fill the respective fields of database
-        if($data['status'] == 'completed')
-        {
+        if($data['status'] == 'completed')         {
             $project->completed_on = date_create();
             $project->mark_completed_by = $userId;
             $project->updated_by = $userId;
             $project->save();
-        }
-        else
-        {
+        } else {
             $project->updated_by = $userId;
             $project->save();
         }
@@ -364,8 +355,7 @@ class ProjectRepository implements ProjectInterface{
         //Get the user Ids of the new collaborators
         $userIdList = \User::whereIn('email',$emails)->lists('id');
         //Add  collaborators
-        foreach ($userIdList as $usrId)
-        {
+        foreach ($userIdList as $usrId) {
             $projectcollabs = new \Projectcollabs;
             $projectcollabs->user_id = $usrId;
             $projectcollabs->project_id = $data['projectid'];
@@ -378,14 +368,10 @@ class ProjectRepository implements ProjectInterface{
         $projectId = $data['projectid'];
         $files;
         $filesId = FileReference::where('parent_id',$projectId)->where('parent_type','project')->lists('attachment_id');
-        if($filesId == null)
-        {
+        if($filesId == null) {
             $files = null;
-        }
-        else
-        {
+        } else {
             $files = Files::whereIn('id',$filesId)->get(array('file_name','id','key','size','uploaded_date','uploaded_by'))->toArray();
-
         }
         //Wrap up data
         $returnData['projectName'] = $projectName;
@@ -433,4 +419,19 @@ class ProjectRepository implements ProjectInterface{
 		}
 
 	}
+
+    /*
+     * Handle string input for start/end date generation
+     */
+    public function processDateString($dateString)
+    {
+        if(!isset($dateString)) {
+            return null;
+        }
+        $bits = explode('at', $dateString);
+        $firstBit = trim($bits[0]);
+        $tempDate = \DateTime::createFromFormat('j F, Y', $firstBit);
+        $result = (false !== $tempDate) ? $tempDate->format('Y-m-d') : null;
+        return $result;
+    }
 }
