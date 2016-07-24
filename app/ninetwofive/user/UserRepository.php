@@ -15,22 +15,25 @@ class UserRepository implements UserInterface{
 	{
         try
         {
-    		$user['mainData'] = User::find($userId)->toArray();
-    		$tempprofile = UserProfile::find($userId);
-    		if($tempprofile == null)
-    		{
-    				$user['profile']['about'] = null;
-    				$user['profile']['website'] = null;
-    				$user['profile']['phone'] = null;
-    				$user['profile']['facebook'] = null;
-    				$user['profile']['twitter'] = null;
-    				$user['profile']['googleplus'] = null;
-    		}
-    		else
-    		{
-    			$user['profile'] = $tempprofile->toArray();
-    		}
-    		return $user;
+            if(!isset($userId) || 1 > $userId) {
+                throw new \Exception("Supplied user ID is invalid - must be numeric and positive");
+            }
+            $user['mainData'] = User::find($userId)->toArray();
+            $tempprofile = UserProfile::find($userId);
+            if($tempprofile == null)
+            {
+                $user['profile']['about'] = null;
+                $user['profile']['website'] = null;
+                $user['profile']['phone'] = null;
+                $user['profile']['facebook'] = null;
+                $user['profile']['twitter'] = null;
+                $user['profile']['googleplus'] = null;
+            }
+            else
+            {
+                $user['profile'] = $tempprofile->toArray();
+            }
+            return $user;
         }
         catch(\Exception $e)
         {
@@ -78,36 +81,36 @@ class UserRepository implements UserInterface{
 	}
 	public function getAllUsersData()
     {
-       try{
-        	$users = array();
-             $tempUsers = \User::all()->toArray();
-             foreach($tempUsers as $user)
-             {
-             	$banned = false;
-             	$suspended  = false;
-             	$loginAttempt = 0;
-             	$usersThrottle = \Throttle::where('user_id',$user['id'])->get()->toArray();
-             	if(sizeof($usersThrottle) != 0)
-             	{
-             		foreach($usersThrottle as $userThrottle)
-             		{
+        try{
+            $users = array();
+            $tempUsers = \User::all()->toArray();
+            foreach($tempUsers as $user)
+            {
+                $banned = false;
+                $suspended  = false;
+                $loginAttempt = 0;
+                $usersThrottle = \Throttle::where('user_id',$user['id'])->get()->toArray();
+                if(sizeof($usersThrottle) != 0)
+                {
+                    foreach($usersThrottle as $userThrottle)
+                    {
 
-             			if($userThrottle['banned'] == true)
-             			{
-             				$banned = true;
-             			}
-             			if($userThrottle['suspended'] == true)
-             			{
-             				$suspended = true;
-             			}
-             			$loginAttempt = $loginAttempt + $userThrottle['attempts'];
-             		}
+                        if($userThrottle['banned'] == true)
+                        {
+                            $banned = true;
+                        }
+                        if($userThrottle['suspended'] == true)
+                        {
+                            $suspended = true;
+                        }
+                        $loginAttempt = $loginAttempt + $userThrottle['attempts'];
+                    }
 
-             		$user['banned'] = $banned;
-             		$user['suspended'] = $suspended;
-             		$user['loginAttempt'] = $loginAttempt;
+                    $user['banned'] = $banned;
+                    $user['suspended'] = $suspended;
+                    $user['loginAttempt'] = $loginAttempt;
 
-             	}
+                }
                 else
                 {
                     $user['banned'] = false;
@@ -118,29 +121,34 @@ class UserRepository implements UserInterface{
                 $groups = $groupUser->getGroups()->toArray();
                 if(sizeof($groups)!=0)
                 {
-                 $user['role'] =$groups[0]['name'];
+                    $user['role'] =$groups[0]['name'];
                 }
                 else
                 {
                     $user['role'] = '';
                 }
-             	$users [] = $user;
+                $users [] = $user;
 
-             }
-             return $users;
+            }
+            return $users;
         }
-       catch (\Exception $e)
-		{
-			 \Log::error('Something Went Wrong in User Repository - getAllUsersData():'. $e->getMessage());
+        catch (\Exception $e)
+        {
+            \Log::error('Something Went Wrong in User Repository - getAllUsersData():'. $e->getMessage());
             throw new SomeThingWentWrongException();
-	   	}
+        }
     }
     
     public function updateMyDetails($userId,$data)
     {
-       try
-       {
+        try
+        {
             $user = \User::find($userId);
+            $firstLen = strlen($data['first_name']);
+            $lastLen = strlen($data['last_name']);
+            if($firstLen == 0 && $lastLen == 0) {
+                throw new \Exception("At least one name, first or last, must not be blank");
+            }
             $user->first_name = $data['first_name'];
             $user->last_name = $data['last_name'];
             $user->save();
@@ -152,15 +160,19 @@ class UserRepository implements UserInterface{
             $userProfile->website = $data['website'];
             $userProfile->phone = $data['phone'];
             $userProfile->save();
+
             $userProfile = \File::delete(public_path().'/images/profilepics/'.$userId.'.png');
-            $imageResult = \App::make('AuthController')->{'createUserImage'}($user->id,$data['first_name'][0],$data['last_name'][0]);
+            $firstLetter = ($firstLen == 0) ? "_" : $data['first_name'][0];
+            $lastLetter = ($lastLen == 0) ? "_" : $data['last_name'][0];
+
+            $imageResult = \App::make('AuthController')->{'createUserImage'}($user->id, $firstLetter, $lastLetter);
             return 'success';
-       }
+        }
         catch(\Exception $e)
         {
-             \Log::error('Something Went Wrong in User Repository - updateMyDetails():'. $e->getMessage());
-            return 'error';    
-        }  
+            \Log::error('Something Went Wrong in User Repository - updateMyDetails():'. $e->getMessage());
+            return 'error';
+        }
     }
     public function manageUsers($data)
     {
@@ -182,17 +194,17 @@ class UserRepository implements UserInterface{
                 \Log::error('Something Went Wrong in User Repository - manageUsers()-activate:'. $e->getMessage());
                 return false;
             }
-           
+
         }
         if($data['action'] == 'deactivate')
         {
-           try
-           {
-                    $userId = $data['id'];
-                    $user = \User::find($userId);
-                    $user->activated = false;
-                    $user->save();
-                    return true;
+            try
+            {
+                $userId = $data['id'];
+                $user = \User::find($userId);
+                $user->activated = false;
+                $user->save();
+                return true;
             }
             catch(\Exception $e)
             {
@@ -206,15 +218,15 @@ class UserRepository implements UserInterface{
             try
             {
                 $user = \Sentry::findThrottlerByUserId($data['id']);
-                 if($suspend = $user->isSuspended())
+                if($suspend = $user->isSuspended())
                 {
                     $user->unsuspend();
                 }
                 else
                 {
-                
-                }        
-                
+
+                }
+
                 return true;
             }
             catch(\Exception $e)
@@ -236,7 +248,7 @@ class UserRepository implements UserInterface{
                 else
                 {
                     $user->suspend();
-                }                
+                }
                 return true;
             }
             catch(\Exception $e)
@@ -247,18 +259,18 @@ class UserRepository implements UserInterface{
         }
         if($data['action'] == 'unbanned')
         {
-             try
+            try
             {
                 $user = \Sentry::findThrottlerByUserId($data['id']);
                 if($suspend = $user->isBanned())
-                {   
+                {
                     $user->unBan();
 
                 }
                 else
                 {
-                    
-                }                
+
+                }
                 return true;
             }
             catch(\Exception $e)
@@ -270,7 +282,7 @@ class UserRepository implements UserInterface{
         }
         if($data['action'] == 'ban')
         {
-             try
+            try
             {
                 $user = \Sentry::findThrottlerByUserId($data['id']);
                 if($suspend = $user->isBanned())
@@ -280,7 +292,7 @@ class UserRepository implements UserInterface{
                 else
                 {
                     $user->ban();
-                }                
+                }
                 return true;
             }
             catch(\Exception $e)
@@ -290,6 +302,7 @@ class UserRepository implements UserInterface{
             }
         }
     }
+
     public function getChangeRole($userId)
     {
          try
@@ -376,15 +389,18 @@ class UserRepository implements UserInterface{
         }
         try
         {
-
+            $firstLen = strlen($data['first_name']);
+            $lastLen = strlen($data['last_name']);
+            if($firstLen == 0 && $lastLen == 0) {
+                throw new \Exception("At least one name, first or last, must not be blank");
+            }
             $user = \Sentry:: createUser(array(
                 'email'=> $data['email'],
                 'password'=>$data['password'],
                 'activated'=>true,
                 'first_name'=>$data['first_name'],
                 'last_name'=>$data['last_name'],
-                ));
-
+            ));
             $group = \Sentry::findGroupByName($data['role']);
             $user->addGroup($group);
             $quicknote = new \Quicknote;
@@ -392,16 +408,19 @@ class UserRepository implements UserInterface{
             $quicknote->save();
             $userProfile = new \UserProfile;
             $userProfile->id = $user->id;
-            $userProfile->save(); 
-            $imageResult = \App::make('AuthController')->{'createUserImage'}($user->id,$data['first_name'][0],$data['last_name'][0]);
+            $userProfile->save();
+
+            $firstLetter = ($firstLen == 0) ? "_" : $data['first_name'][0];
+            $lastLetter = ($lastLen == 0) ? "_" : $data['last_name'][0];
+
+            $imageResult = \App::make('AuthController')->{'createUserImage'}($user->id, $firstLetter, $lastLetter);
             return true;
         }
         catch(\Exception $e)
         {
             \Log::error('Something Went Wrong in User Repository - addUserWithDetails():'. $e->getMessage());
             return false;
-        }    
-
+        }
     }
     public function changeUserEmail($data)
     {
