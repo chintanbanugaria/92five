@@ -14,41 +14,36 @@ class CalendarRepository implements CalendarInterface{
 
 	
 	public function addEvent($data,$createdUserId)
-	{
-		try
-		{
-			//Create a new instance of the model
-			$calendar =  new \Events;
-			$calendar->title = $data['title'];
-			$calendar->category = $data['category'];
-			$calendar->date = $data['date_submit'];
-			$calendar->start_time = $data['starttime_submit'];
-			$calendar->end_time = $data['endtime_submit'];
-			$calendar->notes = $data['note'];
-			$calendar->location = $data['location'];
-			$calendar->updated_by = $createdUserId;
-			//Save the model
-			$calendar->save();
-			$emails =  preg_split("/[\s,]+/", $data['tagsinput']);
-			$usersId = \User::whereIn('email',$emails)->lists('id');
-			//Add collaborators
-			foreach ($usersId as $userId) 
-			{
-					$eventCollabs = new \EventUser;
-					$eventCollabs->events_id = $calendar->id;
-					$eventCollabs->user_id = $userId;
-					$eventCollabs->updated_by = $createdUserId;
-					$eventCollabs->save();
-			}
-			return 'success';
-		}
-		catch(Exception $e)
-		{
-			\Log::error("Something Went wrong in Calendar Repository - addEvent():".$e->getMessage());
-			throw new \SomeThingWentWrongException();
-		}
-
-	}
+    {
+        try {
+            //Create a new instance of the model
+            $calendar =  new \Events;
+            $calendar->title = $data['title'];
+            $calendar->category = $data['category'];
+            $calendar->date = $data['date_submit'];
+            $calendar->start_time = $data['starttime_submit'];
+            $calendar->end_time = $data['endtime_submit'];
+            $calendar->notes = $data['note'];
+            $calendar->location = $data['location'];
+            $calendar->updated_by = $createdUserId;
+            //Save the model
+            $calendar->save();
+            $emails =  preg_split("/[\s,]+/", $data['tagsinput']);
+            $usersId = \User::whereIn('email',$emails)->lists('id');
+            //Add collaborators
+            foreach ($usersId as $userId)  {
+                $eventCollabs = new \EventUser;
+                $eventCollabs->events_id = $calendar->id;
+                $eventCollabs->user_id = $userId;
+                $eventCollabs->updated_by = $createdUserId;
+                $eventCollabs->save();
+            }
+            return 'success';
+        } catch(Exception $e) {
+            \Log::error("Something Went Wrong in Calendar Repository - addEvent():".$e->getMessage());
+            throw new \SomeThingWentWrongException();
+        }
+    }
 	public function getEvents($userId, $day)
 	{
 		try
@@ -157,51 +152,42 @@ class CalendarRepository implements CalendarInterface{
 		}
 	}
 	public function editEvent($data, $updatedUserId)
-	{
-		
-		try
-		{
-			$event = \Events::find($data['eventid']);
-			$event->title = $data['title'];
-			$event->category = $data['category'];
-            $tempDate =\DateTime::createFromFormat('j F, Y',$data['date']);
-            $event->date =  $tempDate->format('Y-m-d');
-			if($data['starttime_submit'] != '')
-			{
-				$event->start_time = $data['starttime_submit'];
-			}
-			if($data['endtime_submit'] != '')
-			{
-				$event->end_time = $data['endtime_submit'];
-			}
-			$event->notes = $data['note'];
-			$event->location = $data['location'];
-			$event->updated_by = $updatedUserId;
-			$event->save();
-			//Update the users
-			$delCurrentUsers = \EventUser::where('events_id',$data['eventid'])->forceDelete();
-			$email  = $data['tagsinput'];
-			$emails =  preg_split("/[\s,]+/", $email);
-			$user_id = \User::whereIn('email',$emails)->lists('id');
-			foreach ($user_id as $userid) 
-			{
-					$eventuser = new \EventUser;
-					$eventuser->user_id = $userid;
-					$eventuser->events_id = $data['eventid'];
-					$eventuser->updated_by = $updatedUserId;
-					$eventuser->save();	
-									
-			}
-			//Everything done
-			return 'success';
-		}
-		catch (Exception $e)
-		{
-			\Log::error("Something Went Wrong in Calendar Repository - editEvent():".$e->getMessage());
-			return 'error';
-		}
+    {
+        try {
+            $event = \Events::find($data['eventid']);
+            $event->title = $data['title'];
+            $event->category = $data['category'];
+            $event->date = $this->processDateString($data['date']);
+            if($data['starttime_submit'] != '') {
+                $event->start_time = $data['starttime_submit'];
+            }
+            if($data['endtime_submit'] != '') {
+                $event->end_time = $data['endtime_submit'];
+            }
+            $event->notes = $data['note'];
+            $event->location = $data['location'];
+            $event->updated_by = $updatedUserId;
+            $event->save();
+            //Update the users
+            $delCurrentUsers = \EventUser::where('events_id',$data['eventid'])->forceDelete();
+            $email  = $data['tagsinput'];
+            $emails =  preg_split("/[\s,]+/", $email);
+            $user_id = \User::whereIn('email',$emails)->lists('id');
+            foreach ($user_id as $userid) {
+                $eventuser = new \EventUser;
+                $eventuser->user_id = $userid;
+                $eventuser->events_id = $data['eventid'];
+                $eventuser->updated_by = $updatedUserId;
+                $eventuser->save();
 
-	}
+            }
+            //Everything done
+            return 'success';
+        } catch (Exception $e) {
+            \Log::error("Something Went Wrong in Calendar Repository - editEvent():".$e->getMessage());
+            return 'error';
+        }
+    }
 	public function getEventsCreatedByUser($userId)
 	{
 		try
@@ -215,4 +201,19 @@ class CalendarRepository implements CalendarInterface{
 			return null;
 		}
 	}
+
+    /*
+     * Handle string input for start/end date generation
+     */
+    public function processDateString($dateString)
+    {
+        if(!isset($dateString)) {
+            return null;
+        }
+        $bits = explode('at', $dateString);
+        $firstBit = trim($bits[0]);
+        $tempDate = \DateTime::createFromFormat('j F, Y', $firstBit);
+        $result = (false !== $tempDate) ? $tempDate->format('Y-m-d') : null;
+        return $result;
+    }
 }
