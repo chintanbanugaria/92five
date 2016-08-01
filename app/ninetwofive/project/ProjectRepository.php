@@ -158,44 +158,40 @@ class ProjectRepository implements ProjectInterface{
 	*/
 	public function addProject($data,$createdUserId)
 	{
-			//Seperate email list of collaborator and get corresponding user Ids
-			$email  = $data['tagsinput'];
-			$emails =  preg_split("/[\s,]+/", $email);
-			$usersIdList = \User::whereIn('email',$emails)->lists('id');
-			
-			//Hit the database with new data
-			$project = new Project;
-			$project->project_name = $data['project_name'];
-			$project->description = $data['description'];
-			$project->note = $data['note'];
-            $tempStartDate =\DateTime::createFromFormat('j F, Y',$data['startdate']);
-            $tempEndDate = \DateTime::createFromFormat('j F, Y',$data['enddate']);
-                        $project->start_date = (false !== $tempStartDate) ? $tempStartDate->format('Y-m-d') : null;
-                        $project->end_date = (false !== $tempEndDate) ? $tempEndDate->format('Y-m-d') : null;
-			$project->status = 'active';
-			$project->project_client = $data['project_client'];
-			$project->folder = str_random(8);
-			$project->updated_by = $createdUserId;
-			$project->save();
-			//Get the newly generated ProjectId
-			$projectId = $project->id;
+        //Seperate email list of collaborator and get corresponding user Ids
+        $email  = $data['tagsinput'];
+        $emails =  preg_split("/[\s,]+/", $email);
+        $usersIdList = \User::whereIn('email',$emails)->lists('id');
 
-			//Add the collaborators
-			foreach ($usersIdList as $userId) 
-			{
-				$projectcollabs = new ProjectUsers;
-				$projectcollabs->user_id = $userId;
-                $projectcollabs->updated_by = $userId;
-				$projectcollabs->project_id = $projectId;
-				$projectcollabs->save();	
-								
-			}
-			//Prepare the data for the Add file view
-			$returnData['project_name'] = $data['project_name'];
-			$returnData['projectId'] = $projectId;
-			//Send it back
-			return $returnData;	
-	}
+        //Hit the database with new data
+        $project = new Project;
+        $project->project_name = $data['project_name'];
+        $project->description = $data['description'];
+        $project->note = $data['note'];
+        $project->start_date = $this->processDateString($data['startdate']);
+        $project->end_date = $this->processDateString($data['enddate']);
+        $project->status = 'active';
+        $project->project_client = $data['project_client'];
+        $project->folder = str_random(8);
+        $project->updated_by = $createdUserId;
+        $project->save();
+        //Get the newly generated ProjectId
+        $projectId = $project->id;
+
+        //Add the collaborators
+        foreach ($usersIdList as $userId) {
+            $projectcollabs = new ProjectUsers;
+            $projectcollabs->user_id = $userId;
+            $projectcollabs->updated_by = $userId;
+            $projectcollabs->project_id = $projectId;
+            $projectcollabs->save();
+        }
+        //Prepare the data for the Add file view
+        $returnData['project_name'] = $data['project_name'];
+        $returnData['projectId'] = $projectId;
+        //Send it back
+        return $returnData;
+    }
 	/**
 	* Check permission
 	*/
@@ -325,111 +321,108 @@ class ProjectRepository implements ProjectInterface{
 	/**
 	*  Update the project
 	*/
-	public function updateProject($data,$userId)
-	{
+    public function updateProject($data,$userId)
+    {
+        if(is_integer($userId)) {
+            $userId = strval($userId);
+        }
 
-		//Find the project and update the fileds
-		$project = Project::find($data['projectid']);
-		$project->project_name = $data['project_name'];
-		$project->description = $data['description'];
-		$project->status = $data['status'];
-        $tempStartDate =\DateTime::createFromFormat('j F, Y',$data['startdate']);
-        $tempEndDate = \DateTime::createFromFormat('j F, Y',$data['enddate']);
-        $project->start_date = $tempStartDate->format('Y-m-d');
-        $project->end_date = $tempEndDate->format('Y-m-d');
-		$project->project_client = $data['project_client'];
-		$project->note = $data['note'];
-		//If the project is marked completed fill the respective fields of database
-		if($data['status'] == 'completed')
-		{
-			$project->completed_on = date_create();
-			$project->mark_completed_by = $userId;
-			$project->updated_by = $userId;
-			$project->save();
-		}
-		
-		else
-		{
+        //Find the project and update the fileds
+        $project = Project::find($data['projectid']);
+        $project->project_name = $data['project_name'];
+        $project->description = $data['description'];
+        $project->status = $data['status'];
+        $project->start_date = $this->processDateString($data['startdate']);
+        $project->end_date = $this->processDateString($data['enddate']);
+        $project->project_client = $data['project_client'];
+        $project->note = $data['note'];
+        //If the project is marked completed fill the respective fields of database
+        if($data['status'] == 'completed')         {
+            $project->completed_on = date_create();
+            $project->mark_completed_by = $userId;
+            $project->updated_by = $userId;
+            $project->save();
+        } else {
+            $project->updated_by = $userId;
+            $project->save();
+        }
 
-			$project->updated_by = $userId;
-			$project->save();
+        //Remove all the Collaborators of the project
+        $prjtUsrs = ProjectUsers::where('project_id',$data['projectid'])->forceDelete();
+        //New list of emails of collaborators
+        $email  = $data['tagsinput'];
+        $emails =  preg_split("/[\s,]+/", $email);
+        //Get the user Ids of the new collaborators
+        $userIdList = \User::whereIn('email',$emails)->lists('id');
+        //Add  collaborators
+        foreach ($userIdList as $usrId) {
+            $projectcollabs = new \Projectcollabs;
+            $projectcollabs->user_id = $usrId;
+            $projectcollabs->project_id = $data['projectid'];
+            $projectcollabs->updated_by = $userId;
+            $projectcollabs->save();
+        }
 
-		}
-		//Remove all the Collaborators of the project
-		$prjtUsrs = ProjectUsers::where('project_id',$data['projectid'])->forceDelete();
-		//New list of emails of collaborators 
-		$email  = $data['tagsinput'];
-		$emails =  preg_split("/[\s,]+/", $email);
-		//Get the user Ids of the new collaborators
-		$userIdList = \User::whereIn('email',$emails)->lists('id');
-		//Add  collaborators
-		foreach ($userIdList as $usrId) 
-		{
-			$projectcollabs = new \Projectcollabs;
-			$projectcollabs->user_id = $usrId;
-			$projectcollabs->project_id = $data['projectid'];
-			$projectcollabs->save();	
-								
-		}
-
-		//Get the project name and Id for the next view
-		$projectName = $data['project_name'];
-		$projectId = $data['projectid'];
-		$files;
-		$filesId = FileReference::where('parent_id',$projectId)->where('parent_type','project')->lists('attachment_id');
-		if($filesId == null)
-		{
-			$files = null;
-		}
-		else
-		{	
-			$files = Files::whereIn('id',$filesId)->get(array('file_name','id','key','size','uploaded_date','uploaded_by'))->toArray();
-			
-		}
-		//Wrap up data
-		$returnData['projectName'] = $projectName;
-		$returnData['projectId'] = $projectId;
-		$returnData['files'] = $files;
-		//Shoot back
-		return $returnData;	
-	}
+        //Get the project name and Id for the next view
+        $projectName = $data['project_name'];
+        $projectId = $data['projectid'];
+        $files;
+        $filesId = FileReference::where('parent_id',$projectId)->where('parent_type','project')->lists('attachment_id');
+        if($filesId == null) {
+            $files = null;
+        } else {
+            $files = Files::whereIn('id',$filesId)->get(array('file_name','id','key','size','uploaded_date','uploaded_by'))->toArray();
+        }
+        //Wrap up data
+        $returnData['projectName'] = $projectName;
+        $returnData['projectId'] = $projectId;
+        $returnData['files'] = $files;
+        //Shoot back
+        return $returnData;
+    }
 	/**
 	* Delete project
 	*/
 	public function deleteProject($projectId,$userId)
-	{
-		//Get the task Ids of the project
-		$tasks = \Task::where('project_id',$projectId)->lists('id');
-		if($tasks == null)
-		{
-			//No Tasks. Delete data and users from the database
-			$projectUsers = ProjectUsers::where('project_id',$projectId)->delete();
-			$project = Project::find($projectId);
-			$project->deleted_by = $userId;
-			$project->save();
-			$project->delete();
-			return true;
-		}
-		else
-		{
-			//Delete all users and data for all tasks of the project. Also delete all the users and data for the project
-			$projectUsers = ProjectUsers::where('project_id',$projectId)->delete();
-			$taskUsers = TaskUser::whereIn('task_id',$tasks)->delete();
-			//$tasks = Task::where('project_id',$projectId)->delete();
-			foreach($tasks as $taskId)
-			{
-				$task = \Task::find($taskId);
-				$task->deleted_by = $userId;
-				$task->save();
-				$task->delete();
-			}
+    {
+        $project = Project::find($projectId);
+        if(null == $project) {
+            return false;
+        }
+        //Get the task Ids of the project
+        $tasks = \Task::where('project_id',$projectId)->lists('id');
+        if(null != $tasks) {
+            //Delete all users and data for all tasks of the project. Also delete all the users and data for the project
+            $projectUsers = ProjectUsers::where('project_id', $projectId)->delete();
+            $taskUsers = TaskUser::whereIn('task_id', $tasks)->delete();
+            foreach ($tasks as $taskId) {
+                $task = \Task::find($taskId);
+                $task->deleted_by = $userId;
+                $task->save();
+                $task->delete();
+            }
+        } else {
+            //No Tasks. Delete data and users from the database
+            $projectUsers = ProjectUsers::where('project_id', $projectId)->delete();
+        }
+        $project->deleted_by = $userId;
+        $project->save();
+        $project->delete();
+        return true;
+    }
 
-			$project = Project::find($projectId);
-			$project->deleted_by = $userId;
-			$project->save();
-			$project->delete();
-			return true;
-		}
-
-	}
+    /*
+     * Handle string input for start/end date generation
+     */
+    public function processDateString($dateString)
+    {
+        if(!isset($dateString)) {
+            return null;
+        }
+        $bits = explode('at', $dateString);
+        $firstBit = trim($bits[0]);
+        $tempDate = \DateTime::createFromFormat('j F, Y', $firstBit);
+        $result = (false !== $tempDate) ? $tempDate->format('Y-m-d') : null;
+        return $result;
+    }
 }
