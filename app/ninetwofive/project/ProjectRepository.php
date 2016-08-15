@@ -18,13 +18,21 @@ class ProjectRepository implements ProjectInterface{
 	/**
 	* Get projects in which user is collaborated
 	*/
-	public function getProjects($userId)
+	public function getProjects($user)
 	{
-			//Get the list of ProjectIds
-			$projectsList = ProjectUsers::where('user_id', $userId)->lists('project_id');
-   		 	if($projectsList == null)
+			$userId = $user->id;
+
+			if ($user->inGroup(Sentry::findGroupByName('admin'))) {
+				// All projects are shown for administrators
+				$projectsList = ProjectUsers::lists('project_id');
+			}
+			else {
+				// Only retrieve for specific user
+				$projectsList = ProjectUsers::where('user_id', $userId)->lists('project_id');
+			}
+
+   		 	if ($projectsList == null)
    		 	{
-   		 		//Return what you got !
    		 		return null;
    		 	}
    		 	else
@@ -197,34 +205,23 @@ class ProjectRepository implements ProjectInterface{
 	*/
 	public function checkPermission($projectId,$userId,$action)
 	{
-		$checkUser = ProjectUsers::where('project_id','=',$projectId)->where('user_id','=',$userId)->get();
-		if(sizeof($checkUser) != 0)
+		$user = Sentry::findUserById($userId);
+		$checkUser = ProjectUsers::where('project_id','=',$projectId)->where('user_id','=',$userId)->first();
+		if($checkUser != null || $user->inGroup(Sentry::findGroupByName('admin')))
 		{
 			if($action == 'view')
-			{
-				//Authorized
 				return true;
-			}
+
 			elseif($action == 'edit')
 			{
 				$user = Sentry::getUserProvider()->findById($userId);
 				if($user->hasAccess('project.update'))
-				{
-					//Authorized
 					return true;
-				}
-				else
-				{
-					//Not authorized
-					return false;
-				}
+
+				return false;
 			}
 		}
-		else
-		{
-			//Not Authorized
-			return false;
-		}
+		return false;
 	}
 	/**
 	*	Get Project
